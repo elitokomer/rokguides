@@ -14,66 +14,7 @@ interface Comment {
   replies?: Comment[];
 }
 
-const initialComments: Comment[] = [
-  {
-    id: 1,
-    author: 'Marcus T.',
-    avatar: 'MT',
-    time: '2 hours ago',
-    content: 'Finally someone who explains WHY Guan Yu is S+ instead of just listing him. The talent build breakdown is exactly what I needed. Just reached KvK season 3 and this completely changed how I approach my march compositions.',
-    likes: 14,
-    liked: false,
-    replies: [
-      {
-        id: 11,
-        author: 'RoKGuides Team',
-        avatar: 'RG',
-        time: '1 hour ago',
-        content: 'Glad it helped! The why behind tier rankings is the most important part. If you want even more depth on Guan Yu talent builds, check our dedicated commander guide.',
-        likes: 7,
-        liked: false,
-      },
-    ],
-  },
-  {
-    id: 2,
-    author: 'Priya S.',
-    avatar: 'PS',
-    time: '5 hours ago',
-    content: 'Quick question — is Sun Tzu still viable in late KvK or should I be investing in a Legendary by then? I\'m F2P and have Sun Tzu at 5511 right now.',
-    likes: 5,
-    liked: false,
-    replies: [
-      {
-        id: 21,
-        author: 'Kenji H.',
-        avatar: 'KH',
-        time: '4 hours ago',
-        content: 'Sun Tzu stays viable well into mid-KvK as secondary. Once you hit late KvK, start saving for Guan Yu sculptures. The jump in power is massive.',
-        likes: 12,
-        liked: false,
-      },
-    ],
-  },
-  {
-    id: 3,
-    author: 'Amara O.',
-    avatar: 'AO',
-    time: '1 day ago',
-    content: 'The F2P section is excellent. One thing I\'d add — Joan of Arc\'s rage generation is even more valuable than most guides mention. She effectively lets your primary commander cast skills 20% more often.',
-    likes: 31,
-    liked: false,
-  },
-  {
-    id: 4,
-    author: 'Daniel W.',
-    avatar: 'DW',
-    time: '2 days ago',
-    content: 'Would love to see a dedicated Nevsky talent build guide. The cavalry tree options are confusing — there seem to be multiple viable paths depending on playstyle.',
-    likes: 18,
-    liked: false,
-  },
-];
+const initialComments: Comment[] = [];
 
 function CommentCard({ comment, isReply = false }: { comment: Comment; isReply?: boolean }) {
   const [liked, setLiked] = useState(comment.liked);

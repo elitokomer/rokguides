@@ -315,7 +315,7 @@ export default function SearchResultsContent() {
                       <Icon name="ChatBubbleLeftIcon" size={11} />
                       {guide.comments}
                     </span>
-                    <span className="flex items-center gap-1">
+                      <span className="flex items-center gap-1">
                       <Icon name="EyeIcon" size={11} />
                       {guide.views}
                     </span>
