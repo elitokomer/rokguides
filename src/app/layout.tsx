@@ -31,6 +31,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
+  other: {
+    'google-adsense-account': 'ca-pub-5080097981175080',
+  },
 };
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
