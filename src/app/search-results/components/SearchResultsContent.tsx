@@ -13,9 +13,6 @@ interface GuideResult {
   title: string;
   excerpt: string;
   category: Category;
-  readTime: string;
-  comments: number;
-  views: string;
   image: string;
   imageAlt: string;
   tags: string[];
@@ -27,9 +24,6 @@ const allGuides: GuideResult[] = [
   title: 'Best Commanders Tier List 2026',
   excerpt: 'Complete ranking of all Legendary and Epic commanders from S+ to C tier, with talent builds and pairing recommendations for every playstyle.',
   category: 'Commanders',
-  readTime: '12 min',
-  comments: 84,
-  views: '24.5K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_18c9e4a98-1772417935259.png",
   imageAlt: 'Dark fantasy battlefield with glowing tactical overlay, deep shadows, atmospheric fog',
   tags: ['guan yu', 'alexander', 'ysg', 'nevsky', 'tier list', 'legendary']
@@ -39,9 +33,6 @@ const allGuides: GuideResult[] = [
   title: 'Complete Commander Pairing Guide',
   excerpt: 'How to pair commanders effectively — from Guan Yu + Sun Tzu infantry to YSG + Osman archer combos. Every top pairing explained with talent builds.',
   category: 'Commanders',
-  readTime: '15 min',
-  comments: 127,
-  views: '38.2K',
   image: "https://images.unsplash.com/photo-1620815253545-03cf0bd96140",
   imageAlt: 'Epic medieval castle at dawn with dramatic lighting, dark stone architecture',
   tags: ['pairing', 'commander', 'talent', 'infantry', 'cavalry', 'archer']
@@ -51,9 +42,6 @@ const allGuides: GuideResult[] = [
   title: 'Open-Field Battle Tactics: How to Win KvK',
   excerpt: 'Advanced strategies for Kingdom vs Kingdom battles including rally mechanics, march formation, and when to fight vs retreat.',
   category: 'Battle',
-  readTime: '10 min',
-  comments: 89,
-  views: '21.1K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_11c4ae552-1772474344172.png",
   imageAlt: 'Group collaborating around glowing tactical map in dim war room, strategy planning atmosphere',
   tags: ['kvk', 'rally', 'open field', 'battle', 'march', 'formation']
@@ -63,9 +51,6 @@ const allGuides: GuideResult[] = [
   title: 'Rally Attack Mechanics Explained',
   excerpt: 'Everything about rallying — capacity limits, commander selection, timing your launch, and countering enemy rallies effectively.',
   category: 'Battle',
-  readTime: '8 min',
-  comments: 56,
-  views: '14.8K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_11f258c8e-1775336132056.png",
   imageAlt: 'Dark code environment with glowing amber highlights, developer workspace in shadow',
   tags: ['rally', 'attack', 'mechanics', 'capacity', 'timing']
@@ -75,9 +60,6 @@ const allGuides: GuideResult[] = [
   title: 'Beginner Guide: First 30 Days in a New Kingdom',
   excerpt: 'Exactly what to do from day 1 to day 30 — which civilization to pick, which commanders to focus, and how to join a strong alliance.',
   category: 'Beginner',
-  readTime: '8 min',
-  comments: 203,
-  views: '55.8K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_167a7d59f-1772151443676.png",
   imageAlt: 'Bright tutorial interface with glowing progress path on dark background with golden light',
   tags: ['beginner', 'new player', 'civilization', 'first steps', 'f2p']
@@ -87,9 +69,6 @@ const allGuides: GuideResult[] = [
   title: 'F2P Gem Spending Guide',
   excerpt: 'The definitive guide for free-to-play players on spending gems efficiently — VIP, chests, speedups, or events? Every scenario covered.',
   category: 'Beginner',
-  readTime: '7 min',
-  comments: 156,
-  views: '42.3K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_19b6155ef-1772719826395.png",
   imageAlt: 'Dark strategy interface with glowing amber tactical elements on deep charcoal background',
   tags: ['f2p', 'gems', 'spending', 'vip', 'free to play', 'budget']
@@ -99,9 +78,6 @@ const allGuides: GuideResult[] = [
   title: 'Alliance Events Calendar: Maximize Rewards',
   excerpt: 'Complete breakdown of Mightiest Governor, Sun Never Sets, and Ark of Osiris events with optimal strategies for F2P players.',
   category: 'Alliance',
-  readTime: '12 min',
-  comments: 64,
-  views: '16.4K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_105f2c6ff-1774548711006.png",
   imageAlt: 'People planning strategy around glowing map in dimly lit room, collaborative atmosphere',
   tags: ['alliance', 'events', 'mightiest governor', 'ark of osiris', 'rewards']
@@ -111,9 +87,6 @@ const allGuides: GuideResult[] = [
   title: 'How to Pick the Best Civilization',
   excerpt: 'Comparing all 12 civilizations — which starting bonuses matter most, when to change civilizations, and best picks for F2P vs P2P.',
   category: 'Beginner',
-  readTime: '6 min',
-  comments: 91,
-  views: '31.7K',
   image: "https://images.unsplash.com/photo-1636490247887-8a03d7d75d12",
   imageAlt: 'Medieval stone architecture at dusk with dramatic amber sky, historic fortress',
   tags: ['civilization', 'china', 'britain', 'rome', 'starting bonus']
@@ -306,20 +279,7 @@ export default function SearchResultsContent() {
                   </div>
 
                   {/* Meta */}
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground pt-2 border-t border-border">
-                    <span className="flex items-center gap-1">
-                      <Icon name="ClockIcon" size={11} />
-                      {guide.readTime}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Icon name="ChatBubbleLeftIcon" size={11} />
-                      {guide.comments}
-                    </span>
-                      <span className="flex items-center gap-1">
-                      <Icon name="EyeIcon" size={11} />
-                      {guide.views}
-                    </span>
-                  </div>
+
                 </div>
               </Link>
           )}

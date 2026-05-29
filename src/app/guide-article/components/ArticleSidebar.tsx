@@ -114,8 +114,6 @@ export default function ArticleSidebar() {
         </h3>
         <div className="space-y-3">
           {[
-            { label: 'Total Views', value: '24.5K', icon: 'EyeIcon' },
-            { label: 'Comments', value: '84', icon: 'ChatBubbleLeftIcon' },
             { label: 'Helpful votes', value: '1.2K', icon: 'HandThumbUpIcon' },
             { label: 'Last updated', value: 'May 2026', icon: 'CalendarIcon' },
           ].map((stat) => (

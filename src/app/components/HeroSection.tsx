@@ -165,20 +165,7 @@ export default function HeroSection() {
               <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
                 Complete ranking of all Legendary and Epic commanders from S+ to C tier, with talent builds and pairing recommendations.
               </p>
-              <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Icon name="ClockIcon" size={12} />
-                  12 min read
-                </span>
-                <span className="flex items-center gap-1">
-                  <Icon name="ChatBubbleLeftIcon" size={12} />
-                  84 comments
-                </span>
-                <span className="flex items-center gap-1">
-                  <Icon name="EyeIcon" size={12} />
-                  24.5K views
-                </span>
-              </div>
+
             </Link>
           </div>
         </div>

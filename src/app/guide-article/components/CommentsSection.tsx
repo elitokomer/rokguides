@@ -7,7 +7,6 @@ interface Comment {
   id: number;
   author: string;
   avatar: string;
-  time: string;
   content: string;
   likes: number;
   liked: boolean;
@@ -47,7 +46,6 @@ function CommentCard({ comment, isReply = false }: { comment: Comment; isReply?:
                 Staff
               </span>
             )}
-            <span className="text-xs text-muted-foreground">{comment.time}</span>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed mb-2">{comment.content}</p>
           <button
@@ -88,7 +86,6 @@ export default function CommentsSection() {
       id: Date.now(),
       author: name.trim(),
       avatar: name.trim().slice(0, 2).toUpperCase(),
-      time: 'Just now',
       content: commentText.trim(),
       likes: 0,
       liked: false,
@@ -106,7 +103,6 @@ export default function CommentsSection() {
       <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground mb-8 flex items-center gap-3">
         <Icon name="ChatBubbleLeftRightIcon" size={22} className="text-primary" />
         Comments
-        <span className="text-base font-normal text-muted-foreground">({comments.length})</span>
       </h2>
 
       {/* Comment Form */}

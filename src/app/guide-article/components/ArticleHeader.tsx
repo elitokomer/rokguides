@@ -73,18 +73,6 @@ export default function ArticleHeader() {
               <Icon name="CalendarIcon" size={13} />
               Updated May 2026
             </span>
-            <span className="flex items-center gap-1.5">
-              <Icon name="ClockIcon" size={13} />
-              12 min read
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Icon name="EyeIcon" size={13} />
-              24.5K views
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Icon name="ChatBubbleLeftIcon" size={13} />
-              84 comments
-            </span>
           </div>
         </div>
       </div>

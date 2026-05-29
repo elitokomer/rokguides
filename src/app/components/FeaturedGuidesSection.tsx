@@ -11,9 +11,6 @@ interface GuideCard {
   excerpt: string;
   category: string;
   categoryColor: string;
-  readTime: string;
-  comments: number;
-  views: string;
   image: string;
   imageAlt: string;
   featured?: boolean;
@@ -26,9 +23,6 @@ const guides: GuideCard[] = [
   excerpt: 'Learn how to pair commanders effectively — from Guan Yu + Sun Tzu infantry to YSG + Osman archer combos. Every top pairing explained with talent builds.',
   category: 'Commanders',
   categoryColor: 'text-primary',
-  readTime: '15 min',
-  comments: 127,
-  views: '38.2K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_18c9e4a98-1772417935259.png",
   imageAlt: 'Dark fantasy strategy game battlefield with medieval warriors and glowing tactical map overlay, atmospheric foggy environment',
   featured: true
@@ -39,9 +33,6 @@ const guides: GuideCard[] = [
   excerpt: 'Advanced strategies for Kingdom vs Kingdom battles including rally mechanics, march formation, and when to fight vs retreat.',
   category: 'Battle',
   categoryColor: 'tier-s',
-  readTime: '10 min',
-  comments: 89,
-  views: '21.1K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_1669a92ca-1773009479222.png",
   imageAlt: 'Epic medieval castle siege scene with armies marching at dawn, dramatic low-angle lighting, dark stone fortifications'
 },
@@ -51,9 +42,6 @@ const guides: GuideCard[] = [
   excerpt: 'Exactly what to do from day 1 to day 30 — which civilization to pick, which commanders to focus, and how to join a strong alliance.',
   category: 'Beginner',
   categoryColor: 'tier-a',
-  readTime: '8 min',
-  comments: 203,
-  views: '55.8K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_167a7d59f-1772151443676.png",
   imageAlt: 'Bright tutorial interface with glowing progress path, clean dark background with golden light rays and achievement icons'
 },
@@ -63,9 +51,6 @@ const guides: GuideCard[] = [
   excerpt: 'Complete breakdown of Mightiest Governor, Sun Never Sets, and Ark of Osiris events with optimal strategies for F2P players.',
   category: 'Alliance',
   categoryColor: 'tier-b',
-  readTime: '12 min',
-  comments: 64,
-  views: '16.4K',
   image: "https://img.rocket.new/generatedImages/rocket_gen_img_11c4ae552-1772474344172.png",
   imageAlt: 'Group of people planning strategy around a glowing table map in a dimly lit war room, collaborative tactical atmosphere'
 },
@@ -75,9 +60,6 @@ const guides: GuideCard[] = [
   excerpt: 'The definitive guide for free-to-play players on spending gems efficiently — VIP, chests, speedups, or events?',
   category: 'Beginner',
   categoryColor: 'tier-a',
-  readTime: '7 min',
-  comments: 156,
-  views: '42.3K',
   image: "https://images.unsplash.com/photo-1707758967860-19106a5e9ab7",
   imageAlt: 'Dark code editor screen with glowing amber and green highlights on dark background, developer workspace'
 }];
@@ -171,20 +153,7 @@ export default function FeaturedGuidesSection() {
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
                   {featured.excerpt}
                 </p>
-                <div className="flex items-center gap-4 text-xs text-muted-foreground pt-3 border-t border-border">
-                  <span className="flex items-center gap-1.5">
-                    <Icon name="ClockIcon" size={12} />
-                    {featured.readTime}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Icon name="ChatBubbleLeftIcon" size={12} />
-                    {featured.comments}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Icon name="EyeIcon" size={12} />
-                    {featured.views}
-                  </span>
-                </div>
+
               </div>
             </Link>
           </div>
@@ -218,20 +187,7 @@ export default function FeaturedGuidesSection() {
                   <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1 leading-relaxed">
                     {guide.excerpt}
                   </p>
-                  <div className="flex items-center gap-3 text-xs text-muted-foreground pt-2 border-t border-border">
-                    <span className="flex items-center gap-1">
-                      <Icon name="ClockIcon" size={11} />
-                      {guide.readTime}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Icon name="ChatBubbleLeftIcon" size={11} />
-                      {guide.comments}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Icon name="EyeIcon" size={11} />
-                      {guide.views}
-                    </span>
-                  </div>
+
                 </div>
               </Link>
             </div>

@@ -11,7 +11,6 @@ const recentComments = [
     avatar: 'MT',
     guide: 'Best Commanders Tier List 2026',
     comment: 'Finally someone who explains WHY Guan Yu is S+ instead of just listing him. The talent build breakdown is exactly what I needed.',
-    time: '2 hours ago',
     likes: 14,
     guideHref: '/guide-article',
   },
@@ -21,7 +20,6 @@ const recentComments = [
     avatar: 'PS',
     guide: 'F2P Gem Spending Guide',
     comment: 'This changed my whole approach. Saved 20K gems by following the VIP section advice. Already noticed a huge difference in my city growth.',
-    time: '5 hours ago',
     likes: 31,
     guideHref: '/guide-article',
   },
@@ -31,7 +29,6 @@ const recentComments = [
     avatar: 'KH',
     guide: 'Open-Field Battle Tactics',
     comment: 'The KvK rally section is gold. My alliance used the formation tips during last week\'s KvK and we took the pass for the first time ever.',
-    time: '1 day ago',
     likes: 47,
     guideHref: '/guide-article',
   },
@@ -41,7 +38,6 @@ const recentComments = [
     avatar: 'AO',
     guide: 'Alliance Events Calendar',
     comment: 'Can you add a section on Ark of Osiris scoring? Our alliance struggles with positioning during the final phase.',
-    time: '1 day ago',
     likes: 8,
     guideHref: '/guide-article',
   },
@@ -115,7 +111,7 @@ export default function CommunitySection() {
                       {comment.guide}
                     </Link>
                   </div>
-                  <span className="text-xs text-muted-foreground">{comment.time}</span>
+
                 </div>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3 line-clamp-3">
