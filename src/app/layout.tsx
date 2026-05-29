@@ -40,6 +40,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${plusJakartaSans.variable} ${fraunces.variable}`}>
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5080097981175080"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+      />
       <body className={plusJakartaSans.className}>
         {children}
 
