@@ -1,8 +1,13 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import AppLogo from '@/components/ui/AppLogo';
+import { useTranslation } from '@/lib/useTranslation';
 
 export default function Footer() {
+  const t = useTranslation();
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -17,21 +22,13 @@ export default function Footer() {
               </span>
             </div>
             <nav className="flex flex-wrap gap-x-6 gap-y-2">
-              {[
-                { label: 'Commanders', href: '/guide-article?category=commanders' },
-                { label: 'Battle', href: '/guide-article?category=battle' },
-                { label: 'Beginners', href: '/guide-article?category=beginner' },
-                { label: 'Alliance', href: '/guide-article?category=alliance' },
-                { label: 'Search', href: '/search-results' },
-                { label: 'About', href: '/about' },
-                { label: 'Contact', href: '/contact' },
-              ]?.map((link) => (
+              {t.footer.navLinks.map((link) => (
                 <Link
-                  key={link?.label}
-                  href={link?.href}
+                  key={link.label}
+                  href={link.href}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
                 >
-                  {link?.label}
+                  {link.label}
                 </Link>
               ))}
             </nav>
@@ -40,12 +37,12 @@ export default function Footer() {
           {/* Legal + Copyright */}
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <Link href="/privacy-policy" className="hover:text-foreground transition-colors duration-200">
-              Privacy
+              {t.footer.privacy}
             </Link>
             <Link href="/" className="hover:text-foreground transition-colors duration-200">
-              Terms
+              {t.footer.terms}
             </Link>
-            <span>© 2026 RoKGuides</span>
+            <span>{t.footer.copyright}</span>
           </div>
         </div>
       </div>

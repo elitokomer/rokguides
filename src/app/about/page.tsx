@@ -5,8 +5,11 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Icon from '@/components/ui/AppIcon';
+import { useTranslation } from '@/lib/useTranslation';
 
-const features = [
+export default function AboutPage() {
+  const t = useTranslation();
+  const features = t.about.features;
   {
     icon: 'UserGroupIcon',
     title: 'Commander Guides',
@@ -53,21 +56,20 @@ export default function AboutPage() {
         {/* Hero */}
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4 px-3 py-1 rounded-full bg-primary/10">
-            About RoKGuides
+            {t.about.heroLabel}
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-            Your go-to resource for{' '}
-            <span className="text-primary">Rise of Kingdoms</span>
+            {t.about.heroTitle}
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            RoKGuides was built by players, for players. We got tired of scattered Reddit threads and outdated YouTube videos — so we built a single place where everything is organized, up to date, and actually useful.
+            {t.about.heroDescription}
           </p>
         </section>
 
         {/* What's Inside */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <h2 className="font-display text-2xl font-bold text-foreground mb-10 text-center">
-            What you'll find here
+            {t.about.sectionTitle}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features?.map((feature) => (
@@ -91,37 +93,33 @@ export default function AboutPage() {
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
           <div className="bg-card border border-border rounded-2xl p-8 sm:p-12">
             <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-              Our mission
+              {t.about.missionTitle}
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Rise of Kingdoms is a deep, complex game. The gap between a new player and a veteran isn't just time — it's knowledge. We exist to close that gap.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Every guide on this site is written with one goal: give you the information you need to make better decisions in the game. No fluff, no filler — just practical strategy you can apply immediately.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Whether you're picking your first civilization or preparing for a KvK season, RoKGuides has something for you.
-            </p>
+            {t.about.missionLines.map((line, index) => (
+              <p key={index} className="text-muted-foreground leading-relaxed mb-4">
+                {line}
+              </p>
+            ))}
           </div>
         </section>
 
         {/* CTA */}
         <section className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-2xl font-bold text-foreground mb-4">
-            Ready to level up?
+            {t.about.ctaTitle}
           </h2>
           <p className="text-muted-foreground mb-6">
-            Browse our guides and start improving your game today.
+            {t.about.ctaDescription}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/guide-article" className="btn-primary px-6 py-3">
-              Browse Guides
+              {t.about.ctaPrimary}
             </Link>
             <Link
               href="/search-results"
               className="px-6 py-3 rounded-lg border border-border text-sm font-medium text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors duration-200"
             >
-              Search Content
+              {t.about.ctaSecondary}
             </Link>
           </div>
         </section>

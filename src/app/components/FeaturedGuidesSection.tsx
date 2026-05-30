@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
+import { useTranslation } from '@/lib/useTranslation';
 
 interface GuideCard {
   id: string;
@@ -16,72 +17,32 @@ interface GuideCard {
   featured?: boolean;
 }
 
-const guides: GuideCard[] = [
-{
-  id: '1',
-  title: 'Complete Commander Pairing Guide: Maximize Your March Power',
-  excerpt: 'Learn how to pair commanders effectively — from Guan Yu + Sun Tzu infantry to YSG + Osman archer combos. Every top pairing explained with talent builds.',
-  category: 'Commanders',
-  categoryColor: 'text-primary',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_18c9e4a98-1772417935259.png",
-  imageAlt: 'Dark fantasy strategy game battlefield with medieval warriors and glowing tactical map overlay, atmospheric foggy environment',
-  featured: true
-},
-{
-  id: '2',
-  title: 'Open-Field Battle Tactics: How to Win KvK',
-  excerpt: 'Advanced strategies for Kingdom vs Kingdom battles including rally mechanics, march formation, and when to fight vs retreat.',
-  category: 'Battle',
-  categoryColor: 'tier-s',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_1669a92ca-1773009479222.png",
-  imageAlt: 'Epic medieval castle siege scene with armies marching at dawn, dramatic low-angle lighting, dark stone fortifications'
-},
-{
-  id: '3',
-  title: 'Beginner Guide: First 30 Days in a New Kingdom',
-  excerpt: 'Exactly what to do from day 1 to day 30 — which civilization to pick, which commanders to focus, and how to join a strong alliance.',
-  category: 'Beginner',
-  categoryColor: 'tier-a',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_167a7d59f-1772151443676.png",
-  imageAlt: 'Bright tutorial interface with glowing progress path, clean dark background with golden light rays and achievement icons'
-},
-{
-  id: '4',
-  title: 'Alliance Events Calendar: Maximize Event Rewards',
-  excerpt: 'Complete breakdown of Mightiest Governor, Sun Never Sets, and Ark of Osiris events with optimal strategies for F2P players.',
-  category: 'Alliance',
-  categoryColor: 'tier-b',
-  image: "https://img.rocket.new/generatedImages/rocket_gen_img_11c4ae552-1772474344172.png",
-  imageAlt: 'Group of people planning strategy around a glowing table map in a dimly lit war room, collaborative tactical atmosphere'
-},
-{
-  id: '5',
-  title: 'F2P Gem Spending Guide: Where Every Gem Counts',
-  excerpt: 'The definitive guide for free-to-play players on spending gems efficiently — VIP, chests, speedups, or events?',
-  category: 'Beginner',
-  categoryColor: 'tier-a',
-  image: "https://images.unsplash.com/photo-1707758967860-19106a5e9ab7",
-  imageAlt: 'Dark code editor screen with glowing amber and green highlights on dark background, developer workspace'
-}];
-
-
 const categoryColorMap: Record<string, string> = {
   Commanders: 'rgba(200,150,90,0.15)',
+  Komutanlar: 'rgba(200,150,90,0.15)',
   Battle: 'rgba(232,168,56,0.15)',
+  Savaş: 'rgba(232,168,56,0.15)',
   Beginner: 'rgba(107,170,117,0.15)',
-  Alliance: 'rgba(91,143,212,0.15)'
+  Yeni Başlayanlar: 'rgba(107,170,117,0.15)',
+  Alliance: 'rgba(91,143,212,0.15)',
+  İttifak: 'rgba(91,143,212,0.15)',
 };
 
 const categoryTextMap: Record<string, string> = {
   Commanders: '#C8965A',
+  Komutanlar: '#C8965A',
   Battle: '#E8A838',
+  Savaş: '#E8A838',
   Beginner: '#6BAA75',
-  Alliance: '#5B8FD4'
+  Yeni Başlayanlar: '#6BAA75',
+  Alliance: '#5B8FD4',
+  İttifak: '#5B8FD4',
 };
 
 export default function FeaturedGuidesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const t = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -92,8 +53,8 @@ export default function FeaturedGuidesSection() {
     return () => observer.disconnect();
   }, []);
 
-  const featured = guides[0];
-  const rest = guides.slice(1);
+  const featured = t.featuredGuides.featured;
+  const rest = t.featuredGuides.guides;
 
   return (
     <section
@@ -104,13 +65,13 @@ export default function FeaturedGuidesSection() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <span className="section-label">Featured Guides</span>
+            <span className="section-label">{t.featuredGuides.sectionLabel}</span>
             <h2 className="font-display text-hero-lg font-semibold text-foreground">
-              Top Strategies
+              {t.featuredGuides.title}
             </h2>
           </div>
           <Link href="/search-results" className="btn-ghost text-sm flex items-center gap-2 self-start sm:self-auto">
-            Browse All
+            {t.featuredGuides.browseAll}
             <Icon name="ArrowRightIcon" size={14} />
           </Link>
         </div>

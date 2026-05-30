@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { Fraunces, Plus_Jakarta_Sans } from 'next/font/google';
 import GoogleAnalytics from './GoogleAnalytics';
+import { LocaleProvider } from '@/components/LocaleProvider';
 import '../styles/tailwind.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -50,7 +51,7 @@ export default function RootLayout({
         crossOrigin="anonymous"
       />
       <body className={plusJakartaSans.className}>
-        {children}
+        <LocaleProvider>{children}</LocaleProvider>
 
         {GA_MEASUREMENT_ID ? (
           <>

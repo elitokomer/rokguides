@@ -3,55 +3,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
-
-const recentComments = [
-  {
-    id: 1,
-    author: 'Marcus T.',
-    avatar: 'MT',
-    guide: 'Best Commanders Tier List 2026',
-    comment: 'Finally someone who explains WHY Guan Yu is S+ instead of just listing him. The talent build breakdown is exactly what I needed.',
-    likes: 14,
-    guideHref: '/guide-article',
-  },
-  {
-    id: 2,
-    author: 'Priya S.',
-    avatar: 'PS',
-    guide: 'F2P Gem Spending Guide',
-    comment: 'This changed my whole approach. Saved 20K gems by following the VIP section advice. Already noticed a huge difference in my city growth.',
-    likes: 31,
-    guideHref: '/guide-article',
-  },
-  {
-    id: 3,
-    author: 'Kenji H.',
-    avatar: 'KH',
-    guide: 'Open-Field Battle Tactics',
-    comment: 'The KvK rally section is gold. My alliance used the formation tips during last week\'s KvK and we took the pass for the first time ever.',
-    likes: 47,
-    guideHref: '/guide-article',
-  },
-  {
-    id: 4,
-    author: 'Amara O.',
-    avatar: 'AO',
-    guide: 'Alliance Events Calendar',
-    comment: 'Can you add a section on Ark of Osiris scoring? Our alliance struggles with positioning during the final phase.',
-    likes: 8,
-    guideHref: '/guide-article',
-  },
-];
-
-const activityStats = [
-  { value: '84', label: 'Comments today', icon: 'ChatBubbleLeftIcon' },
-  { value: '1.2K', label: 'Active readers', icon: 'UsersIcon' },
-  { value: '6', label: 'Guides updated', icon: 'DocumentTextIcon' },
-];
+import { useTranslation } from '@/lib/useTranslation';
 
 export default function CommunitySection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const t = useTranslation();
+  const activityStats = t.community.activityStats;
+  const recentComments = t.community.recentComments;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -71,9 +30,9 @@ export default function CommunitySection() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <span className="section-label">Community</span>
+            <span className="section-label">{t.community.sectionLabel}</span>
             <h2 className="font-display text-hero-lg font-semibold text-foreground">
-              Recent Discussions
+              {t.community.title}
             </h2>
           </div>
           <div className="flex items-center gap-3">
@@ -119,7 +78,7 @@ export default function CommunitySection() {
               </p>
               <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Icon name="HandThumbUpIcon" size={13} />
-                <span>{comment.likes} helpful</span>
+                <span>{comment.likes} {t.community.helpfulText}</span>
               </div>
             </div>
           ))}
@@ -128,11 +87,11 @@ export default function CommunitySection() {
         {/* CTA to join discussion */}
         <div className="text-center">
           <p className="text-sm text-muted-foreground mb-4">
-            Have insights to share? Every guide has a comment section.
+            {t.community.ctaText}
           </p>
           <Link href="/guide-article" className="btn-primary inline-flex min-h-[44px]">
             <Icon name="ChatBubbleLeftRightIcon" size={16} />
-            Join the Discussion
+            {t.community.ctaButton}
           </Link>
         </div>
       </div>

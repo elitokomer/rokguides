@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Icon from '@/components/ui/AppIcon';
+import { useTranslation } from '@/lib/useTranslation';
 
 const categoryLinks = [
   { label: 'Commander Guides', icon: 'UserGroupIcon', href: '/guide-article?category=commanders', color: 'text-primary' },
@@ -24,6 +25,7 @@ export default function HeroSection() {
   const [heroVisible, setHeroVisible] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const t = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => setHeroVisible(true), 100);
@@ -69,7 +71,7 @@ export default function HeroSection() {
             >
               <div className="w-10 h-px bg-primary" />
               <span className="text-xs uppercase tracking-widest font-semibold text-primary">
-                Rise of Kingdoms Strategy Hub
+                {t.hero.label}
               </span>
             </div>
 
@@ -77,18 +79,18 @@ export default function HeroSection() {
             <h1
               className={`font-display text-hero-xl font-semibold text-foreground mb-6 transition-all duration-700 delay-100 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              Master
+              {t.hero.titleLine1}
               <br />
-              <span className="text-primary italic">Rise of</span>
+              <span className="text-primary italic">{t.hero.titleLine2}</span>
               <br />
-              Kingdoms.
+              {t.hero.titleLine3}
             </h1>
 
             {/* Subhead */}
             <p
               className={`text-base sm:text-lg text-muted-foreground font-light leading-relaxed max-w-lg mb-8 transition-all duration-700 delay-200 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              Commander tier lists, battle strategies, beginner tutorials, and alliance event guides — everything you need to dominate your kingdom.
+              {t.hero.subhead}
             </p>
 
             {/* Search Bar */}
@@ -101,7 +103,7 @@ export default function HeroSection() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search commanders, strategies..."
+                  placeholder={t.hero.searchPlaceholder}
                   className="input-search w-full pl-11 pr-4 py-3.5 text-sm"
                 />
                 <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -109,7 +111,7 @@ export default function HeroSection() {
                 </div>
               </div>
               <button type="submit" className="btn-primary px-5 py-3.5 whitespace-nowrap min-h-[44px]">
-                Search
+                {t.hero.searchButton}
               </button>
             </form>
 
@@ -117,7 +119,7 @@ export default function HeroSection() {
             <div
               className={`flex flex-wrap gap-2 transition-all duration-700 delay-[400ms] ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
             >
-              {categoryLinks.map((cat) => (
+              {t.hero.categoryLinks.map((cat) => (
                 <Link
                   key={cat.label}
                   href={cat.href}
@@ -136,7 +138,7 @@ export default function HeroSection() {
           >
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-3 mb-4">
-              {featuredStats.map((stat) => (
+              {t.hero.featuredStats.map((stat) => (
                 <div
                   key={stat.label}
                   className="bg-card border border-border rounded-lg p-4 text-center"
@@ -151,7 +153,7 @@ export default function HeroSection() {
             <Link href="/guide-article" className="guide-card shimmer-sweep block p-5 group">
               <div className="flex items-start justify-between mb-3">
                 <span className="category-badge bg-tier-s-plus text-foreground border" style={{ borderColor: 'rgba(255,107,53,0.4)', backgroundColor: 'rgba(255,107,53,0.15)', color: '#FF6B35' }}>
-                  ★ Featured
+                  {t.hero.featuredLabel}
                 </span>
                 <Icon
                   name="ArrowTopRightOnSquareIcon"
@@ -160,10 +162,10 @@ export default function HeroSection() {
                 />
               </div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                Best Commanders Tier List 2026
+                {t.hero.featuredTitle}
               </h3>
               <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
-                Complete ranking of all Legendary and Epic commanders from S+ to C tier, with talent builds and pairing recommendations.
+                {t.hero.featuredExcerpt}
               </p>
 
             </Link>
@@ -173,7 +175,7 @@ export default function HeroSection() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50">
-        <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
+        <span className="text-xs text-muted-foreground uppercase tracking-widest">{t.hero.scroll}</span>
         <div className="w-px h-8 bg-gradient-to-b from-muted-foreground to-transparent" />
       </div>
     </section>

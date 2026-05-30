@@ -5,15 +5,8 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import AppLogo from '@/components/ui/AppLogo';
 import Icon from '@/components/ui/AppIcon';
-
-const navLinks = [
-  { label: 'Commanders', href: '/guide-article?category=commanders' },
-  { label: 'Battle', href: '/guide-article?category=battle' },
-  { label: 'Beginners', href: '/guide-article?category=beginner' },
-  { label: 'Alliance', href: '/guide-article?category=alliance' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-];
+import { useLocale } from '@/components/LocaleProvider';
+import { useTranslation } from '@/lib/useTranslation';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -21,6 +14,8 @@ export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
   const pathname = usePathname();
   const router = useRouter();
+  const { locale, setLocale, localeOptions } = useLocale();
+  const t = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -65,7 +60,7 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {t.header.navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -76,14 +71,29 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Desktop Search + CTA */}
+            {/* Desktop Language + Search + CTA */}
             <div className="hidden md:flex items-center gap-3">
+              <label className="sr-only" htmlFor="locale-select">
+                {t.header.languageLabel}
+              </label>
+              <select
+                id="locale-select"
+                value={locale}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLocale(e.target.value as 'en' | 'tr')}
+                className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
+              >
+                {localeOptions.map((option) => (
+                  <option key={option.code} value={option.code}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
               <form onSubmit={handleSearch} className="relative">
                 <input
                   type="text"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search guides..."
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                  placeholder={t.header.searchPlaceholder}
                   className="input-search w-48 lg:w-56 pl-9 pr-4 py-2 text-sm"
                 />
                 <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -94,7 +104,7 @@ export default function Header() {
                 href="/guide-article"
                 className="btn-primary text-xs px-4 py-2"
               >
-                Start Reading
+                {t.header.startReading}
               </Link>
             </div>
 
@@ -102,7 +112,7 @@ export default function Header() {
             <button
               className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu"
+              aria-label={t.header.menuToggleLabel}
             >
               <Icon name={mobileOpen ? 'XMarkIcon' : 'Bars3Icon'} size={22} />
             </button>
@@ -119,11 +129,22 @@ export default function Header() {
           />
           <div className="absolute top-16 left-0 right-0 bg-card border-b border-border p-4 space-y-4">
             <form onSubmit={handleSearch} className="relative">
+              <select
+                value={locale}
+                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLocale(e.target.value as 'en' | 'tr')}
+                className="mb-3 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
+              >
+                {localeOptions.map((option) => (
+                  <option key={option.code} value={option.code}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search guides..."
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                placeholder={t.header.searchPlaceholder}
                 className="input-search w-full pl-9 pr-4 py-3 text-sm"
               />
               <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
@@ -131,7 +152,7 @@ export default function Header() {
               </div>
             </form>
             <nav className="flex flex-col gap-1">
-              {navLinks.map((link) => (
+              {t.header.navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -146,7 +167,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="btn-primary mt-2 justify-center min-h-[44px]"
               >
-                Start Reading
+                {t.header.startReading}
               </Link>
             </nav>
           </div>
