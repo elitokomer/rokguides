@@ -23,18 +23,20 @@ export default function CommanderDropdown({ title, kvkCategories }: CommanderDro
         <ChevronDownIcon className="h-4 w-4" />
       </button>
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-            {kvkCategories.map((category) => (
-              <Link
-                key={category.label}
-                href={category.href}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                role="menuitem"
-              >
-                {category.label}
-              </Link>
-            ))}
+        <div className="absolute left-0 top-full pt-2 w-48">
+          <div className="rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+              {kvkCategories.map((category) => (
+                <Link
+                  key={category.label}
+                  href={category.href}
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  {category.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}
