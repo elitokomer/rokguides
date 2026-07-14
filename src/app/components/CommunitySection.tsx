@@ -27,7 +27,7 @@ export default function CommunitySection() {
       className={`py-16 sm:py-24 border-t border-border animate-on-scroll ${visible ? 'is-visible' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Üst Kısım */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="section-label">{t.community.sectionLabel}</span>
@@ -46,7 +46,7 @@ export default function CommunitySection() {
           </div>
         </div>
 
-        {/* Comments Grid */}
+        {/* Yorumlar Tablosu */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
           {recentComments.map((comment, i) => (
             <div
@@ -55,14 +55,14 @@ export default function CommunitySection() {
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div className="flex items-start gap-3 mb-3">
-                {/* Avatar */}
+                {/* Profil Resmi Yerine Baş Harf */}
                 <div className="w-9 h-9 rounded-full bg-secondary border border-border flex items-center justify-center text-xs font-semibold text-primary flex-shrink-0">
                   {comment.avatar}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-sm font-semibold text-foreground">{comment.author}</span>
-                    <span className="text-xs text-muted-foreground">on</span>
+                    <span className="text-xs text-muted-foreground">üzerinde</span>
                     <Link
                       href={comment.guideHref}
                       className="text-xs text-primary underline-expand truncate max-w-[160px]"
@@ -70,7 +70,6 @@ export default function CommunitySection() {
                       {comment.guide}
                     </Link>
                   </div>
-
                 </div>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3 line-clamp-3">
@@ -84,7 +83,7 @@ export default function CommunitySection() {
           ))}
         </div>
 
-        {/* CTA to join discussion */}
+        {/* Tartışmaya Katılma Çağrısı */}
         <div className="text-center">
           <p className="text-sm text-muted-foreground mb-4">
             {t.community.ctaText}

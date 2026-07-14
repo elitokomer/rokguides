@@ -10,45 +10,7 @@ import { useTranslation } from '@/lib/useTranslation';
 export default function AboutPage() {
   const t = useTranslation();
   const features = t.about.features;
-  {
-    icon: 'UserGroupIcon',
-    title: 'Commander Guides',
-    description:
-      'In-depth breakdowns of every commander in Rise of Kingdoms — skills, talent trees, pairings, and which ones are worth investing in at each stage of the game.',
-  },
-  {
-    icon: 'ShieldExclamationIcon',
-    title: 'Battle Strategies',
-    description:
-      'From open-field combat to KvK warfare, we cover the tactics that separate average players from top-ranked governors. Learn formations, march setups, and counter-strategies.',
-  },
-  {
-    icon: 'AcademicCapIcon',
-    title: 'Beginner Path',
-    description:
-      'New to Rise of Kingdoms? Our structured beginner guides walk you through your first city, choosing a civilization, early research priorities, and avoiding the mistakes that slow most players down.',
-  },
-  {
-    icon: 'BuildingLibraryIcon',
-    title: 'Alliance & Politics',
-    description:
-      'Understand how alliances work, how to climb the rankings, and how to navigate the political side of the game — diplomacy, wars, and territory control.',
-  },
-  {
-    icon: 'MagnifyingGlassIcon',
-    title: 'Searchable Content',
-    description:
-      'Every guide is indexed and searchable. Find exactly what you need — whether it\'s a specific commander, a mechanic, or a strategy — in seconds.',
-  },
-  {
-    icon: 'ChatBubbleLeftRightIcon',
-    title: 'Community Discussion',
-    description:
-      'Each guide has a comments section where players share tips, ask questions, and debate strategies. Real feedback from real players.',
-  },
-];
 
-export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />

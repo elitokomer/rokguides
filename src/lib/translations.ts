@@ -46,10 +46,10 @@ export const translations = {
       searchPlaceholder: 'Search commanders, strategies...',
       searchButton: 'Search',
       categoryLinks: [
-        { label: 'Commander Guides', icon: 'UserGroupIcon', href: '/guide-article?category=commanders' },
-        { label: 'Battle Strategies', icon: 'BoltIcon', href: '/guide-article?category=battle' },
-        { label: 'Beginner Tips', icon: 'AcademicCapIcon', href: '/guide-article?category=beginner' },
-        { label: 'Alliance Guides', icon: 'UsersIcon', href: '/guide-article?category=alliance' },
+        { label: 'Commander Guides', icon: 'UserGroupIcon', href: '/guide-article?category=commanders', color: 'text-primary' },
+        { label: 'Battle Strategies', icon: 'BoltIcon', href: '/guide-article?category=battle', color: 'text-primary' },
+        { label: 'Beginner Tips', icon: 'AcademicCapIcon', href: '/guide-article?category=beginner', color: 'text-primary' },
+        { label: 'Alliance Guides', icon: 'UsersIcon', href: '/guide-article?category=alliance', color: 'text-primary' },
       ],
       featuredStats: [
         { value: '200+', label: 'Guides' },
@@ -134,6 +134,8 @@ export const translations = {
         title: 'Complete Commander Pairing Guide: Maximize Your March Power',
         excerpt: 'Learn how to pair commanders effectively — from Guan Yu + Sun Tzu infantry to YSG + Osman archer combos. Every top pairing explained with talent builds.',
         category: 'Commanders',
+        image: 'https://img.rocket.new/generatedImages/featured_commander_pairing_2026.png',
+        imageAlt: 'Strategic commander pairing artwork showing two generals and a battlefield map',
       },
       guides: [
         {
@@ -365,10 +367,10 @@ export const translations = {
       searchPlaceholder: 'Komutanlarda, stratejilerde ara...',
       searchButton: 'Ara',
       categoryLinks: [
-        { label: 'Komutan Rehberleri', icon: 'UserGroupIcon', href: '/guide-article?category=commanders' },
-        { label: 'Savaş Stratejileri', icon: 'BoltIcon', href: '/guide-article?category=battle' },
-        { label: 'Yeni Başlayan İpuçları', icon: 'AcademicCapIcon', href: '/guide-article?category=beginner' },
-        { label: 'İttifak Rehberleri', icon: 'UsersIcon', href: '/guide-article?category=alliance' },
+        { label: 'Komutan Rehberleri', icon: 'UserGroupIcon', href: '/guide-article?category=commanders', color: 'text-primary' },
+        { label: 'Savaş Stratejileri', icon: 'BoltIcon', href: '/guide-article?category=battle', color: 'text-primary' },
+        { label: 'Yeni Başlayan İpuçları', icon: 'AcademicCapIcon', href: '/guide-article?category=beginner', color: 'text-primary' },
+        { label: 'İttifak Rehberleri', icon: 'UsersIcon', href: '/guide-article?category=alliance', color: 'text-primary' },
       ],
       featuredStats: [
         { value: '200+', label: 'Rehber' },
@@ -430,7 +432,7 @@ export const translations = {
             { name: 'Baibars', role: 'Süvari', type: 'Epik', note: 'İdare eder süvari' },
             { name: 'Eulji', role: 'Piyade', type: 'Epik', note: 'Garnizon tercihi' },
             { name: 'Hermann', role: 'Okçu', type: 'Epik', note: 'Bütçe okçusu' },
-            { name: 'Pelagius', role: 'Süvari', type: 'Elite', note: 'Erken oyun' },
+            { name: 'Pelagius', role: 'Süvari', type: 'Seçkin', note: 'Erken oyun' },
           ],
         },
         C: {
@@ -438,7 +440,7 @@ export const translations = {
           colorClass: 'tier-c',
           bgClass: 'bg-tier-c',
           commanders: [
-            { name: 'Boudica', role: 'Nükleyici', type: 'Elite', note: 'Artık eskimiş' },
+            { name: 'Boudica', role: 'Nükleyici', type: 'Seçkin', note: 'Artık eskimiş' },
             { name: 'Minamoto', role: 'Süvari', type: 'Epik', note: 'Güçlendirme sorunu' },
             { name: 'Cao Cao', role: 'Süvari', type: 'Efsanevi', note: 'Niş kullanım' },
           ],
@@ -450,9 +452,11 @@ export const translations = {
       title: 'En İyi Stratejiler',
       browseAll: 'Hepsini Gör',
       featured: {
-        title: 'Komutan Eşleştirme Rehberi: Mart Gücünü Maksimize Et',
-        excerpt: 'Komutanları nasıl etkili eşleştireceğinizi öğrenin — Guan Yu + Sun Tzu piyade, YSG + Osman okçu kombinasyonları ve en iyi yetenek yolları.',
+        title: 'Komutan Eşleştirme Rehberi: Kıta Gücünü Maksimize Et',
+        excerpt: 'Komutanları nasıl etkili bir şekilde eşleştireceğinizi öğrenin — Guan Yu + Sun Tzu piyade kombinasyonundan YSG + Osman okçu kombinasyonlarına kadar. En iyi eşleşmeler yetenek ağaçlarıyla açıklandı.',
         category: 'Komutanlar',
+        image: 'https://img.rocket.new/generatedImages/featured_commander_pairing_2026.png',
+        imageAlt: 'Stratejik komutan eşleştirme görseli, iki general ve bir savaş haritası gösteriyor',
       },
       guides: [
         {
@@ -558,7 +562,7 @@ export const translations = {
           id: 1,
           author: 'Marcus T.',
           avatar: 'MT',
-          guide: 'Best Commanders Tier List 2026',
+          guide: 'En İyi Komutan Sıralaması 2026',
           comment: 'Nihayet Guan Yu neden S+ olduğunu açıklayan biri. Yetenek ağacı açıklaması tam ihtiyacım olan şeydi.',
           likes: 14,
           guideHref: '/guide-article',
@@ -567,7 +571,7 @@ export const translations = {
           id: 2,
           author: 'Priya S.',
           avatar: 'PS',
-          guide: 'F2P Gem Spending Guide',
+          guide: 'F2P Mücevher Harcama Rehberi',
           comment: 'Bu yaklaşımımı tamamen değiştirdi. VIP önerilerini takip ederek 20K elmas biriktirdim. Şehir büyümemde büyük fark gördüm.',
           likes: 31,
           guideHref: '/guide-article',
@@ -576,7 +580,7 @@ export const translations = {
           id: 3,
           author: 'Kenji H.',
           avatar: 'KH',
-          guide: 'Open-Field Battle Tactics',
+          guide: 'Açık Alan Savaş Taktikleri',
           comment: 'KvK baskın bölümü tam bir hazine. İttifakım geçen hafta önerilen formasyonları kullandı ve geçidi ilk kez aldık.',
           likes: 47,
           guideHref: '/guide-article',
@@ -585,7 +589,7 @@ export const translations = {
           id: 4,
           author: 'Amara O.',
           avatar: 'AO',
-          guide: 'Alliance Events Calendar',
+          guide: 'İttifak Etkinlik Takvimi',
           comment: 'Ark of Osiris puanlama bölümü ekler misiniz? İttifakım son aşamada yerleşimde zorlanıyor.',
           likes: 8,
           guideHref: '/guide-article',
@@ -604,7 +608,7 @@ export const translations = {
         {
           icon: 'UserGroupIcon',
           title: 'Komutan Rehberleri',
-          description: 'Rise of Kingdoms\'daki her komutanın yetenekleri, talent ağaçları, eşleşmeleri ve oyun evresine göre hangilerine yatırım yapılması gerektiğine dair derinlemesine analizler.',
+          description: "Rise of Kingdoms'daki her komutanın yetenekleri, talent ağaçları, eşleşmeleri ve oyun evresine göre hangilerine yatırım yapılması gerektiğine dair derinlemesine analizler.",
         },
         {
           icon: 'ShieldExclamationIcon',
@@ -614,7 +618,7 @@ export const translations = {
         {
           icon: 'AcademicCapIcon',
           title: 'Yeni Başlayan Yolu',
-          description: 'Rise of Kingdoms\'a yeni misiniz? Yapılandırılmış yeni başlayan rehberlerimiz, ilk şehriniz, uygarlık seçimi, erken araştırma öncelikleri ve çoğu oyuncuyu yavaşlatan hatalardan kaçınma konusunda size rehberlik eder.',
+          description: "Rise of Kingdoms'a yeni misiniz? Yapılandırılmış yeni başlayan rehberlerimiz, ilk şehriniz, uygarlık seçimi, erken araştırma öncelikleri ve çoğu oyuncuyu yavaşlatan hatalardan kaçınma konusunda size rehberlik eder.",
         },
         {
           icon: 'BuildingLibraryIcon',
@@ -624,7 +628,7 @@ export const translations = {
         {
           icon: 'MagnifyingGlassIcon',
           title: 'Aranabilir İçerik',
-          description: 'Her rehber indekslendi ve aranabilir. İster belirli bir komutan, ister bir mekanik ya da bir strateji olsun, ihtiyacınız olanı saniyeler içinde bulun.',
+          description: "Her rehber indekslendi ve aranabilir. İster belirli bir komutan, ister bir mekanik ya da bir strateji olsun, ihtiyacınız olanı saniyeler içinde bulun.",
         },
         {
           icon: 'ChatBubbleLeftRightIcon',
@@ -634,7 +638,7 @@ export const translations = {
       ],
       missionTitle: 'Misyonumuz',
       missionLines: [
-        'Rise of Kingdoms derin ve karmaşık bir oyun. Yeni bir oyuncu ile veteran arasındaki fark sadece zaman değil — bilgi. Biz bu boşluğu kapatmak için varız.',
+        "Rise of Kingdoms derin ve karmaşık bir oyun. Yeni bir oyuncu ile veteran arasındaki fark sadece zaman değil — bilgi. Biz bu boşluğu kapatmak için varız.",
         'Bu sitedeki her rehber tek bir hedefle yazıldı: oyunda daha iyi kararlar vermek için ihtiyaç duyduğunuz bilgiyi sağlamak. Gereksiz bilgi yok, dolgu yok — sadece hemen uygulayabileceğiniz pratik strateji.',
         'İlk uygarlığınızı seçiyor olun veya bir KvK sezonuna hazırlanıyor olun, RoKGuides sizin için bir şeyler sunuyor.',
       ],
@@ -646,7 +650,7 @@ export const translations = {
   },
 } as const;
 
-export type Translations = typeof translations.en;
+export type Translations = (typeof translations)[keyof typeof translations];
 
 export function getTranslations(locale: string): Translations {
   return translations[locale as Locale] ?? translations.en;

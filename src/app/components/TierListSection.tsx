@@ -32,7 +32,7 @@ export default function TierListSection() {
       className={`py-16 sm:py-24 bg-background border-t border-border animate-on-scroll ${visible ? 'is-visible' : ''}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* Başlık ve Açıklamalar */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
             <span className="section-label">{t.tierList.sectionLabel}</span>
@@ -52,7 +52,7 @@ export default function TierListSection() {
           </Link>
         </div>
 
-        {/* Tier Tabs */}
+        {/* Tier Sekmeleri (Tab) */}
         <div className="flex gap-2 mb-6 overflow-x-auto pb-1 no-scrollbar">
           {(Object.keys(tierData) as TierKey[]).map((tier) => (
             <button
@@ -72,7 +72,7 @@ export default function TierListSection() {
           ))}
         </div>
 
-        {/* Commander Grid */}
+        {/* Komutan Listesi */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {currentTier.commanders.map((cmd, i) => (
             <Link
@@ -102,7 +102,7 @@ export default function TierListSection() {
           ))}
         </div>
 
-        {/* Legend */}
+        {/* Bilgilendirme Çubuğu (Footer Legend) */}
         <div className="mt-6 flex flex-wrap gap-3 pt-4 border-t border-border">
           {(Object.keys(tierData) as TierKey[]).map((tier) => (
             <div key={tier} className="flex items-center gap-1.5 text-xs text-muted-foreground">

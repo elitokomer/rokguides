@@ -27,8 +27,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: 'RoKGuides — Rise of Kingdoms Strategy Hub',
-  description: 'Authoritative Rise of Kingdoms guides covering commander tier lists, battle strategies, beginner tutorials, and alliance events for F2P and P2P players.',
+  title: 'RoKGuides — Rise of Kingdoms Türkçe Rehber ve Strateji Merkezi',
+  description: 'Rise of Kingdoms için en güncel komutan yetenek ağaçları, tier listeleri, savaş stratejileri ve ücretsiz hediye kodları. F2P ve P2P oyuncu rehberleri.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
@@ -43,7 +43,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${plusJakartaSans.variable} ${fraunces.variable}`}>
+    <html lang="tr" className={`${plusJakartaSans.variable} ${fraunces.variable}`}>
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5080097981175080"
