@@ -1,11 +1,53 @@
 export type Locale = 'en' | 'tr';
 
+export type CommanderRole = 'Infantry' | 'Archer' | 'Cavalry' | 'Siege/Leadership' | 'Support' | 'Nuker';
+export type CommanderType = 'Legendary' | 'Epic' | 'Elite';
+
+export interface Commander {
+  name: string;
+  role: CommanderRole;
+  type: CommanderType;
+  note: string;
+}
+
+export type TierKey = 'S+' | 'S' | 'A+' | 'A' | 'B+' | 'B' | 'C' | 'A-2' | 'A-';
+export type KvKKey = 'kvk1' | 'kvk2' | 'kvk3';
+
+export interface TierDataEntry {
+  label: string;
+  colorClass: string;
+  bgClass: string;
+  commanders: Commander[];
+}
+
+export type KvKTierData = Record<TierKey, TierDataEntry>;
+
+export interface TranslationsContent {
+  header: any;
+  footer: any;
+  hero: any;
+  tierList: {
+    sectionLabel: string;
+    title: string;
+    description: string;
+    fullTierList: string;
+    tierLegend: string;
+    lastUpdated: string;
+    tierData: Record<KvKKey, KvKTierData>;
+  };
+  featuredGuides: any;
+  beginnerPath: any;
+  community: any;
+  about: any;
+  contact: any;
+}
+
 export const localeOptions = [
   { code: 'en', label: 'English' },
   { code: 'tr', label: 'Türkçe' },
 ] as const;
 
-export const translations = {
+export const translations: Record<Locale, TranslationsContent> = {
   en: {
     header: {
       logo: 'RoKGuides',
@@ -65,64 +107,204 @@ export const translations = {
     tierList: {
       sectionLabel: 'Commander Rankings',
       title: 'Tier List 2026',
-      description: 'Ranked from S+ (meta-defining) to C (avoid). Updated monthly.',
+      description: 'Ranked by KvK phase — from S+ (meta-defining) to C (avoid). Updated monthly.',
       fullTierList: 'Full Tier List',
       tierLegend: 'Tier',
       lastUpdated: 'Last updated: May 2026',
       tierData: {
-        'S+': {
-          label: 'S+',
-          colorClass: 'tier-s-plus',
-          bgClass: 'bg-tier-s-plus',
-          commanders: [
-            { name: 'Guan Yu', role: 'Infantry', type: 'Legendary', note: 'Best infantry nuker' },
-            { name: 'Alexander', role: 'Infantry', type: 'Legendary', note: 'Top open-field' },
-            { name: 'Yi Seong-Gye', role: 'Archer', type: 'Legendary', note: 'Strongest archer' },
-            { name: 'Nevsky', role: 'Cavalry', type: 'Legendary', note: 'Dominant cavalry' },
-          ],
+        kvk1: {
+          'S+': {
+            label: 'S+',
+            colorClass: 'tier-s-plus',
+            bgClass: 'bg-tier-s-plus',
+            commanders: [
+              { name: 'Yi Seong-Gye', role: 'Archer', type: 'Legendary', note: 'The most future-oriented investment in the game during this first and most critical phase of the Kingdom War. Its key strength is the massive 360-degree circular area damage gained once its expertise skill is completed, along with an incredible rage regeneration rate that allows repeated skill triggers. Its greatest weakness is paper-thin defense stats — once spotted in the open field, it instantly becomes the top focus target and can melt within seconds. Best paired with tank infantry like Alexander the Great or Richard I in front, or with Edward of Woodstock for pure archer damage. Skill tree: rage generation nodes in the Skill tree, remaining points into Archer tree.' },
+            ],
+          },
+          S: {
+            label: 'S',
+            colorClass: 'tier-s',
+            bgClass: 'bg-tier-s',
+            commanders: [
+              { name: 'Richard I', role: 'Infantry', type: 'Legendary', note: 'The unshakable shield of early-phase battles, built entirely around defense and survivability. Strength: extraordinary instant healing and damage reduction via active skill, turning his army into a near-indestructible fortress in the open field. Weakness: the overly high healing mechanic returns lightly wounded troops to battle, inflating severely-wounded hospital counts and resource costs; also falls off hard in damage output in later seasons. Best paired with Charles Martel for an unbreakable defensive wall, or YSG/Sun Tzu behind him for offense. Skill tree: Defense and Infantry survival nodes maxed out.' },
+            ],
+          },
+          'A+': {
+            label: 'A+',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Charles Martel', role: 'Infantry', type: 'Legendary', note: 'Freely farmable from gold chests, Martel is one of the safest harbors for infantry players throughout KvK 1 and KvK 2. Strength: a massive shield from his active skill plus a passive 30% damage boost while shielded, and excellent garrison defense. Weakness: low raw damage multiplier and poor mobility, just like Richard. Best paired with Richard I for total defense, or Alexander for a balanced offense-defense line. Skill tree: Infantry and Defense trees prioritized, Garrison tree if defending cities/banners.' },
+            ],
+          },
+          A: {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Sun Tzu (Epic)', role: 'Infantry', type: 'Epic', note: 'The sacred commander for F2P players who refuse to fall behind. Despite being epic, his rage-fill mechanic and area damage are so massive he outclasses most legendaries. Strength: hits up to 5 targets with area damage and gains extra rage per hit for insane skill cycling, plus 20% skill damage boost passive. Weakness: low base stats due to epic rarity, weak against legendary armies in raw defense. Best paired with Bjorn Ironside as primary, Sun Tzu secondary, or behind Charles Martel. Skill tree: base health from Infantry, all remaining points into Skill rage generation.' },
+            ],
+          },
+          'B+': {
+            label: 'B+',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [
+              { name: 'Bjorn Ironside (Epic)', role: 'Infantry', type: 'Epic', note: "Sun Tzu's most loyal complement, offering an aggressive early playstyle for infantry players. Strength: active skill deals direct damage while also increasing the target's received skill damage by 10%, multiplying whoever attacks after him. Weakness: no area damage, purely single-target focused. Best paired with Sun Tzu placed behind him. Skill tree: Infantry and Attack trees since he'll be primary." },
+            ],
+          },
+          'A-2': {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Minamoto no Yoshitsune', role: 'Cavalry', type: 'Legendary', note: "Easiest to fully max via VIP packages, making him the biggest weapon for paying players in KvK 1. Strength: enormous single-target burst (nuke) damage and high movement speed for cavalry units. Weakness: completely lacks area damage and has fragile defense stats — melts fast if caught in a crowd in the open field. Best paired with Cao Cao for pure cavalry speed and damage, or behind Saladin in KvK 2 for more protection. Skill tree: Cavalry and Skill damage nodes prioritized." },
+            ],
+          },
+          B: {
+            label: 'B',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [
+              { name: 'Baibars (Epic)', role: 'Cavalry', type: 'Epic', note: "The most important epic option covering cavalry's lack of area damage. Strength: hits up to 5 targets with area damage plus slow effects when disengaging or chasing enemies. Weakness: extremely weak defensively with poor survivability. Best paired with Pelagius or Minamoto. As an unusual meta pick, works even at the front of infantry armies purely for the slow + AoE synergy with Sun Tzu Prime. Skill tree: Cavalry and Skill focused." },
+            ],
+          },
+          'A-': {
+            label: 'A-',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Aethelflaed', role: 'Siege/Leadership', type: 'Legendary', note: "Collected entirely free from the Expedition mode, this legendary leader is a full strategic support character. Strength: reduces attack, defense, and health of up to 5 enemy units in a wide half-circle by a massive 30% in a single debuff. Weakness: very low raw damage on her own and fragile defense. Best paired behind Sun Tzu or Joan of Arc. Skill tree: Leadership and Support trees prioritized. Use in mixed-troop armies (all 3 troop types) during major field battles to weaken enemy forces collectively." },
+            ],
+          },
         },
-        S: {
-          label: 'S',
-          colorClass: 'tier-s',
-          bgClass: 'bg-tier-s',
-          commanders: [
-            { name: 'Saladin', role: 'Cavalry', type: 'Legendary', note: 'Strong all-around' },
-            { name: 'Constantine', role: 'Infantry', type: 'Legendary', note: 'Great defender' },
-            { name: 'Edward', role: 'Archer', type: 'Legendary', note: 'Solid archer' },
-            { name: 'Scipio', role: 'Infantry', type: 'Legendary', note: 'Good garrison' },
-          ],
+        kvk2: {
+          'S+': {
+            label: 'S+',
+            colorClass: 'tier-s-plus',
+            bgClass: 'bg-tier-s-plus',
+            commanders: [
+              { name: 'Alexander the Great (Büyük İskender)', role: 'Piyade', type: 'Efsanevi', note: "KvK 2 sahnesine adım atar atmaz piyade metasını tamamen domine eden Büyük İskender, oyunun en ikonik karakterlerinden biridir. Güçlü yönlerinin başında, aktif becerisiyle hem kendine devasa bir kalkan açması hem de eş zamanlı olarak çevresindeki canı en az olan müttefik birliği koruma altına alması gelir. Kalkan etkinken kazandığı muazzam saldırı bonusları ve yüksek harita hareket hızı, piyadelerin hantal yapısını tamamen ortadan kaldırır. Zayıf yönü ise doğrudan bir alan hasarı (AoE) yeteneğinin bulunmaması, tamamen tek hedef odaklı çalışmasıdır. En iyi eşleşmelerinde Alexander + YSG kombinasyonu, KvK 2 açık alan savaşlarının altın standardıdır; hem kalkan koruması hem de YSG'nin dairesel hasarı birleşir. Defansif amaçlar için Charles Martel + Alexander da çok güçlü bir alternatiftir. Yetenek ağacında Piyade ağacındaki hız ve savunma düğümleri ile Saldırı ağacındaki düz hasar artıran yollar birleştirilmelidir. Kullanım senaryoları, açık sahada yüksek hareket kabiliyetiyle düşman okçularının üzerine çökmek ve kalabalık savaşlarda müttefiklere kalkan dağıtarak cephe hattının kırılmasını önlemektir." },
+            ],
+          },
+          S: {
+            label: 'S',
+            colorClass: 'tier-s',
+            bgClass: 'bg-tier-s',
+            commanders: [
+              { name: 'Saladin (Selahaddin Eyyubi)', role: 'Süvari', type: 'Efsanevi', note: "Süvarilerin kırılgan ve hassas yapısını kökten değiştiren, onlara hak ettikleri tanklığı sunan sarsılmaz bir liderdir. Güçlü yönü, süvari birliklerine sağladığı olağanüstü yüksek savunma istatistikleri ve karşı atağa karşı dirençtir. Ayrıca aktif becerisi düşmanın hareket hızını yüzde otuz keserken, aldığı iyileştirme (healing) etkisini de yüzde kırk oranında bloke eder. Bu sayede sahada Richard veya Cao Cao gibi sürekli iyileşen komutanların tam antitezidir. Zayıf yönü, yetenek seviyesini beş beş beş bir (5-5-5-1) yapmak fazlasıyla yeterli olsa da, saf bir anlık hasar (nuke) canavarı olmamasıdır; daha çok kontrol ve sabote odaklıdır. En iyi eşleşmelerinde Saladin + YSG (dengeli alan hasarı ve yüksek hayatta kalma) veya Saladin + Minamoto (agresif tek hedef hasarı) öne çıkar. Yetenek ağacında Süvari ağacındaki defansif yollar seçilmeli ve Destek ağacındaki beceri hızlandırma düğümleri alınmalıdır. Kullanım senaryosu, açık sahada kaçmaya çalışan yüksek öncelikli hedefleri yavaşlatarak yakalamak ve düşman tanklarının iyileştirme döngülerini kilitlemektir." },
+            ],
+          },
+          'A+': {
+            label: 'A+',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          A: {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Edward of Woodstock', role: 'Okçu', type: 'Efsanevi', note: "KvK 2 döneminde yüksek ödeme yapan (P2W) okçu oyuncularının bir numaralı miting ve açık alan silahıdır. Güçlü yönü, oyunun bu aşamasındaki en yüksek tek hedef beceri hasarı çarpanlarından birine sahip olması ve okçu birliklerinin can ile hasar değerlerini uçurmasıdır. Zayıf yönü, aktif yeteneğini tetiklemek için bin üç yüz elli (1350) gibi çok yüksek bir öfke (rage) miktarına ihtiyaç duymasıdır. Bu durum yetenek atma hızını yavaşlatır ve açık sahada düşman süvarileri tarafından çok çabuk hedef alınıp cezalandırılmasına yol açar. En iyi eşleşmesi kesinlikle arkasına yerleştirilecek uzmanlaşmış bir YSG'dir; Edward önden tek hedefe vururken YSG arkadan etrafı temizler. Yetenek ağacında Okçu ve Beceri ağaçlarındaki öfke üretimi artıran ne varsa alınmalıdır. Kullanım senaryosu, düşman sancaklarına ve şehirlerine karşı yıkıcı mitingler düzenlemek veya açık sahada arkada güvenli bir konumdan tekil hedefleri eritmektir." },
+            ],
+          },
+          'B+': {
+            label: 'B+',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [
+              { name: 'Tomyris', role: 'Archer', type: 'Legendary', note: "A helper legendary designed to back up Edward and drop sinister poison stacks on the enemy. Strength: passively stacks poison loads on the enemy up to 10 times; when the active skill triggers, it massively amplifies the skill damage the enemy receives. Weakness: has zero presence as a standalone primary commander, entirely doomed to secondary use. Best paired with Edward + Tomyris or YSG + Tomyris." },
+            ],
+          },
+          B: {
+            label: 'B',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [],
+          },
+          C: {
+            label: 'C',
+            colorClass: 'tier-c',
+            bgClass: 'bg-tier-c',
+            commanders: [],
+          },
+          'A-2': {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          'A-': {
+            label: 'A-',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Constantine I', role: 'Infantry', type: 'Legendary', note: "A completely selfless support tank focused entirely on kingdom defense and banner protection. Strength: a massive defense bonus triggers when his army's health drops below 50%, plus an active area support that reduces skill damage taken by allies. Weakness: extremely low map movement speed and almost no damage output — wandering alone in the open field is just a waste of time for enemies. Best paired with Charles Martel for garrison defense, or Joan of Arc for open-field support. Skill tree: Garrison or Defense trees prioritized. Use to stubbornly hold strategically important passes and kingdom banners against enemy rallies throughout KvK 2." },
+            ],
+          },
         },
-        A: {
-          label: 'A',
-          colorClass: 'tier-a',
-          bgClass: 'bg-tier-a',
-          commanders: [
-            { name: 'Sun Tzu', role: 'Infantry', type: 'Epic', note: 'Best F2P infantry' },
-            { name: 'Tomoe Gozen', role: 'Archer', type: 'Epic', note: 'F2P archer pick' },
-            { name: 'Lancelot', role: 'Cavalry', type: 'Epic', note: 'Fast cavalry' },
-            { name: 'Joan of Arc', role: 'Support', type: 'Epic', note: 'Excellent support' },
-          ],
-        },
-        B: {
-          label: 'B',
-          colorClass: 'tier-b',
-          bgClass: 'bg-tier-b',
-          commanders: [
-            { name: 'Baibars', role: 'Cavalry', type: 'Epic', note: 'Decent cavalry' },
-            { name: 'Eulji', role: 'Infantry', type: 'Epic', note: 'Garrison pick' },
-            { name: 'Hermann', role: 'Archer', type: 'Epic', note: 'Budget archer' },
-            { name: 'Pelagius', role: 'Cavalry', type: 'Elite', note: 'Early game' },
-          ],
-        },
-        C: {
-          label: 'C',
-          colorClass: 'tier-c',
-          bgClass: 'bg-tier-c',
-          commanders: [
-            { name: 'Boudica', role: 'Nuker', type: 'Elite', note: 'Outdated' },
-            { name: 'Minamoto', role: 'Cavalry', type: 'Epic', note: 'Powercreep' },
-            { name: 'Cao Cao', role: 'Cavalry', type: 'Legendary', note: 'Niche use' },
-          ],
+        kvk3: {
+          'S+': {
+            label: 'S+',
+            colorClass: 'tier-s-plus',
+            bgClass: 'bg-tier-s-plus',
+            commanders: [
+              { name: 'Sun Tzu (Prime)', role: 'Infantry', type: 'Legendary', note: "The state-of-the-art legendary evolution of the classic rage-monster Sun Tzu build, now a devastating force in the legendary league. Strength: fast rage cycling in the open field with wide area damage; his real edge comes from the Smite mechanic and True Damage bonuses that bypass armor entirely. Weakness: focused so heavily on damage output that he lacks the raw defense of old-school tank infantry — poor positioning can lead to heavy losses. Best paired with Bai Qi (Bai Qu) for the most elite, unstoppable damage machine in the open field; also works flawlessly with Liu Che or William Wallace. Skill tree: lock basic defense nodes in Infantry tree, put all remaining points into Skill tree rage-generation nodes. Use at the front of murderball formations in massive field battles to collectively melt enemy armies with True Damage bursts." },
+              { name: 'Alexander Nevsky', role: 'Cavalry', type: 'Legendary', note: "The undisputed peak of the cavalry class and the most feared assassin in the open field. Strength: extraordinary single-target burst damage, a passive that breaks enemy defense by 15%, and massive health/defense stats for cavalry units; also gains a damage-reduction bonus when surrounded by enemies, making him unusually tanky for a cavalry unit. Weakness: has zero area damage, entirely designed to lock onto and erase a single target. Best paired with Joan of Arc (Prime) — currently the strongest open-field cavalry meta combo — or alternatively with Huatut. Skill tree: Cavalry attack nodes plus fast rage-regeneration paths in the Skill tree, taken in full. Use to spot high-priority but fragile targets (archers or glass cannons like YSG) and erase them from the map in an instant." },
+            ],
+          },
+          S: {
+            label: 'S',
+            colorClass: 'tier-s',
+            bgClass: 'bg-tier-s',
+            commanders: [
+              { name: 'Bai Qi (Bai Qu)', role: 'Piyade', type: 'Efsanevi', note: "Düşmanın üzerine kabus gibi çöken, meydanın en sinsi cellatlarından biridir. Güçlü yönü, yüksek hasar çarpanının yanı sıra düşmana bıraktığı Malice (Kin) yükleridir. Bu yükler sayesinde savaş uzadıkça rakibin defans mekanizmalarını sabote eder, onları kırılganlaştırır ve savunmasız bırakır. Zayıf yönü, tek başına harika işler çıkarsa da sahnede onun açtığı bu zayıflıkları anında saf hasara dönüştürecek hızlı ve öfke döngüsü yüksek bir partnere ihtiyaç duymasıdır. En iyi eşleşmesi kesinlikle Sun Tzu (Prime) birincil, Bai Qi ikincil şeklindeki kurulumdur. Yetenek ağacında ordunun başında duracağı durumlarda dayanıklılık ve hasar dengesini korumak adına Liderlik ve Beceri ağaçlarının sinerjisine odaklanılmalıdır. Kullanım senaryosu, açık sahada uzun süren yıpratma savaşlarında düşman cephesinin savunma direncini kırarak hattı yarmaktır." },
+              { name: 'Guan Yu', role: 'Piyade', type: 'Efsanevi', note: "Fetih sezonunun en eski ama eskimeyen açık alan liderlerinden biridir. Güçlü yönü, önündeki geniş bir yelpazede üç hedefe kadar vurabilen, susturma (silence) etkili ve olağanüstü yüksek beceri hasarına sahip aktif yeteneğidir. Susturma etkisi, isabet alan düşmanların aktif yetenek atma sürelerini geciktirerek rotasyonlarını bozar. Zayıf yönü, bu yetenekten maksimum verim almak için kesinlikle birinci komutan olarak kullanılması şartıdır ve pasifinden gelen hasar artışını tetiklemek için harici bir kalkan desteğine ihtiyaç duyar; kendi kendine kalkan üretemez. En iyi eşleşmelerinde kalkan desteği sağlaması için İskender (Alex) veya Leonidas ile kullanılır. Güncel metada Guan Yu + Liu Che kombinasyonu da çok popülerdir. Yetenek ağacında Piyade ve Beceri ağaçları dengeli kullanılmalı, aktif beceri hasarını doğrudan artıran üst yetenekler mutlaka açılmalıdır. Kullanım senaryosu, büyük ittifak savaşlarında en ön safta yer alarak düşman gruplarını topluca susturmak ve yetenek döngülerini felç etmektir." },
+            ],
+          },
+          'A+': {
+            label: 'A+',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          A: {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          'B+': {
+            label: 'B+',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [],
+          },
+          B: {
+            label: 'B',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [],
+          },
+          C: {
+            label: 'C',
+            colorClass: 'tier-c',
+            bgClass: 'bg-tier-c',
+            commanders: [],
+          },
+          'A-2': {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          'A-': {
+            label: 'A-',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
         },
       },
     },
@@ -407,64 +589,207 @@ export const translations = {
     tierList: {
       sectionLabel: 'Komutan Sıralamaları',
       title: 'Tier List 2026',
-      description: 'S+ (meta belirleyici) den C (kaçın) seviyesine kadar sıralandı. Aylık güncellenir.',
+      description: 'KvK dönemine göre sıralandı — S+ (meta belirleyici) den C (kaçın) seviyesine kadar. Aylık güncellenir.',
       fullTierList: 'Tüm Tier Listesi',
       tierLegend: 'Tier',
       lastUpdated: 'Son güncelleme: Mayıs 2026',
       tierData: {
-        'S+': {
-          label: 'S+',
-          colorClass: 'tier-s-plus',
-          bgClass: 'bg-tier-s-plus',
-          commanders: [
-            { name: 'Guan Yu', role: 'Piyade', type: 'Efsanevi', note: 'En iyi piyade nükleyicisi' },
-            { name: 'Alexander', role: 'Piyade', type: 'Efsanevi', note: 'Açık sahada en iyi' },
-            { name: 'Yi Seong-Gye', role: 'Okçu', type: 'Efsanevi', note: 'En güçlü okçu' },
-            { name: 'Nevsky', role: 'Süvari', type: 'Efsanevi', note: 'Hakim süvari' },
-          ],
+        kvk1: {
+          'S+': {
+            label: 'S+',
+            colorClass: 'tier-s-plus',
+            bgClass: 'bg-tier-s-plus',
+            commanders: [
+              { name: 'Yi Seong-Gye (YSG)', role: 'Okçu', type: 'Efsanevi', note: "Krallıklar Savaşı'nın bu ilk ve en kritik evresinde YSG, oyundaki en geleceğe yönelik yatırımdır. Güçlü yönlerinin başında, uzmanlık becerisi tamamlandığında kazandığı üç yüz altmış derecelik dairesel alan hasarı (AoE) ve ardı ardına yetenek tetiklemesini sağlayan muazzam öfke yenileme hızı gelir. Bu sayede hem açık sahada harika raporlar almanızı sağlar hem de barbar zincirleme mekaniğinde rakipsizdir. En büyük zayıf yönü ise savunma istatistiklerinin adeta kağıt gibi olmasıdır. Açık alanda düşman oyuncular tarafından fark edildiği an ilk hedef (focus) haline gelir ve saniyeler içinde eriyebilir. En iyi eşleşmelerine bakacak olursak, savunma açığını kapatmak adına Büyük İskender veya Richard I gibi tank piyade komutanlarının arkasında ikincil olarak kullanılmalıdır. Saf okçu hasarı için ise Edward of Woodstock ile yıkıcı bir sinerji yakalar. Yetenek ağacı tarafında, genellikle ikincil komutan olarak tercih edildiği için ağacın bir işlevi kalmaz ancak birincil sahaya sürülecekse Beceri ağacındaki tüm öfke üreten yetenekler alınmalı, kalan puanlar Okçu ağacına dağıtılmalıdır. En ideal kullanım senaryosu, açık alan savaşlarında kaosun tam ortasına girmeden, tank müttefiklerin arkasına saklanarak düşman gruplarına alan hasarı püskürtmektir." },
+            ],
+          },
+          S: {
+            label: 'S',
+            colorClass: 'tier-s',
+            bgClass: 'bg-tier-s',
+            commanders: [
+              { name: 'Richard I', role: 'Piyade', type: 'Efsanevi', note: "Erken safha savaşlarının sarsılmaz kalkanı olan Richard, tamamen savunma ve hayatta kalma üzerine kuruludur. Güçlü yönü, aktif becerisiyle sağladığı olağanüstü yüksek anlık iyileştirme ve aldığı hasarı azaltma yeteneğidir. Kendi ordusunu açık alanda yok edilmesi neredeyse imkansız bir kaleye dönüştürür. Ancak bu durum en büyük zayıf yönünü doğurur; aşırı yüksek iyileştirme mekanizması, hafif yaralıları tekrar savaşa soktuğu için savaş sonunda hastane raporlarındaki ağır yaralı (severely wounded) sayısını ve dolayısıyla kaynak maliyetini fırlatır. Ayrıca oyunun ilerleyen sezonlarında hasar potansiyeli çok zayıf kaldığı için tamamen gözden düşer. En iyi eşleşmelerinde Charles Martel ile yan yana geldiğinde aşılması imkansız bir defansif duvar oluşturur. Ofansif eksikliğini kapatmak için ise arkasına YSG veya Sun Tzu yerleştirilmelidir. Yetenek ağacında Savunma ve Piyade ağaçlarındaki hayatta kalma odaklı tüm düğümler sonuna kadar zorlanmalıdır. Kullanım senaryoları arasında, açık sahada düşman hatlarının dikkatini ve saldırılarını üzerine çekmek (tanklık yapmak) ve kanyon etkinliklerinde ön hattı korumak yer alır." },
+            ],
+          },
+          'A+': {
+            label: 'A+',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Charles Martel', role: 'Piyade', type: 'Efsanevi', note: "Altın sandıklardan ücretsiz olarak biriktirilebilen Martel, KvK 1 ve KvK 2 boyunca piyade oyuncularının en güvenli limanlarından biridir. Güçlü yönü, aktif yeteneğiyle açtığı devasa kalkan ve bu kalkan etkinken ordusunun hasarını yüzde otuz artıran pasif yeteneğidir. Ayrıca garnizon savunmasında da harika işler çıkarır. Zayıf yönü, tıpkı Richard gibi saf hasar çarpanının düşük olması ve mobilite eksikliğidir. En iyi eşleşmelerinde Richard I ile tam defans, Büyük İskender ile ise dengeli bir ofans-defans hattı kurar. Yetenek ağacında Piyade ve Savunma ağaçları öncelikli olmalıdır, eğer şehir veya sancak savunulacaksa Garnizon ağacına puan ayrılabilir. Kullanım senaryosu olarak, açık sahada kalkan avantajıyla ön hatları tutmak veya krallık sancaklarına düzenlenen mitingleri (rally) göğüslemektir." },
+            ],
+          },
+          A: {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Sun Tzu (Epik)', role: 'Piyade', type: 'Epik', note: "Efsanevi komutanlara kafa tutan ve oyundaki tüm epik karakterlerin açık ara en iyisi olan Sun Tzu, F2P oyuncularının göz bebeğidir. Güçlü yönü, aktif becerisiyle aynı anda beş hedefe kadar alan hasarı vurabilmesi ve isabet ettirdiği hedef başına kazandığı ekstra öfke ile yetenek döngüsünü çılgın bir hıza ulaştırmasıdır. Ayrıca pasifinde barındırdığı yüzde yirmi beceri hasarı artışı muazzam bir verim sağlar. Zayıf yönü ise epik bir karakter olmasından kaynaklı düşük temel istatistikleridir; efsanevi ordular karşısında saf savunma anlamında zayıf kalır. En iyi eşleşmelerinde Bjorn Ironside birincil, Sun Tzu ikincil olarak harika bir KvK 1 başlangıç ordusudur. Ayrıca Charles Martel arkasında da harikalar yaratır. Yetenek ağacında Piyade ağacından temel sağlık puanları toplanmalı, geri kalan tüm stratejik puanlar Beceri ağacındaki öfke üretimini maksimize etmek için harcanmalıdır. Kullanım senaryosu, düşük bütçeli hesapların KvK 1 açık alan savaşlarında maksimum verimle rapor puanı toplamasını sağlamaktır." },
+            ],
+          },
+          'B+': {
+            label: 'B+',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [
+              { name: 'Bjorn Ironside (Epik)', role: 'Piyade', type: 'Epik', note: "Sun Tzu'nun en sadık tamamlayıcısı olan Bjorn, erken aşamada piyade oyuncularına agresif bir oyun tarzı sunar. Güçlü yönü, aktif yeteneğinin düşmana doğrudan hasar vururken aynı zamanda hedef aldığı birliğin aldığı beceri hasarını yüzde on artırmasıdır. Bu debuff etkisi arkasından gelen komutanın hasarını katlar. Zayıf yönü ise alan hasarının olmaması ve tamamen tek hedefe odaklanmasıdır. En iyi eşleşmesi kesinlikle arkasına Sun Tzu yerleştirilerek yapılan kombinasyondur. Yetenek ağacında Beceri ağacı yerine birincil komutan olacağı için Piyade ve Saldırı ağaçlarına ağırlık verilmelidir. Kullanım senaryosu, KvK 1 açık alanında Sun Tzu'ya liderlik ederek düşman hedeflerini tek tek eritmektir." },
+            ],
+          },
+          'A-2': {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Minamoto no Yoshitsune', role: 'Süvari', type: 'Efsanevi', note: "VIP paketleriyle hızlıca fullemesi (maximum yetenek seviyesi) en kolay olan bu komutan, özellikle para yatıran oyuncuların KvK 1'deki en büyük silahıdır. Güçlü yönü, muazzam derecede yüksek tek hedef anlık hasarı (nuke) ve süvari birliklerine kazandırdığı yüksek hareket hızıdır. Zayıf yönü ise alan hasarından tamamen yoksun olması ve savunma istatistiklerinin kırılganlığıdır; açık sahada kalabalığın ortasında kaldığında çok hızlı erir. En iyi eşleşmelerinde Cao Cao ile saf süvari hızı ve hasarı yakalarken, KvK 2 döneminde Saladin arkasında daha korunaklı bir şekilde çalışabilir. Yetenek ağacında Süvari ve Beceri ağaçlarındaki hasar düğümleri öncelikli olmalıdır. Kullanım senaryosu, açık sahada tek başına gezen zayıf hedefleri avlamak, kaçan okçuları yakalamak ve barbar kalelerine (fort) hızlı mitingler düzenlemektir." },
+            ],
+          },
+          B: {
+            label: 'B',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [
+              { name: 'Baibars (Epik)', role: 'Süvari', type: 'Epik', note: "Süvari sınıfının alan hasarı eksikliğini kapatan en önemli epik seçenektir. Güçlü yönü, beş hedefe kadar vurabilen alan hasarı yeteneği ve savaştan çıkarken veya düşmanı kovalarken kazandırdığı yavaşlatma (slow) etkileridir. Zayıf yönü, defansif olarak son derece zayıf olması ve hayatta kalma kabiliyetinin düşüklüğüdür. En iyi eşleşmelerinde Pelagius veya Minamoto ile kullanılabilir. Sıradışı bir meta olarak, tamamen piyade ordusunun başında bile sadece yavaşlatma ve alan hasarı avantajı için Sun Tzu Prime ile şaşırtıcı sinerjiler üretebilir. Yetenek ağacında Süvari ve Beceri tercih edilmelidir. Kullanım senaryosu, büyük meydan savaşlarında süvari ordularıyla vur-kaç taktiği uygulayarak düşman hatlarını arkadan taciz etmektir." },
+            ],
+          },
+          C: {
+            label: 'C',
+            colorClass: 'tier-c',
+            bgClass: 'bg-tier-c',
+            commanders: [
+              { name: 'Centurion', role: 'Infantry', type: 'Epic', note: 'Early game tank, quickly outclassed.' },
+              { name: 'Lancelot', role: 'Cavalry', type: 'Epic', note: 'Fast but weak, only for gathering.' },
+            ],
+          },
+          'A-': {
+            label: 'A-',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Aethelflaed', role: 'Kuşatma', type: 'Efsanevi', note: "Sefer (Expedition) modundan tamamen ücretsiz olarak toplanan bu efsanevi lider, tam bir stratejik destek karakteridir. Güçlü yönü, önündeki geniş yarım daire alandaki beş düşman birliğinin saldırı, savunma ve sağlık değerlerini tek seferde yüzde otuz gibi devasa bir oranda düşürmesidir (debuff). Zayıf yönü, tek başına saf hasar gücünün çok düşük olması ve savunmasının kırılgandır olmasıdır. En iyi eşleşmelerinde arkasına Sun Tzu veya Joan of Arc yerleştirildiğinde harika iş yapar. Yetenek ağacında Liderlik ve Destek ağaçları ön planda tutulmalıdır. Kullanım senaryosu, bu karakterin yeteneklerini tetiklemek adına üç birim tipinden de barındıran karışık ordularla (mixed troops) büyük meydan savaşlarına katılarak düşman ordularını topluca zayıflatmaktır." },
+            ],
+          },
         },
-        S: {
-          label: 'S',
-          colorClass: 'tier-s',
-          bgClass: 'bg-tier-s',
-          commanders: [
-            { name: 'Saladin', role: 'Süvari', type: 'Efsanevi', note: 'Her alanda güçlü' },
-            { name: 'Constantine', role: 'Piyade', type: 'Efsanevi', note: 'Mükemmel savunma' },
-            { name: 'Edward', role: 'Okçu', type: 'Efsanevi', note: 'Sağlam okçu' },
-            { name: 'Scipio', role: 'Piyade', type: 'Efsanevi', note: 'İyi garnizon' },
-          ],
+        kvk2: {
+          'S+': {
+            label: 'S+',
+            colorClass: 'tier-s-plus',
+            bgClass: 'bg-tier-s-plus',
+            commanders: [
+              { name: 'Alexander the Great (Büyük İskender)', role: 'Piyade', type: 'Efsanevi', note: "KvK 2 sahnesine adım atar atmaz piyade metasını tamamen domine eden Büyük İskender, oyunun en ikonik karakterlerinden biridir. Güçlü yönlerinin başında, aktif becerisiyle hem kendine devasa bir kalkan açması hem de eş zamanlı olarak çevresindeki canı en az olan müttefik birliği koruma altına alması gelir. Kalkan etkinken kazandığı muazzam saldırı bonusları ve yüksek harita hareket hızı, piyadelerin hantal yapısını tamamen ortadan kaldırır. Zayıf yönü ise doğrudan bir alan hasarı (AoE) yeteneğinin bulunmaması, tamamen tek hedef odaklı çalışmasıdır. En iyi eşleşmelerinde Alexander + YSG kombinasyonu, KvK 2 açık alan savaşlarının altın standardıdır; hem kalkan koruması hem de YSG'nin dairesel hasarı birleşir. Defansif amaçlar için Charles Martel + Alexander da çok güçlü bir alternatiftir. Yetenek ağacında Piyade ağacındaki hız ve savunma düğümleri ile Saldırı ağacındaki düz hasar artıran yollar birleştirilmelidir. Kullanım senaryoları, açık sahada yüksek hareket kabiliyetiyle düşman okçularının üzerine çökmek ve kalabalık savaşlarda müttefiklere kalkan dağıtarak cephe hattının kırılmasını önlemektir." },
+            ],
+          },
+          S: {
+            label: 'S',
+            colorClass: 'tier-s',
+            bgClass: 'bg-tier-s',
+            commanders: [
+              { name: 'Saladin (Selahaddin Eyyubi)', role: 'Süvari', type: 'Efsanevi', note: "Süvarilerin kırılgan ve hassas yapısını kökten değiştiren, onlara hak ettikleri tanklığı sunan sarsılmaz bir liderdir. Güçlü yönü, süvari birliklerine sağladığı olağanüstü yüksek savunma istatistikleri ve karşı atağa karşı dirençtir. Ayrıca aktif becerisi düşmanın hareket hızını yüzde otuz keserken, aldığı iyileştirme (healing) etkisini de yüzde kırk oranında bloke eder. Bu sayede sahada Richard veya Cao Cao gibi sürekli iyileşen komutanların tam antitezidir. Zayıf yönü, yetenek seviyesini beş beş beş bir (5-5-5-1) yapmak fazlasıyla yeterli olsa da, saf bir anlık hasar (nuke) canavarı olmamasıdır; daha çok kontrol ve sabote odaklıdır. En iyi eşleşmelerinde Saladin + YSG (dengeli alan hasarı ve yüksek hayatta kalma) veya Saladin + Minamoto (agresif tek hedef hasarı) öne çıkar. Yetenek ağacında Süvari ağacındaki defansif yollar seçilmeli ve Destek ağacındaki beceri hızlandırma düğümleri alınmalıdır. Kullanım senaryosu, açık sahada kaçmaya çalışan yüksek öncelikli hedefleri yavaşlatarak yakalamak ve düşman tanklarının iyileştirme döngülerini kilitlemektir." },
+            ],
+          },
+          A: {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Edward of Woodstock', role: 'Okçu', type: 'Efsanevi', note: "KvK 2 döneminde yüksek ödeme yapan (P2W) okçu oyuncularının bir numaralı miting ve açık alan silahıdır. Güçlü yönü, oyunun bu aşamasındaki en yüksek tek hedef beceri hasarı çarpanlarından birine sahip olması ve okçu birliklerinin can ile hasar değerlerini uçurmasıdır. Zayıf yönü, aktif yeteneğini tetiklemek için bin üç yüz elli (1350) gibi çok yüksek bir öfke (rage) miktarına ihtiyaç duymasıdır. Bu durum yetenek atma hızını yavaşlatır ve açık sahada düşman süvarileri tarafından çok çabuk hedef alınıp cezalandırılmasına yol açar. En iyi eşleşmesi kesinlikle arkasına yerleştirilecek uzmanlaşmış bir YSG'dir; Edward önden tek hedefe vururken YSG arkadan etrafı temizler. Yetenek ağacında Okçu ve Beceri ağaçlarındaki öfke üretimi artıran ne varsa alınmalıdır. Kullanım senaryosu, düşman sancaklarına ve şehirlerine karşı yıkıcı mitingler düzenlemek veya açık sahada arkada güvenli bir konumdan tekil hedefleri eritmektir." },
+            ],
+          },
+          'B+': {
+            label: 'B+',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [
+              { name: 'Tomyris', role: 'Archer', type: 'Legendary', note: "A helper legendary designed to back up Edward and drop sinister poison stacks on the enemy. Strength: passively stacks poison loads on the enemy up to 10 times; when the active skill triggers, it massively amplifies the skill damage the enemy receives. Weakness: has zero presence as a standalone primary commander, entirely doomed to secondary use. Best paired with Edward + Tomyris or YSG + Tomyris." },
+            ],
+          },
+          B: {
+            label: 'B',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [],
+          },
+          C: {
+            label: 'C',
+            colorClass: 'tier-c',
+            bgClass: 'bg-tier-c',
+            commanders: [],
+          },
+          'A-2': {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          'A-': {
+            label: 'A-',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [
+              { name: 'Constantine I', role: 'Infantry', type: 'Legendary', note: "A completely selfless support tank focused entirely on kingdom defense and banner protection. Strength: a massive defense bonus triggers when his army's health drops below 50%, plus an active area support that reduces skill damage taken by allies. Weakness: extremely low map movement speed and almost no damage output — wandering alone in the open field is just a waste of time for enemies. Best paired with Charles Martel for garrison defense, or Joan of Arc for open-field support. Skill tree: Garrison or Defense trees prioritized. Use to stubbornly hold strategically important passes and kingdom banners against enemy rallies throughout KvK 2." },
+            ],
+          },
         },
-        A: {
-          label: 'A',
-          colorClass: 'tier-a',
-          bgClass: 'bg-tier-a',
-          commanders: [
-            { name: 'Sun Tzu', role: 'Piyade', type: 'Epik', note: 'En iyi F2P piyade' },
-            { name: 'Tomoe Gozen', role: 'Okçu', type: 'Epik', note: 'F2P okçu tercihi' },
-            { name: 'Lancelot', role: 'Süvari', type: 'Epik', note: 'Hızlı süvari' },
-            { name: 'Joan of Arc', role: 'Destek', type: 'Epik', note: 'Mükemmel destek' },
-          ],
-        },
-        B: {
-          label: 'B',
-          colorClass: 'tier-b',
-          bgClass: 'bg-tier-b',
-          commanders: [
-            { name: 'Baibars', role: 'Süvari', type: 'Epik', note: 'İdare eder süvari' },
-            { name: 'Eulji', role: 'Piyade', type: 'Epik', note: 'Garnizon tercihi' },
-            { name: 'Hermann', role: 'Okçu', type: 'Epik', note: 'Bütçe okçusu' },
-            { name: 'Pelagius', role: 'Süvari', type: 'Seçkin', note: 'Erken oyun' },
-          ],
-        },
-        C: {
-          label: 'C',
-          colorClass: 'tier-c',
-          bgClass: 'bg-tier-c',
-          commanders: [
-            { name: 'Boudica', role: 'Nükleyici', type: 'Seçkin', note: 'Artık eskimiş' },
-            { name: 'Minamoto', role: 'Süvari', type: 'Epik', note: 'Güçlendirme sorunu' },
-            { name: 'Cao Cao', role: 'Süvari', type: 'Efsanevi', note: 'Niş kullanım' },
-          ],
+        kvk3: {
+          'S+': {
+            label: 'S+',
+            colorClass: 'tier-s-plus',
+            bgClass: 'bg-tier-s-plus',
+            commanders: [
+              { name: 'Sun Tzu (Prime)', role: 'Piyade', type: 'Efsanevi', note: "Klasik Sun Tzu'nun o bilinen öfke canavarı yapısının, efsanevi ligde yıkıcı bir güce dönüşmüş son teknoloji halidir. Güçlü yönlerinin başında, açık alanda hızlı öfke döngüsü sunması ve geniş alan hasarı vurması gelir. Ancak asıl farkı, oyuna getirdiği Smite (Darbe) hasarı mekaniği ve doğrudan zırhları hiçe sayan True Damage (Gerçek Hasar) bonuslarıdır. Zayıf yönü, yüksek hasar potansiyeline odaklandığı için eski klasik tank piyadeler kadar saf savunma barındırmamasıdır; doğru konumlandırılmazsa ağır hasar alabilir. En iyi eşleşmelerinde Bai Qi (Bai Qu) ile yan yana geldiğinde açık sahanın en elit ve durdurulamaz hasar makinesine dönüşür. Ayrıca Liu Che veya William Wallace ile de kusursuz çalışır. Yetenek ağacında bütün gücünü becerilerinden aldığı için Piyade ağacındaki temel savunma unsurları kilitlenmeli, kalan tüm puanlar Beceri ağacındaki öfke üretimini hızlandıran düğümlere verilmelidir. Kullanım senaryosu, büyük meydan savaşlarında (murderball) en ön safta yer alarak düşman ordularını gerçek hasar patlamalarıyla topluca eritmektir." },
+              { name: 'Alexander Nevsky', role: 'Süvari', type: 'Efsanevi', note: "Süvari sınıfının tartışmasız zirvesi ve açık alanın en korkulan suikastçısıdır. Güçlü yönü, olağanüstü yüksek tek hedef anlık hasarı, düşmanın savunmasını yüzde on beş kıran pasif etkisi ve süvari birimlerine sağladığı devasa sağlık ve savunma istatistikleridir. Ayrıca açık alanda etrafı düşmanlar tarafından çevrelendiğinde (surrounded) aldığı hasar azaltma bonusu onu bir süvariye göre inanılmaz tank yapar. Zayıf yönü, hiçbir şekilde alan hasarının (AoE) olmaması, tamamen tek bir hedefe kilitlenip onu haritadan silmek üzere tasarlanmış olmasıdır. En iyi Eşleşmelerinde Nevsky + Joan of Arc (Prime) kombinasyonu süvarilerin şu anki en güçlü açık alan meta eşleşmesidir. Alternatif olarak Nevsky + Huatut da tercih edilebilir. Yetenek ağacında Süvari ağacındaki saldırı düğümleri ve Beceri ağacındaki hızlı öfke yenileyen tüm stratejik yollar eksiksiz alınmalıdır. Kullanım senaryosu, açık sahada düşmanın yüksek öncelikli ancak kırılgan hedeflerini (okçuları veya YSG gibi camdan kaleleri) gözüne kestirip yıldırım hızıyla haritadan silmektir." },
+            ],
+          },
+          S: {
+            label: 'S',
+            colorClass: 'tier-s',
+            bgClass: 'bg-tier-s',
+            commanders: [
+              { name: 'Bai Qi (Bai Qu)', role: 'Piyade', type: 'Efsanevi', note: "Düşmanın üzerine kabus gibi çöken, meydanın en sinsi cellatlarından biridir. Güçlü yönü, yüksek hasar çarpanının yanı sıra düşmana bıraktığı Malice (Kin) yükleridir. Bu yükler sayesinde savaş uzadıkça rakibin defans mekanizmalarını sabote eder, onları kırılganlaştırır ve savunmasız bırakır. Zayıf yönü, tek başına harika işler çıkarsa da sahnede onun açtığı bu zayıflıkları anında saf hasara dönüştürecek hızlı ve öfke döngüsü yüksek bir partnere ihtiyaç duymasıdır. En iyi eşleşmesi kesinlikle Sun Tzu (Prime) birincil, Bai Qi ikincil şeklindeki kurulumdur. Yetenek ağacında ordunun başında duracağı durumlarda dayanıklılık ve hasar dengesini korumak adına Liderlik ve Beceri ağaçlarının sinerjisine odaklanılmalıdır. Kullanım senaryosu, açık sahada uzun süren yıpratma savaşlarında düşman cephesinin savunma direncini kırarak hattı yarmaktır." },
+              { name: 'Guan Yu', role: 'Piyade', type: 'Efsanevi', note: "Fetih sezonunun en eski ama eskimeyen açık alan liderlerinden biridir. Güçlü yönü, önündeki geniş bir yelpazede üç hedefe kadar vurabilen, susturma (silence) etkili ve olağanüstü yüksek beceri hasarına sahip aktif yeteneğidir. Susturma etkisi, isabet alan düşmanların aktif yetenek atma sürelerini geciktirerek rotasyonlarını bozar. Zayıf yönü, bu yetenekten maksimum verim almak için kesinlikle birinci komutan olarak kullanılması şartıdır ve pasifinden gelen hasar artışını tetiklemek için harici bir kalkan desteğine ihtiyaç duyar; kendi kendine kalkan üretemez. En iyi eşleşmelerinde kalkan desteği sağlaması için İskender (Alex) veya Leonidas ile kullanılır. Güncel metada Guan Yu + Liu Che kombinasyonu da çok popülerdir. Yetenek ağacında Piyade ve Beceri ağaçları dengeli kullanılmalı, aktif beceri hasarını doğrudan artıran üst yetenekler mutlaka açılmalıdır. Kullanım senaryosu, büyük ittifak savaşlarında en ön safta yer alarak düşman gruplarını topluca susturmak ve yetenek döngülerini felç etmektir." },
+            ],
+          },
+          'A+': {
+            label: 'A+',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          A: {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          'B+': {
+            label: 'B+',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [],
+          },
+          B: {
+            label: 'B',
+            colorClass: 'tier-b',
+            bgClass: 'bg-tier-b',
+            commanders: [],
+          },
+          C: {
+            label: 'C',
+            colorClass: 'tier-c',
+            bgClass: 'bg-tier-c',
+            commanders: [],
+          },
+          'A-2': {
+            label: 'A',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
+          'A-': {
+            label: 'A-',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
+          },
         },
       },
     },
@@ -692,7 +1017,7 @@ export const translations = {
   },
 } as const;
 
-export type Translations = (typeof translations)[keyof typeof translations];
+export type Translations = TranslationsContent;
 
 export function getTranslations(locale: string): Translations {
   return translations[locale as Locale] ?? translations.en;
