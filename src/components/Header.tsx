@@ -7,6 +7,7 @@ import AppLogo from '@/components/ui/AppLogo';
 import Icon from '@/components/ui/AppIcon';
 import { useLocale } from '@/components/LocaleProvider';
 import { useTranslation } from '@/lib/useTranslation';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -73,21 +74,7 @@ export default function Header() {
 
             {/* Desktop Language + Search + CTA */}
             <div className="hidden md:flex items-center gap-3">
-              <label className="sr-only" htmlFor="locale-select">
-                {t.header.languageLabel}
-              </label>
-              <select
-                id="locale-select"
-                value={locale}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLocale(e.target.value as 'en' | 'tr')}
-                className="rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
-              >
-                {localeOptions.map((option) => (
-                  <option key={option.code} value={option.code}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+              <LanguageSwitcher />
               <form onSubmit={handleSearch} className="relative">
                 <input
                   type="text"
@@ -129,17 +116,9 @@ export default function Header() {
           />
           <div className="absolute top-16 left-0 right-0 bg-card border-b border-border p-4 space-y-4">
             <form onSubmit={handleSearch} className="relative">
-              <select
-                value={locale}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setLocale(e.target.value as 'en' | 'tr')}
-                className="mb-3 w-full rounded-md border border-border bg-background px-3 py-2 text-sm text-foreground"
-              >
-                {localeOptions.map((option) => (
-                  <option key={option.code} value={option.code}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+              <div className="mb-3">
+                <LanguageSwitcher />
+              </div>
               <input
                 type="text"
                 value={searchQuery}

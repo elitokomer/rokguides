@@ -4,26 +4,29 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Icon from '@/components/ui/AppIcon';
-
-const contactItems = [
-  {
-    icon: 'EnvelopeIcon',
-    label: 'Email',
-    value: 'example@gmail.com',
-    href: 'mailto:example@gmail.com',
-    description: 'Send us an email and we\'ll get back to you as soon as possible.',
-  },
-];
-
-const topics = [
-  'Guide corrections or outdated information',
-  'Suggesting a new guide topic',
-  'Reporting a bug or broken page',
-  'Partnership or collaboration inquiries',
-  'General questions about the site',
-];
+import { useTranslation } from '@/lib/useTranslation';
 
 export default function ContactPage() {
+  const t = useTranslation();
+
+  const contactItems = [
+    {
+      icon: 'EnvelopeIcon',
+      label: t.contact.emailLabel,
+      value: 'example@gmail.com',
+      href: 'mailto:example@gmail.com',
+      description: t.contact.emailDescription,
+    },
+  ];
+
+  const topics = [
+    t.contact.topicCorrections,
+    t.contact.topicSuggestGuide,
+    t.contact.topicReportBug,
+    t.contact.topicPartnership,
+    t.contact.topicGeneralQuestions,
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
@@ -31,13 +34,13 @@ export default function ContactPage() {
         {/* Header */}
         <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4 px-3 py-1 rounded-full bg-primary/10">
-            Contact
+            {t.contact.tag}
           </span>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4 leading-tight">
-            Get in touch
+            {t.contact.title}
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Have a question, spotted an error, or want to suggest a guide? We'd love to hear from you.
+            {t.contact.description}
           </p>
         </section>
 
@@ -46,7 +49,7 @@ export default function ContactPage() {
             {/* Contact Card */}
             <div className="space-y-6">
               <h2 className="font-display text-xl font-bold text-foreground">
-                Reach us directly
+                {t.contact.reachUsDirectly}
               </h2>
               {contactItems?.map((item) => (
                 <a
@@ -75,7 +78,7 @@ export default function ContactPage() {
               <div className="flex items-start gap-3 bg-secondary/50 rounded-xl p-4">
                 <Icon name="ClockIcon" size={16} className="text-muted-foreground mt-0.5 shrink-0" />
                 <p className="text-sm text-muted-foreground">
-                  We typically respond within <span className="text-foreground font-medium">1–3 business days</span>. For faster answers, check if your question is already covered in our guides.
+                  {t.contact.responseTimeNote} <span className="text-foreground font-medium">{t.contact.responseTimeDays}</span>{t.contact.responseTimeSuffix}
                 </p>
               </div>
             </div>
@@ -83,7 +86,7 @@ export default function ContactPage() {
             {/* Topics */}
             <div>
               <h2 className="font-display text-xl font-bold text-foreground mb-6">
-                What to contact us about
+                {t.contact.whatToContactUsAbout}
               </h2>
               <div className="bg-card border border-border rounded-xl p-6 space-y-3">
                 {topics?.map((topic) => (
@@ -97,13 +100,13 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-6 bg-card border border-border rounded-xl p-6">
-                <h3 className="font-semibold text-foreground mb-2">Before you write</h3>
+                <h3 className="font-semibold text-foreground mb-2">{t.contact.beforeYouWriteTitle}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Many common questions are already answered in our guides. Try the{' '}
+                  {t.contact.beforeYouWriteDescription}{' '}
                   <a href="/search-results" className="text-primary hover:underline">
-                    search page
+                    {t.contact.searchPage}
                   </a>{' '}
-                  first — you might find your answer instantly.
+                  {t.contact.beforeYouWriteDescriptionSuffix}
                 </p>
               </div>
             </div>
