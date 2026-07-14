@@ -8,6 +8,8 @@ import Icon from '@/components/ui/AppIcon';
 import { useLocale } from '@/components/LocaleProvider';
 import { useTranslation } from '@/lib/useTranslation';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import CommanderDropdown from '@/components/CommanderDropdown';
+import { NavLink, HeaderContent } from '@/lib/translations';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -61,14 +63,22 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
-              {t.header.navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="underline-expand text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
+              {(t.header.navLinks as NavLink[]).map((link: NavLink) => (
+                link.label === 'Commanders' ? (
+                  <CommanderDropdown
+                    key={link.label}
+                    title={(t.header as HeaderContent).commandersDropdown.title}
+                    kvkCategories={(t.header as HeaderContent).commandersDropdown.kvkCategories}
+                  />
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="underline-expand text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </nav>
 
@@ -131,15 +141,31 @@ export default function Header() {
               </div>
             </form>
             <nav className="flex flex-col gap-1">
-              {t.header.navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-3 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded transition-colors duration-200 min-h-[44px] flex items-center"
-                >
-                  {link.label}
-                </Link>
+              {(t.header.navLinks as NavLink[]).map((link: NavLink) => (
+                link.label === 'Commanders' ? (
+                  <div key={link.label} className="px-3 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded transition-colors duration-200 min-h-[44px] flex items-center">
+                    {(t.header as HeaderContent).commandersDropdown.title}
+                    {(t.header as HeaderContent).commandersDropdown.kvkCategories.map((category: NavLink) => (
+                      <Link
+                        key={category.label}
+                        href={category.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                      >
+                        {category.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="px-3 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded transition-colors duration-200 min-h-[44px] flex items-center"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
               <Link
                 href="/guide-article"

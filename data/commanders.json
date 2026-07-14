@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Sun Tzu (Prime)",
+    "military_note": "Klasik Sun Tzu'nun o bildiğimiz \"öfke canavarı\" yapısının, efsanevi ligde yıkıcı bir güce dönüşmüş halidir. Sadece alan hasarı vurmakla kalmaz; oyuna getirdiği Smite (Darbe) ve doğrudan rakipleri eriten True Damage (Gerçek Hasar) mekanikleriyle tank piyadeleri birer ölüm makinesine çevirir.",
+    "ability_strategy": "Bütün gücünü becerilerinden aldığı için \"Piyade\" ağacındaki savunma unsurlarını alıp, \"Beceri\" ağacındaki öfke üretimi ve beceri hasarı artıran her şeyi fullemelisin.",
+    "critical_detail": "Karşısındaki ordu ne kadar tank olursa olsun, gerçek hasar mekaniği savunmaları hiçe saydığı için açık alanda tam bir \"erime\" etkisi yaratır."
+  },
+  {
+    "name": "Bai Qi (Bai Qu)",
+    "military_note": "Düşmanın üzerine kabus gibi çöken, \"Malice\" (Kin) mekaniğiyle savaş uzadıkça daha da tehlikeli hale gelen bir lider. Klasik hasar vurmanın ötesinde, düşmanın defans mekanizmalarını sabote eder ve onları savunmasız bırakır.",
+    "ability_strategy": "Ordunun başında durduğunda hem dayanıklılık hem hasar dengesini kurmak için \"Liderlik\" ve \"Beceri\" ağaçlarının sinerjisine odaklanılmalıdır.",
+    "critical_detail": "Tek başına harika olsa da, yanında onun açtığı zayıflıkları hasara dönüştürecek hızlı bir partner ister."
+  },
+  {
+    "name": "Büyük İskender (Alexander)",
+    "military_note": "KvK 2'nin kilidini açan ve piyade oyuncularına \"Ben buradayım\" dedirten kraldır. Aktif ettiğinde açtığı devasa kalkan sadece kendini korumaz, etraftaki canı en az olan dost birliğini de kurtarır. İskender sahadayken ordun hem çok hızlı hareket eder hem de vurduğu düz hasar tavan yapar.",
+    "ability_strategy": "Hız ve saf güç için \"Piyade\" ve açık alanda düşmanı yakalamak için \"Saldırı\" ağacı tercih edilmelidir.",
+    "critical_detail": "İskender varken \"Ben arkada bekleyeyim\" diyemezsin; doğrudan düşmanın en kalabalık yerine dalıp o kalkanı patlatman gerekir."
+  },
+  {
+    "name": "Yi Seong-Gye (YSG)",
+    "military_note": "Oyundaki en \"bencil olmayan\" komutandır. Uzmanlığı açıldığında alan hasarı yarım daireden tam bir daireye (360 derece) dönüşür. Bu da demek oluyor ki, açık alanda YSG'yi gören herkes arkasını dönüp kaçmak ister çünkü yanındaki birliğe vururken sana da hasar sektirir.",
+    "ability_strategy": "Kendisi genelde arkada (sekonder) durur. Ancak birincil kullanılacaksa \"Okçu\" ve kesinlikle öfke döngüsünü hızlandıracak \"Beceri\" ağacı seçilmelidir.",
+    "critical_detail": "Savunması kağıt gibidir, açık alanda tek yakalandığı an saniyeler içinde erir. Bu yüzden her zaman önünde güçlü bir tankla gezmelidir."
+  },
+  {
+    "name": "Aethelflaed",
+    "military_note": "Kalelerden (Keep) bedavaya topladığımız bu hanımefendi, aslında gizli bir savaş taktikçisidir. Önündeki düşmanların tüm istatistiklerini (Saldırı, Savunma, Sağlık) tek bir çığlıkla %30 aşağı çeker. Bu, oyundaki en büyük toplu zayıflatma (debuff) yeteneklerinden biridir.",
+    "ability_strategy": "Karışık orduları yönetme becerisi yüzünden \"Liderlik\" ve takım arkadaşlarına destek olması için \"Destek\" ağacı ön planda olmalıdır.",
+    "critical_detail": "Tek başına hasarı çok yüksek değildir ancak düşmanı öyle bir zayıflatır ki, arkasından vuran komutan iki katı hasar çıkarır."
+  },
+  {
+    "name": "Sun Tzu (Epik)",
+    "military_note": "\"Ben bu oyuna para yatırmam ama savaşta da geri kalmam\" diyenlerin kutsal komutanıdır. Epik olmasına rağmen sunduğu öfke doldurma mekaniği ve alan hasarı o kadar muazzamdır ki, çoğu efsanevi komutanı cebinden çıkarır.",
+    "ability_strategy": "Kesinlikle \"Piyade\" dayanıklılığı ve \"Beceri\" öfke yenilemesi üzerine kurulmalıdır.",
+    "critical_detail": "Yok"
+  },
+  {
+    "name": "Baibars",
+    "military_note": "Açık alanda düşmanı çileden çıkaran, vurduğu hasarla rakiplerin hızını kesip ordularını hantallaştıran mobil nuke kaynağıdır. Epik süvari metasının hasar yönünü temsil eder.",
+    "ability_strategy": "Hızlanmak ve vurup kaçabilmek adına \"Süvari\" ve \"Beceri\" odaklı gidilmelidir.",
+    "critical_detail": "Yok"
+  }
+]

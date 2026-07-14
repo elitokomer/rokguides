@@ -1,7 +1,7 @@
 export type Locale = 'en' | 'tr';
 
-export type CommanderRole = 'Infantry' | 'Archer' | 'Cavalry' | 'Siege/Leadership' | 'Support' | 'Nuker';
-export type CommanderType = 'Legendary' | 'Epic' | 'Elite';
+export type CommanderRole = 'Infantry' | 'Archer' | 'Cavalry' | 'Siege/Leadership' | 'Support' | 'Nuker' | 'Piyade' | 'Okçu' | 'Süvari' | 'Kuşatma';
+export type CommanderType = 'Legendary' | 'Epic' | 'Elite' | 'Efsanevi' | 'Epik';
 
 export interface Commander {
   name: string;
@@ -22,8 +22,29 @@ export interface TierDataEntry {
 
 export type KvKTierData = Record<TierKey, TierDataEntry>;
 
+export interface NavLink {
+  label: string;
+  href: string;
+}
+
+export interface CommandersDropdown {
+  title: string;
+  kvkCategories: NavLink[];
+}
+
+export interface HeaderContent {
+  logo: string;
+  navLinks: NavLink[];
+  commandersDropdown: CommandersDropdown;
+  searchPlaceholder: string;
+  searchButton: string;
+  startReading: string;
+  languageLabel: string;
+  menuToggleLabel: string;
+}
+
 export interface TranslationsContent {
-  header: any;
+  header: HeaderContent;
   footer: any;
   hero: any;
   tierList: {
@@ -52,13 +73,21 @@ export const translations: Record<Locale, TranslationsContent> = {
     header: {
       logo: 'RoKGuides',
       navLinks: [
-        { label: 'Commanders', href: '/guide-article?category=commanders' },
+        { label: 'Commanders', href: '/commanders' },
         { label: 'Battle', href: '/guide-article?category=battle' },
         { label: 'Beginners', href: '/guide-article?category=beginner' },
         { label: 'Alliance', href: '/guide-article?category=alliance' },
         { label: 'About', href: '/about' },
         { label: 'Contact', href: '/contact' },
       ],
+      commandersDropdown: {
+        title: 'Commanders',
+        kvkCategories: [
+          { label: 'KvK 1', href: '/commanders?kvk=kvk1' },
+          { label: 'KvK 2', href: '/commanders?kvk=kvk2' },
+          { label: 'KvK 3', href: '/commanders?kvk=kvk3' },
+        ],
+      },
       searchPlaceholder: 'Search guides...',
       searchButton: 'Search',
       startReading: 'Start Reading',
@@ -176,6 +205,12 @@ export const translations: Record<Locale, TranslationsContent> = {
             commanders: [
               { name: 'Aethelflaed', role: 'Siege/Leadership', type: 'Legendary', note: "Collected entirely free from the Expedition mode, this legendary leader is a full strategic support character. Strength: reduces attack, defense, and health of up to 5 enemy units in a wide half-circle by a massive 30% in a single debuff. Weakness: very low raw damage on her own and fragile defense. Best paired behind Sun Tzu or Joan of Arc. Skill tree: Leadership and Support trees prioritized. Use in mixed-troop armies (all 3 troop types) during major field battles to weaken enemy forces collectively." },
             ],
+          },
+          C: {
+            label: 'C',
+            colorClass: 'tier-c',
+            bgClass: 'bg-tier-c',
+            commanders: [],
           },
         },
         kvk2: {
@@ -534,13 +569,21 @@ export const translations: Record<Locale, TranslationsContent> = {
     header: {
       logo: 'RoKGuides',
       navLinks: [
-        { label: 'Komutanlar', href: '/guide-article?category=commanders' },
+        { label: 'Komutanlar', href: '/commanders' },
         { label: 'Savaş', href: '/guide-article?category=battle' },
         { label: 'Yeni Başlayanlar', href: '/guide-article?category=beginner' },
         { label: 'İttifak', href: '/guide-article?category=alliance' },
         { label: 'Hakkında', href: '/about' },
         { label: 'İletişim', href: '/contact' },
       ],
+      commandersDropdown: {
+        title: 'Komutanlar',
+        kvkCategories: [
+          { label: 'KvK 1', href: '/commanders?kvk=kvk1' },
+          { label: 'KvK 2', href: '/commanders?kvk=kvk2' },
+          { label: 'KvK 3', href: '/commanders?kvk=kvk3' },
+        ],
+      },
       searchPlaceholder: 'Rehberlerde ara...',
       searchButton: 'Ara',
       startReading: 'Okumaya Başla',
@@ -685,6 +728,12 @@ export const translations: Record<Locale, TranslationsContent> = {
             commanders: [
               { name: 'Saladin (Selahaddin Eyyubi)', role: 'Süvari', type: 'Efsanevi', note: "Süvarilerin kırılgan ve hassas yapısını kökten değiştiren, onlara hak ettikleri tanklığı sunan sarsılmaz bir liderdir. Güçlü yönü, süvari birliklerine sağladığı olağanüstü yüksek savunma istatistikleri ve karşı atağa karşı dirençtir. Ayrıca aktif becerisi düşmanın hareket hızını yüzde otuz keserken, aldığı iyileştirme (healing) etkisini de yüzde kırk oranında bloke eder. Bu sayede sahada Richard veya Cao Cao gibi sürekli iyileşen komutanların tam antitezidir. Zayıf yönü, yetenek seviyesini beş beş beş bir (5-5-5-1) yapmak fazlasıyla yeterli olsa da, saf bir anlık hasar (nuke) canavarı olmamasıdır; daha çok kontrol ve sabote odaklıdır. En iyi eşleşmelerinde Saladin + YSG (dengeli alan hasarı ve yüksek hayatta kalma) veya Saladin + Minamoto (agresif tek hedef hasarı) öne çıkar. Yetenek ağacında Süvari ağacındaki defansif yollar seçilmeli ve Destek ağacındaki beceri hızlandırma düğümleri alınmalıdır. Kullanım senaryosu, açık sahada kaçmaya çalışan yüksek öncelikli hedefleri yavaşlatarak yakalamak ve düşman tanklarının iyileştirme döngülerini kilitlemektir." },
             ],
+          },
+          'A+': {
+            label: 'A+',
+            colorClass: 'tier-a',
+            bgClass: 'bg-tier-a',
+            commanders: [],
           },
           A: {
             label: 'A',
