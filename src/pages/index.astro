@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import CommanderCard from '../components/CommanderCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { getCollection } from 'astro:content';
+
+const featured = (await getCollection('commanders'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const tips = [
+  {
+    title: 'Çin Medeniyetini Seçin',
+    body: 'Free to play (F2P) oynayacaksanız, oyuna yeni başlarken Çin medeniyetini seçmeniz önerilir. Çin, ekonomik ve askeri açıdan dengeli bonuslar sunarak erken oyunda güçlü bir temel oluşturur.',
+  },
+  {
+    title: 'Belediye Binasını Önceliklendirin',
+    body: 'Yükseltilmesi gereken ilk ve en öncelikli bina Belediye Binası\'dır (Town Hall). Diğer tüm binaların seviyesi belediye binası seviyesine bağlıdır, bu yüzden ilerlemenin anahtarı odur.',
+  },
+  {
+    title: 'Başkalarının Şehrine Saldırmayın',
+    body: 'Erken oyunda başka oyuncuların şehirlerine saldırmak hem gereksiz düşmanlık yaratır hem de kaynaklarınızı boşa harcatır. Barbarları ve barbar kalelerini hedefleyerek güvenle gelişin.',
+  },
+  {
+    title: 'Aktif Bir İttifaka Katılın',
+    body: 'Aktif ve yardımlaşan bir ittifaka katılmak, hem koruma hem de hızlı gelişim için kritik önemdedir. İttifak yardımları, teknoloji katkıları ve ortak savunma erken oyunun bel kemiğidir.',
+  },
+];
+---
+
+<BaseLayout
+  title="RoKGuides — Rise of Kingdoms Türkçe Rehber ve Strateji Merkezi"
+  description="Rise of Kingdoms için Türkçe başlangıç rehberi, komutan analizleri ve KvK dönemine göre tier listeleri."
+>
+  <section class="relative overflow-hidden border-b border-border bg-surface">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-20 text-center">
+      <img
+        src="/assets/images/app_logo.png"
+        alt="RoKGuides logosu"
+        width="120"
+        height="120"
+        class="scroll-reveal h-28 w-28"
+      />
+      <h1 class="font-display text-4xl font-bold text-foreground sm:text-5xl">
+        Rise of Kingdoms için <span class="text-gradient">Türkçe Strateji Merkezi</span>
+      </h1>
+      <p class="max-w-2xl text-lg text-muted">
+        Başlangıç rehberinden KvK 1, KvK 2 ve KvK 3 dönemi komutan analizlerine, yetenek ağaçlarından en iyi
+        eşleşmelere kadar krallığınızı büyütmek için ihtiyacınız olan her şey burada.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/baslangic-rehberi" class="rounded-lg bg-accent-purple px-6 py-3 font-semibold text-white hover:bg-accent-purple-light">
+          Başlangıç Rehberi
+        </a>
+        <a href="/komutanlar" class="rounded-lg border border-accent-cyan px-6 py-3 font-semibold text-accent-cyan-light hover:bg-accent-cyan/10">
+          Komutanları İncele
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="font-display text-2xl font-semibold text-foreground sm:text-3xl">Yeni Başlayanlar İçin</h2>
+    <div class="mt-6 grid gap-5 sm:grid-cols-2">
+      {tips.map((tip) => (
+        <ScrollReveal class="rounded-2xl border border-border bg-surface p-6">
+          <h3 class="font-display text-lg text-accent-purple-light">{tip.title}</h3>
+          <p class="mt-2 text-sm text-muted">{tip.body}</p>
+        </ScrollReveal>
+      ))}
+    </div>
+    <a href="/baslangic-rehberi" class="mt-6 inline-block text-sm font-medium text-accent-cyan-light hover:underline">
+      Tüm başlangıç rehberini okuyun →
+    </a>
+  </section>
+
+  <section class="border-t border-border bg-surface">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="font-display text-2xl font-semibold text-foreground sm:text-3xl">Öne Çıkan Komutanlar</h2>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((c) => (
+          <CommanderCard
+            slug={c.slug}
+            name={c.data.name}
+            tier={c.data.tier}
+            troopType={c.data.troopType}
+            image={c.data.image}
+            summary={c.data.summary}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <AdSlot label="Reklam alanı" />
+  </div>
+</BaseLayout>

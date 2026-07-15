@@ -1,0 +1,39 @@
+---
+import { tierStyle } from '../lib/tierColor';
+
+interface Props {
+  slug: string;
+  name: string;
+  tier: string;
+  troopType: string;
+  image: string;
+  summary: string;
+}
+
+const { slug, name, tier, troopType, image, summary } = Astro.props;
+const tc = tierStyle(tier);
+---
+
+<a
+  href={`/komutanlar/${slug}`}
+  class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:border-accent-purple/60 hover:shadow-[0_0_24px_-6px_rgba(139,92,246,0.5)]"
+>
+  <div class="relative aspect-[4/3] overflow-hidden">
+    <img
+      src={image}
+      alt={name}
+      width="400"
+      height="300"
+      loading="lazy"
+      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    <span class={`absolute left-2 top-2 rounded-full px-2.5 py-0.5 text-xs font-bold ring-1 backdrop-blur ${tc.bg} ${tc.text} ${tc.ring}`}>
+      {tier}
+    </span>
+  </div>
+  <div class="flex flex-1 flex-col gap-1 p-4">
+    <h3 class="font-display text-lg text-foreground">{name}</h3>
+    <p class="text-xs uppercase tracking-wide text-accent-cyan-light">{troopType}</p>
+    <p class="mt-2 line-clamp-2 text-sm text-muted">{summary}</p>
+  </div>
+</a>

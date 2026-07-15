@@ -1,0 +1,41 @@
+{
+  "commander": "Yi Seong-Gye",
+  "branches": [
+    {
+      "id": "piyade",
+      "name": "Piyade",
+      "color": "#f43f5e",
+      "nodes": [
+        { "id": "p1", "label": "Piyade Saldırısı", "rank": "1/1", "percent": "+8%", "x": 50, "y": 32, "connections": [] },
+        { "id": "p2", "label": "Piyade Sağlığı", "rank": "3/3", "percent": "+12%", "x": 38, "y": 20, "connections": ["p1"] },
+        { "id": "p3", "label": "Piyade Savunması", "rank": "3/3", "percent": "+12%", "x": 62, "y": 20, "connections": ["p1"] },
+        { "id": "p4", "label": "Zırh Kırma", "rank": "2/2", "percent": "+18%", "x": 28, "y": 8, "connections": ["p2"] },
+        { "id": "p5", "label": "Kalkan Ustası", "rank": "5/5", "percent": "+26%", "x": 72, "y": 8, "connections": ["p3"] }
+      ]
+    },
+    {
+      "id": "garnizon",
+      "name": "Garnizon",
+      "color": "#f59e0b",
+      "nodes": [
+        { "id": "g1", "label": "Garnizon Savunması", "rank": "1/1", "percent": "+10%", "x": 32, "y": 58, "connections": [] },
+        { "id": "g2", "label": "Sur Takviyesi", "rank": "3/3", "percent": "+15%", "x": 20, "y": 68, "connections": ["g1"] },
+        { "id": "g3", "label": "Şehir Savunması", "rank": "2/2", "percent": "+20%", "x": 10, "y": 80, "connections": ["g2"] },
+        { "id": "g4", "label": "Sancak Koruma", "rank": "3/3", "percent": "+14%", "x": 34, "y": 78, "connections": ["g2"] },
+        { "id": "g5", "label": "Direniş", "rank": "5/5", "percent": "+30%", "x": 20, "y": 92, "connections": ["g3"] }
+      ]
+    },
+    {
+      "id": "savunma",
+      "name": "Savunma",
+      "color": "#22d3ee",
+      "nodes": [
+        { "id": "s1", "label": "Genel Savunma", "rank": "1/1", "percent": "+10%", "x": 68, "y": 58, "connections": [] },
+        { "id": "s2", "label": "Can Rejenerasyonu", "rank": "3/3", "percent": "+15%", "x": 80, "y": 68, "connections": ["s1"] },
+        { "id": "s3", "label": "Yavaşlatma Direnci", "rank": "1/1", "percent": "+9%", "x": 90, "y": 80, "connections": ["s2"] },
+        { "id": "s4", "label": "Şans Kalkanı", "rank": "3/3", "percent": "+21%", "x": 66, "y": 78, "connections": ["s2"] },
+        { "id": "s5", "label": "Son Direniş", "rank": "3/3", "percent": "+24%", "x": 80, "y": 92, "connections": ["s3"] }
+      ]
+    }
+  ]
+}

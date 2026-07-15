@@ -1,0 +1,32 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-surface">
+  <div class="mx-auto max-w-6xl px-4 py-10 text-sm text-muted">
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <p class="font-display text-lg text-gradient">RoKGuides</p>
+        <p class="mt-2">Rise of Kingdoms için Türkçe rehber, komutan analizleri ve yetenek ağaçları.</p>
+      </div>
+      <div>
+        <p class="mb-2 font-medium text-foreground">Rehberler</p>
+        <ul class="space-y-1">
+          <li><a href="/baslangic-rehberi" class="hover:text-accent-cyan-light">Başlangıç Rehberi</a></li>
+          <li><a href="/komutanlar" class="hover:text-accent-cyan-light">Komutanlar</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="mb-2 font-medium text-foreground">Kurumsal</p>
+        <ul class="space-y-1">
+          <li><a href="/hakkimizda" class="hover:text-accent-cyan-light">Hakkımızda</a></li>
+          <li><a href="/iletisim" class="hover:text-accent-cyan-light">İletişim</a></li>
+          <li><a href="/gizlilik-politikasi" class="hover:text-accent-cyan-light">Gizlilik Politikası</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-8 border-t border-border pt-6 text-xs">
+      © {year} RoKGuides. Rise of Kingdoms, Lilith Games'e aittir. Bu site resmi bir Lilith Games ürünü değildir.
+    </p>
+  </div>
+</footer>

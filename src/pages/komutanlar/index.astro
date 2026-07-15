@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CommanderCard from '../../components/CommanderCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getCollection } from 'astro:content';
+
+const commanders = (await getCollection('commanders')).sort((a, b) => a.data.order - b.data.order);
+const eras: Array<{ id: 'kvk1' | 'kvk2' | 'kvk3'; label: string }> = [
+  { id: 'kvk1', label: 'KvK 1 Dönemi' },
+  { id: 'kvk2', label: 'KvK 2 Dönemi' },
+  { id: 'kvk3', label: 'KvK 3 Dönemi' },
+];
+---
+
+<BaseLayout
+  title="Komutanlar — KvK Dönemine Göre Tier Listesi"
+  description="Rise of Kingdoms komutanlarının KvK 1, KvK 2 ve KvK 3 dönemlerine göre tier analizleri, güçlü/zayıf yönleri ve yetenek ağaçları."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-display text-3xl font-bold text-foreground sm:text-4xl">Komutan Rehberi</h1>
+    <p class="mt-2 max-w-2xl text-muted">
+      Krallıklar Savaşı dönemine göre gruplanmış komutan analizleri. Her komutanın güçlü/zayıf yönlerini, en iyi
+      eşleşmelerini ve yetenek ağacı önceliklerini inceleyin.
+    </p>
+
+    {eras.map((era) => {
+      const eraCommanders = commanders.filter((c) => c.data.kvk === era.id);
+      if (eraCommanders.length === 0) return null;
+      return (
+        <section class="mt-12" id={era.id}>
+          <h2 class="font-display text-2xl font-semibold text-accent-purple-light">{era.label}</h2>
+          <div class="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {eraCommanders.map((c) => (
+              <CommanderCard
+                slug={c.slug}
+                name={c.data.name}
+                tier={c.data.tier}
+                troopType={c.data.troopType}
+                image={c.data.image}
+                summary={c.data.summary}
+              />
+            ))}
+          </div>
+        </section>
+      );
+    })}
+
+    <div class="mt-12">
+      <AdSlot label="Reklam alanı" />
+    </div>
+  </div>
+</BaseLayout>

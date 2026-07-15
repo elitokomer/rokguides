@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import CommanderLayout from '../../layouts/CommanderLayout.astro';
+import TalentTree from '../../components/TalentTree/TalentTree.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+export async function getStaticPaths() {
+  const commanders = await getCollection('commanders');
+  return commanders.map((commander) => ({
+    params: { slug: commander.slug },
+    props: { commander },
+  }));
+}
+
+const { commander } = Astro.props;
+const { Content } = await commander.render();
+
+const talentTreeModules = import.meta.glob('../../data/talent-trees/*.json', { eager: true }) as Record<
+  string,
+  { default: unknown }
+>;
+const talentTreeData = (talentTreeModules[`../../data/talent-trees/${commander.data.talentTree}.json`]
+  ?.default ?? talentTreeModules['../../data/talent-trees/_placeholder.json'].default) as import('../../components/TalentTree/talent-tree.types').TalentTreeData;
+---
+
+<CommanderLayout
+  name={commander.data.name}
+  tier={commander.data.tier}
+  troopType={commander.data.troopType}
+  rarity={commander.data.rarity}
+  kvk={commander.data.kvk}
+  image={commander.data.image}
+  summary={commander.data.summary}
+>
+  <Content />
+
+  {commander.data.bestPairings.length > 0 && (
+    <p class="not-prose mt-6 text-sm text-muted">
+      <span class="font-medium text-foreground">Önerilen eşleşmeler:</span> {commander.data.bestPairings.join(', ')}
+    </p>
+  )}
+
+  <div class="not-prose mt-12">
+    <h2 class="mb-4 font-display text-2xl font-semibold text-accent-purple-light">Yetenek Ağacı</h2>
+    <TalentTree data={talentTreeData} portraitSrc={commander.data.image} portraitAlt={commander.data.name} />
+  </div>
+
+  <div class="not-prose mt-12">
+    <AdSlot label="Reklam alanı" />
+  </div>
+</CommanderLayout>

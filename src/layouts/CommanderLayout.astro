@@ -1,0 +1,47 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { tierStyle } from '../lib/tierColor';
+
+interface Props {
+  name: string;
+  tier: string;
+  troopType: string;
+  rarity: string;
+  kvk: string;
+  image: string;
+  summary: string;
+}
+
+const { name, tier, troopType, rarity, kvk, image, summary } = Astro.props;
+const kvkLabel = kvk.replace('kvk', 'KvK ');
+const tc = tierStyle(tier);
+---
+
+<BaseLayout title={`${name} Rehberi — ${tier} ${troopType}`} description={summary} image={image}>
+  <div class="mx-auto max-w-4xl px-4 py-10">
+    <nav class="mb-6 text-sm text-muted">
+      <a href="/komutanlar" class="hover:text-accent-cyan-light">Komutanlar</a> / <span>{name}</span>
+    </nav>
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+      <img
+        src={image}
+        alt={name}
+        width="160"
+        height="160"
+        class="h-40 w-40 rounded-2xl border-2 border-accent-purple object-cover"
+      />
+      <div>
+        <p class="text-xs font-medium uppercase tracking-wide text-muted">{kvkLabel} Dönemi · {rarity}</p>
+        <h1 class="mt-1 font-display text-3xl font-bold text-foreground sm:text-4xl">{name}</h1>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <span class={`rounded-full px-3 py-1 text-sm font-bold ring-1 ${tc.bg} ${tc.text} ${tc.ring}`}>{tier} Tier</span>
+          <span class="rounded-full border border-accent-cyan/40 px-3 py-1 text-sm text-accent-cyan-light">{troopType}</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="prose prose-invert prose-headings:font-display prose-headings:text-accent-purple-light mt-10 max-w-none">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

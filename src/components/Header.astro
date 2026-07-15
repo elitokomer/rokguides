@@ -1,0 +1,41 @@
+---
+const navItems = [
+  { href: '/', label: 'Anasayfa' },
+  { href: '/baslangic-rehberi', label: 'Başlangıç Rehberi' },
+  { href: '/komutanlar', label: 'Komutanlar' },
+  { href: '/hakkimizda', label: 'Hakkımızda' },
+  { href: '/iletisim', label: 'İletişim' },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+    <a href="/" class="flex items-center gap-2 font-display text-xl font-bold text-gradient">
+      <img src="/assets/images/app_logo.png" alt="RoKGuides logosu" width="36" height="36" class="h-9 w-9" />
+      RoKGuides
+    </a>
+    <ul class="hidden gap-6 text-sm font-medium md:flex">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class={`transition-colors hover:text-accent-cyan-light ${currentPath === item.href ? 'text-accent-cyan-light' : 'text-foreground'}`}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <details class="md:hidden">
+      <summary class="cursor-pointer list-none rounded border border-border px-3 py-1.5 text-sm">Menü</summary>
+      <ul class="absolute left-0 right-0 mt-2 space-y-1 border-b border-border bg-background px-4 py-4">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="block py-1.5 text-sm hover:text-accent-cyan-light">{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </nav>
+</header>
