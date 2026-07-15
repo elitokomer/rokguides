@@ -1,0 +1,6 @@
+{
+  "builds": [
+    { "id": "barbarian-fort", "name": { "tr": "Barbar Kalesi", "en": "Barbarian Fort" }, "image": "/talent-trees/minamoto-no-yoshitsune-barbarian-fort.png" },
+    { "id": "openfield", "name": { "tr": "Açık Alan", "en": "Open Field" }, "image": "/talent-trees/minamoto-no-yoshitsune-openfield.png" }
+  ]
+}

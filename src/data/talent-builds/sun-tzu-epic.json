@@ -1,0 +1,7 @@
+{
+  "builds": [
+    { "id": "infantry", "name": { "tr": "Piyade", "en": "Infantry" }, "image": "/talent-trees/sun-tzu-epic-infantry.jpg" },
+    { "id": "garrison", "name": { "tr": "Garnizon", "en": "Garrison" }, "image": "/talent-trees/sun-tzu-epic-garrison.jpg" },
+    { "id": "openfield", "name": { "tr": "Açık Alan", "en": "Open Field" }, "image": "/talent-trees/sun-tzu-epic-openfield.jpg" }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "builds": [
+    { "id": "openfield", "name": { "tr": "Açık Alan", "en": "Open Field" }, "image": "/talent-trees/baibars-openfield.png" }
+  ]
+}

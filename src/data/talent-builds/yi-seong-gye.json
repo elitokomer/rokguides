@@ -1,0 +1,7 @@
+{
+  "builds": [
+    { "id": "defensive-archer", "name": { "tr": "Savunma Okçusu", "en": "Defensive Archer" }, "image": "/talent-trees/yi-seong-gye-defensive-archer.png" },
+    { "id": "city-swarm", "name": { "tr": "Şehir Savunması", "en": "City Defense" }, "image": "/talent-trees/yi-seong-gye-city-swarm.png" },
+    { "id": "rally-build", "name": { "tr": "Miting", "en": "Rally" }, "image": "/talent-trees/yi-seong-gye-rally-build.png" }
+  ]
+}

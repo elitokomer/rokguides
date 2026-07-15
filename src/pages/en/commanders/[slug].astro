@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import CommanderLayout from '../../../layouts/CommanderLayout.astro';
-import TalentTree from '../../../components/TalentTree/TalentTree.astro';
+import TalentBuilds from '../../../components/TalentBuilds.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import { t } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
   const commanders = await getCollection('commandersEn');
@@ -14,13 +15,13 @@ export async function getStaticPaths() {
 
 const { commander } = Astro.props;
 const { Content } = await commander.render();
+const dict = t('en');
 
-const talentTreeModules = import.meta.glob('../../../data/talent-trees-en/*.json', { eager: true }) as Record<
+const talentBuildModules = import.meta.glob('../../../data/talent-builds/*.json', { eager: true }) as Record<
   string,
-  { default: unknown }
+  { default: { builds: { id: string; name: { tr: string; en: string }; image: string }[] } }
 >;
-const talentTreeData = (talentTreeModules[`../../../data/talent-trees-en/${commander.data.talentTree}.json`]
-  ?.default ?? talentTreeModules['../../../data/talent-trees-en/_placeholder.json'].default) as import('../../../components/TalentTree/talent-tree.types').TalentTreeData;
+const talentBuilds = talentBuildModules[`../../../data/talent-builds/${commander.slug}.json`]?.default.builds ?? null;
 ---
 
 <CommanderLayout
@@ -43,8 +44,8 @@ const talentTreeData = (talentTreeModules[`../../../data/talent-trees-en/${comma
   )}
 
   <div class="not-prose mt-12">
-    <h2 class="mb-4 font-display text-2xl font-semibold text-accent-purple-light">Talent Tree</h2>
-    <TalentTree data={talentTreeData} portraitSrc={commander.data.image} portraitAlt={commander.data.name} lang="en" />
+    <h2 class="mb-4 font-display text-2xl font-semibold text-accent-purple-light">{dict.common.talentTree}</h2>
+    <TalentBuilds builds={talentBuilds} lang="en" comingSoonText={dict.common.talentComingSoon} />
   </div>
 
   <div class="not-prose mt-12">

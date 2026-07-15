@@ -26,6 +26,7 @@ export const ui = {
       talentTree: 'Yetenek Ağacı',
       era: 'Dönemi',
       talentTreeAriaSuffix: 'yetenek ağacı',
+      talentComingSoon: 'Bu komutan için yetenek ağacı yakında eklenecek.',
     },
     commanders: {
       title: 'Komutanlar — KvK Dönemine Göre Tier Listesi',
@@ -85,6 +86,7 @@ export const ui = {
       talentTree: 'Talent Tree',
       era: 'Era',
       talentTreeAriaSuffix: 'talent tree',
+      talentComingSoon: 'The talent tree for this commander is coming soon.',
     },
     commanders: {
       title: 'Commanders — Tier List by KvK Era',
