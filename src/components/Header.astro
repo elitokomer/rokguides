@@ -3,9 +3,10 @@ import { t, localizePath, type Lang } from '../i18n/ui';
 
 interface Props {
   lang?: Lang;
+  alternatePath?: string;
 }
 
-const { lang = 'tr' } = Astro.props;
+const { lang = 'tr', alternatePath } = Astro.props;
 const nav = t(lang).nav;
 
 const navItems = [
@@ -17,6 +18,9 @@ const navItems = [
   { href: localizePath('/iletisim', lang), label: nav.contact },
 ];
 const currentPath = Astro.url.pathname;
+
+const trHref = lang === 'tr' ? currentPath : (alternatePath ?? '/');
+const enHref = lang === 'en' ? currentPath : (alternatePath ?? '/en');
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
@@ -25,18 +29,34 @@ const currentPath = Astro.url.pathname;
       <img src="/assets/images/app_logo.png" alt={nav.logoAlt} width="36" height="36" class="h-9 w-9" />
       RoKGuides
     </a>
-    <ul class="hidden gap-6 text-sm font-medium md:flex">
-      {navItems.map((item) => (
-        <li>
-          <a
-            href={item.href}
-            class={`transition-colors hover:text-accent-cyan-light ${currentPath === item.href ? 'text-accent-cyan-light' : 'text-foreground'}`}
-          >
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div class="hidden items-center gap-6 md:flex">
+      <ul class="flex gap-6 text-sm font-medium">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`transition-colors hover:text-accent-cyan-light ${currentPath === item.href ? 'text-accent-cyan-light' : 'text-foreground'}`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="flex items-center overflow-hidden rounded-full border border-border text-xs font-semibold">
+        <a
+          href={trHref}
+          class={`px-2.5 py-1 transition-colors ${lang === 'tr' ? 'bg-accent-purple/20 text-accent-purple-light' : 'text-muted hover:text-foreground'}`}
+        >
+          TR
+        </a>
+        <a
+          href={enHref}
+          class={`px-2.5 py-1 transition-colors ${lang === 'en' ? 'bg-accent-purple/20 text-accent-purple-light' : 'text-muted hover:text-foreground'}`}
+        >
+          EN
+        </a>
+      </div>
+    </div>
     <details class="md:hidden">
       <summary class="cursor-pointer list-none rounded border border-border px-3 py-1.5 text-sm">{nav.menu}</summary>
       <ul class="absolute left-0 right-0 mt-2 space-y-1 border-b border-border bg-background px-4 py-4">
@@ -45,6 +65,20 @@ const currentPath = Astro.url.pathname;
             <a href={item.href} class="block py-1.5 text-sm hover:text-accent-cyan-light">{item.label}</a>
           </li>
         ))}
+        <li class="flex gap-2 pt-1">
+          <a
+            href={trHref}
+            class={`rounded-full border px-2.5 py-1 text-xs font-semibold ${lang === 'tr' ? 'border-accent-purple bg-accent-purple/20 text-accent-purple-light' : 'border-border text-muted'}`}
+          >
+            TR
+          </a>
+          <a
+            href={enHref}
+            class={`rounded-full border px-2.5 py-1 text-xs font-semibold ${lang === 'en' ? 'border-accent-purple bg-accent-purple/20 text-accent-purple-light' : 'border-border text-muted'}`}
+          >
+            EN
+          </a>
+        </li>
       </ul>
     </details>
   </nav>
