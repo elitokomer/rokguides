@@ -33,6 +33,13 @@ const tiers = tierOrder.filter((t) => commanders.some((c) => c.data.tier === t))
 
     <div class="mt-6 flex flex-col gap-3">
       <div class="flex flex-wrap items-center gap-2">
+        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">KvK Era</span>
+        <button type="button" data-kvk-filter="all" class="filter-btn is-active">All</button>
+        {eras.map((era) => (
+          <button type="button" data-kvk-filter={era.id} class="filter-btn">{era.id.replace('kvk', 'KVK')}</button>
+        ))}
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
         <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Troop Type</span>
         <button type="button" data-troop-filter="all" class="filter-btn is-active">All</button>
         {troopTypes.map((t) => (
@@ -61,6 +68,7 @@ const tiers = tierOrder.filter((t) => commanders.some((c) => c.data.tier === t))
                 name={c.data.name}
                 tier={c.data.tier}
                 troopType={c.data.troopType}
+                kvk={c.data.kvk}
                 image={c.data.image}
                 summary={c.data.summary}
                 lang="en"
@@ -101,24 +109,29 @@ const tiers = tierOrder.filter((t) => commanders.some((c) => c.data.tier === t))
 </style>
 
 <script>
+  const kvkButtons = document.querySelectorAll<HTMLButtonElement>('[data-kvk-filter]');
   const troopButtons = document.querySelectorAll<HTMLButtonElement>('[data-troop-filter]');
   const tierButtons = document.querySelectorAll<HTMLButtonElement>('[data-tier-filter]');
   const cards = document.querySelectorAll<HTMLAnchorElement>('a[data-troop][data-tier]');
   const eraSections = document.querySelectorAll<HTMLElement>('.era-section');
 
+  let activeKvk = 'all';
   let activeTroop = 'all';
   let activeTier = 'all';
 
   function applyFilters() {
     cards.forEach((card) => {
+      const matchesKvk = activeKvk === 'all' || card.dataset.kvk === activeKvk;
       const matchesTroop = activeTroop === 'all' || card.dataset.troop === activeTroop;
       const matchesTier = activeTier === 'all' || card.dataset.tier === activeTier;
-      card.classList.toggle('hidden', !(matchesTroop && matchesTier));
+      card.classList.toggle('hidden', !(matchesKvk && matchesTroop && matchesTier));
     });
 
     eraSections.forEach((section) => {
+      const sectionMatchesKvk = activeKvk === 'all' || section.id === activeKvk;
       const visibleCount = section.querySelectorAll('a[data-troop][data-tier]:not(.hidden)').length;
       const emptyMessage = section.querySelector<HTMLElement>('.empty-message');
+      section.classList.toggle('hidden', !sectionMatchesKvk);
       emptyMessage?.classList.toggle('hidden', visibleCount !== 0);
     });
   }
@@ -126,6 +139,14 @@ const tiers = tierOrder.filter((t) => commanders.some((c) => c.data.tier === t))
   function setActiveButton(buttons: NodeListOf<HTMLButtonElement>, target: HTMLButtonElement) {
     buttons.forEach((btn) => btn.classList.toggle('is-active', btn === target));
   }
+
+  kvkButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeKvk = btn.dataset.kvkFilter ?? 'all';
+      setActiveButton(kvkButtons, btn);
+      applyFilters();
+    });
+  });
 
   troopButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
