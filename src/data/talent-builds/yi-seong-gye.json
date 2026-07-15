@@ -1,7 +1,7 @@
 {
   "builds": [
-    { "id": "defensive-archer", "name": { "tr": "Okçu-Savunma (Açık Alan)", "en": "Defensive Archer" }, "image": "/talent-trees/yi-seong-gye-defensive-archer.png" },
-    { "id": "city-swarm", "name": { "tr": "Garnizon", "en": "City Defense" }, "image": "/talent-trees/yi-seong-gye-city-swarm.png" },
+    { "id": "defensive-archer", "name": { "tr": "Okçu-Savunma (Açık Alan)", "en": "Archer-Defense (Open Field)" }, "image": "/talent-trees/yi-seong-gye-defensive-archer.png" },
+    { "id": "city-swarm", "name": { "tr": "Garnizon", "en": "Garrison" }, "image": "/talent-trees/yi-seong-gye-city-swarm.png" },
     { "id": "rally-build", "name": { "tr": "Ralli", "en": "Rally" }, "image": "/talent-trees/yi-seong-gye-rally-build.png" }
   ]
 }
