@@ -1,5 +1,5 @@
 ---
-name: "Sun Tzu (Epik Klasik)"
+name: "Sun Tzu"
 kvk: kvk1
 tier: "A"
 troopType: "Piyade"

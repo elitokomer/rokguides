@@ -18,7 +18,7 @@ const { builds, lang = 'tr', comingSoonText } = Astro.props;
 
 {builds && builds.length > 0 ? (
   <div class="talent-builds-widget">
-    {builds.length > 1 && (
+    {builds.length > 1 ? (
       <div class="mb-5 flex flex-wrap justify-center gap-2">
         {builds.map((build, i) => (
           <button
@@ -30,6 +30,8 @@ const { builds, lang = 'tr', comingSoonText } = Astro.props;
           </button>
         ))}
       </div>
+    ) : (
+      <p class="build-tab-btn is-active mb-5 mx-auto w-fit">{builds[0].name[lang]}</p>
     )}
 
     {builds.map((build, i) => (
