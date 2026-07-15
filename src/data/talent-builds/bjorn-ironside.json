@@ -1,6 +1,6 @@
 {
   "builds": [
-    { "id": "rally", "name": { "tr": "Miting", "en": "Rally" }, "image": "/talent-trees/bjorn-ironside-rally.jpg" },
+    { "id": "rally", "name": { "tr": "Ralli", "en": "Rally" }, "image": "/talent-trees/bjorn-ironside-rally.jpg" },
     { "id": "openfield", "name": { "tr": "Açık Alan", "en": "Open Field" }, "image": "/talent-trees/bjorn-ironside-openfield.jpg" }
   ]
 }
