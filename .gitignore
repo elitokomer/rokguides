@@ -25,3 +25,7 @@ Thumbs.db
 # Optional: if using IDEs
 .vscode/
 .idea/
+
+# Wrangler
+.wrangler/
+.dev.vars
