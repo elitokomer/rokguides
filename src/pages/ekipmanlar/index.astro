@@ -37,7 +37,7 @@ const { levels, troopTypes, sets } = equipmentData;
     <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {troopTypes.map((troop) =>
         levels.map((level) => {
-          const set = sets.find((s) => s.troopType === troop && s.level === level.id);
+          const matches = sets.filter((s) => s.troopType === troop && s.level === level.id);
           return (
             <div
               class="equipment-card rounded-2xl border border-border bg-surface p-6"
@@ -48,8 +48,17 @@ const { levels, troopTypes, sets } = equipmentData;
                 <p class="text-xs font-medium uppercase tracking-wide text-accent-cyan-light">{troop}</p>
                 <h2 class="font-display text-lg font-semibold text-foreground">{level.label}</h2>
               </div>
-              {set ? (
-                <img src={set.image} alt={`${troop} ${level.label} ekipman seti`} class="mx-auto w-full max-w-[220px]" />
+              {matches.length > 0 ? (
+                <div class="grid gap-6" style={matches.length > 1 ? 'grid-template-columns: repeat(auto-fit, minmax(160px, 1fr))' : ''}>
+                  {matches.map((set) => (
+                    <div>
+                      {set.variantLabel && (
+                        <p class="mb-2 text-center text-xs font-semibold text-accent-purple-light">{set.variantLabel}</p>
+                      )}
+                      <img src={set.image} alt={`${troop} ${level.label} ekipman seti`} class="mx-auto w-full max-w-[220px]" />
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <p class="py-10 text-center text-sm text-muted">Bu set için içerik yakında eklenecek.</p>
               )}

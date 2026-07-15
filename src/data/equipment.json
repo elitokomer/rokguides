@@ -6,11 +6,14 @@
   ],
   "troopTypes": ["Piyade", "Okçu", "Süvari"],
   "sets": [
-    {
-      "id": "okcu-baslangic",
-      "troopType": "Okçu",
-      "level": "baslangic",
-      "image": "/equipment/okcu-baslangic.png"
-    }
+    { "id": "okcu-baslangic", "troopType": "Okçu", "level": "baslangic", "image": "/equipment/okcu-baslangic.png" },
+    { "id": "okcu-orta", "troopType": "Okçu", "level": "orta", "image": "/equipment/okcu-orta.png" },
+    { "id": "okcu-son", "troopType": "Okçu", "level": "son", "image": "/equipment/okcu-son.png" },
+    { "id": "piyade-baslangic", "troopType": "Piyade", "level": "baslangic", "image": "/equipment/piyade-baslangic.png" },
+    { "id": "piyade-orta", "troopType": "Piyade", "level": "orta", "image": "/equipment/piyade-orta.png" },
+    { "id": "piyade-son", "troopType": "Piyade", "level": "son", "image": "/equipment/piyade-son.png" },
+    { "id": "suvari-orta", "troopType": "Süvari", "level": "orta", "image": "/equipment/suvari-orta.png" },
+    { "id": "suvari-son-1", "troopType": "Süvari", "level": "son", "image": "/equipment/suvari-son-1.png", "variantLabel": "6'lı Set" },
+    { "id": "suvari-son-2", "troopType": "Süvari", "level": "son", "image": "/equipment/suvari-son-2.png", "variantLabel": "4'lü Set" }
   ]
 }
