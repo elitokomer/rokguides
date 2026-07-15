@@ -5,7 +5,7 @@ tier: "A"
 troopType: "Piyade"
 rarity: "Epik"
 image: "/commanders/sun-tzu-epic.jpg"
-talentTree: "_placeholder"
+talentTree: "sun-tzu-epic"
 summary: "Efsanevi komutanlara kafa tutan ve oyundaki tüm epik karakterlerin açık ara en iyisi olan, F2P oyuncularının göz bebeği."
 bestPairings: ["Bjorn Ironside", "Charles Martel"]
 order: 2

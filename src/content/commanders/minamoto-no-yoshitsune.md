@@ -4,7 +4,7 @@ kvk: kvk1
 tier: "A"
 troopType: "Süvari"
 rarity: "Efsanevi"
-image: "/commanders/minamoto-no-yoshitsune.jpg"
+image: "/commanders/minamoto-no-yoshitsune.png"
 talentTree: "_placeholder"
 summary: "VIP paketleriyle hızlıca fullemesi en kolay olan bu komutan, özellikle para yatıran oyuncuların KvK 1'deki en büyük silahıdır."
 bestPairings: ["Cao Cao", "Saladin"]

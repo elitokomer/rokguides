@@ -19,7 +19,7 @@ Güçlü yönlerinin başında, uzmanlık becerisi tamamlandığında kazandığ
 
 ## Yetenek Ağacı Önceliği
 
-Yetenek ağacında Piyade ve Savunma ağaçları öncelikli olmalıdır. Eğer şehir veya sancak savunulacaksa Garnizon ağacına puan ayrılabilir.
+Yetenek ağacında Okçu ve Savunma ağaçları öncelikli olmalıdır. Eğer şehir veya sancak savunulacaksa Garnizon ağacına puan ayrılabilir.
 
 ## Kullanım Senaryosu
 

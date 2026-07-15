@@ -1,0 +1,26 @@
+{
+  "levels": [
+    { "id": "baslangic", "label": "Başlangıç Seviyesi" },
+    { "id": "orta", "label": "Orta Seviye" },
+    { "id": "son", "label": "Son Seviye" }
+  ],
+  "troopTypes": ["Piyade", "Okçu", "Süvari"],
+  "sets": [
+    {
+      "id": "okcu-baslangic",
+      "troopType": "Okçu",
+      "level": "baslangic",
+      "note": "F2P oyuncular için erken oyunda okçu birliklerine yönelik dengeli bir başlangıç ekipman seti. Ağırlıklı olarak yeşil ve mavi parçalardan oluşur, tek mor parça genel hasarı belirgin şekilde artırır.",
+      "pieces": [
+        { "slot": "Miğfer", "rarity": "yesil" },
+        { "slot": "Zırh", "rarity": "mavi" },
+        { "slot": "Silah", "rarity": "mavi" },
+        { "slot": "Eldiven", "rarity": "mavi" },
+        { "slot": "Kemer", "rarity": "mavi" },
+        { "slot": "Kolye", "rarity": "mor" },
+        { "slot": "Sancak", "rarity": "yesil" },
+        { "slot": "Bot", "rarity": "yesil" }
+      ]
+    }
+  ]
+}

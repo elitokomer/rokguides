@@ -1,0 +1,109 @@
+{
+  "commander": "Sun Tzu (Epik)",
+  "builds": [
+    {
+      "id": "piyade",
+      "name": "Piyade Build",
+      "branches": [
+        {
+          "id": "piyade",
+          "name": "Piyade",
+          "color": "#f43f5e",
+          "nodes": [
+            { "id": "pi_root", "label": "Piyade Gücü", "rank": "1/1", "x": 50, "y": 32, "connections": [] },
+            { "id": "pi_l1", "label": "Piyade Saldırısı", "rank": "2/2", "x": 38, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_r1", "label": "Piyade Savunması", "rank": "2/2", "x": 62, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_l2", "label": "Güç Vuruşu", "rank": "3/3", "x": 27, "y": 19, "connections": ["pi_l1"] },
+            { "id": "pi_l3", "label": "Zırh Delme", "rank": "3/3", "x": 41, "y": 18, "connections": ["pi_l1"] },
+            { "id": "pi_r2", "label": "Alev Yarası", "rank": "3/3", "x": 59, "y": 18, "connections": ["pi_r1"] },
+            { "id": "pi_r3", "label": "Keskin Kılıç", "rank": "3/3", "x": 73, "y": 19, "connections": ["pi_r1"] },
+            { "id": "pi_l4", "label": "Zırh Ustası", "rank": "2/2", "x": 33, "y": 10, "connections": ["pi_l3"] },
+            { "id": "pi_r4", "label": "Savaş Azmi", "rank": "2/2", "x": 67, "y": 10, "connections": ["pi_r2"] },
+            { "id": "pi_l5", "label": "Demir Yürek", "rank": "4/4", "x": 25, "y": 3, "connections": ["pi_l4"] },
+            { "id": "pi_r5", "label": "Son Nefes", "rank": "4/4", "x": 75, "y": 3, "connections": ["pi_r4"] },
+            { "id": "pi_key", "label": "Savaş Çığlığı", "rank": "5/5", "x": 50, "y": 1, "connections": ["pi_l5", "pi_r5"] }
+          ]
+        },
+        {
+          "id": "garnizon",
+          "name": "Garnizon",
+          "color": "#f59e0b",
+          "nodes": []
+        },
+        {
+          "id": "beceri",
+          "name": "Beceri",
+          "color": "#22d3ee",
+          "nodes": [
+            { "id": "be_root", "label": "Beceri Gücü", "rank": "1/1", "x": 68, "y": 58, "connections": [] },
+            { "id": "be_1", "label": "Direniş Kırığı", "rank": "3/3", "x": 58, "y": 63, "connections": ["be_root"] },
+            { "id": "be_2", "label": "Manevra", "rank": "1/1", "x": 78, "y": 62, "connections": ["be_root"] },
+            { "id": "be_3", "label": "Kader Çarkı", "rank": "3/3", "x": 62, "y": 72, "connections": ["be_1"] },
+            { "id": "be_4", "label": "Strateji Kitabı", "rank": "3/3", "x": 70, "y": 68, "connections": ["be_1"] },
+            { "id": "be_5", "label": "Hızlı Yürüyüş", "rank": "2/2", "x": 85, "y": 68, "connections": ["be_2"] },
+            { "id": "be_6", "label": "Keskin Nişancı", "rank": "2/2", "x": 92, "y": 76, "connections": ["be_5"] },
+            { "id": "be_7", "label": "Kader Ustası", "rank": "3/3", "x": 57, "y": 82, "connections": ["be_3"] },
+            { "id": "be_8", "label": "Bilinmeyen Güç", "rank": "1/1", "x": 63, "y": 90, "connections": ["be_7"] },
+            { "id": "be_9", "label": "Son Darbe", "rank": "2/2", "x": 72, "y": 88, "connections": ["be_8"] },
+            { "id": "be_10", "label": "Kartal Gözü", "rank": "3/3", "x": 90, "y": 90, "connections": ["be_6"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garnizon",
+      "name": "Garnizon Build",
+      "branches": [
+        {
+          "id": "piyade",
+          "name": "Piyade",
+          "color": "#f43f5e",
+          "nodes": [
+            { "id": "pi_root", "label": "Piyade Gücü", "rank": "1/1", "x": 50, "y": 32, "connections": [] },
+            { "id": "pi_l1", "label": "Piyade Saldırısı", "rank": "2/2", "x": 38, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_r1", "label": "Piyade Savunması", "rank": "2/2", "x": 62, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_l2", "label": "Güç Vuruşu", "rank": "3/3", "x": 27, "y": 19, "connections": ["pi_l1"] },
+            { "id": "pi_l3", "label": "Zırh Delme", "rank": "3/3", "x": 41, "y": 18, "connections": ["pi_l1"] },
+            { "id": "pi_r2", "label": "Alev Yarası", "rank": "3/3", "x": 59, "y": 18, "connections": ["pi_r1"] },
+            { "id": "pi_r3", "label": "Keskin Kılıç", "rank": "3/3", "x": 73, "y": 19, "connections": ["pi_r1"] },
+            { "id": "pi_l4", "label": "Zırh Ustası", "rank": "2/2", "x": 33, "y": 10, "connections": ["pi_l3"] },
+            { "id": "pi_r4", "label": "Savaş Azmi", "rank": "2/2", "x": 67, "y": 10, "connections": ["pi_r2"] },
+            { "id": "pi_l5", "label": "Demir Yürek", "rank": "4/4", "x": 25, "y": 3, "connections": ["pi_l4"] },
+            { "id": "pi_r5", "label": "Son Nefes", "rank": "4/4", "x": 75, "y": 3, "connections": ["pi_r4"] },
+            { "id": "pi_key", "label": "Savaş Çığlığı", "rank": "5/5", "x": 50, "y": 1, "connections": ["pi_l5", "pi_r5"] }
+          ]
+        },
+        {
+          "id": "garnizon",
+          "name": "Garnizon",
+          "color": "#f59e0b",
+          "nodes": [
+            { "id": "g_root", "label": "Garnizon Gücü", "rank": "1/1", "x": 32, "y": 58, "connections": [] },
+            { "id": "g_1", "label": "Sur Nöbeti", "rank": "2/2", "x": 22, "y": 66, "connections": ["g_root"] },
+            { "id": "g_2a", "label": "Kalkan Duvarı", "rank": "3/3", "x": 12, "y": 72, "connections": ["g_1"] },
+            { "id": "g_2b", "label": "Garnizon Azmi", "rank": "3/3", "x": 27, "y": 76, "connections": ["g_1"] },
+            { "id": "g_3", "label": "Son Kale", "rank": "3/3", "x": 15, "y": 88, "connections": ["g_2a"] }
+          ]
+        },
+        {
+          "id": "beceri",
+          "name": "Beceri",
+          "color": "#22d3ee",
+          "nodes": [
+            { "id": "be_root", "label": "Beceri Gücü", "rank": "1/1", "x": 68, "y": 58, "connections": [] },
+            { "id": "be_1", "label": "Direniş Kırığı", "rank": "3/3", "x": 58, "y": 63, "connections": ["be_root"] },
+            { "id": "be_2", "label": "Manevra", "rank": "1/1", "x": 78, "y": 62, "connections": ["be_root"] },
+            { "id": "be_3", "label": "Kader Çarkı", "rank": "3/3", "x": 62, "y": 72, "connections": ["be_1"] },
+            { "id": "be_4", "label": "Strateji Kitabı", "rank": "3/3", "x": 70, "y": 68, "connections": ["be_1"] },
+            { "id": "be_5", "label": "Hızlı Yürüyüş", "rank": "2/2", "x": 85, "y": 68, "connections": ["be_2"] },
+            { "id": "be_6", "label": "Keskin Nişancı", "rank": "2/2", "x": 92, "y": 76, "connections": ["be_5"] },
+            { "id": "be_7", "label": "Kader Ustası", "rank": "3/3", "x": 57, "y": 82, "connections": ["be_3"] },
+            { "id": "be_8", "label": "Bilinmeyen Güç", "rank": "1/1", "x": 63, "y": 90, "connections": ["be_7"] },
+            { "id": "be_9", "label": "Son Darbe", "rank": "2/2", "x": 72, "y": 88, "connections": ["be_8"] },
+            { "id": "be_10", "label": "Kartal Gözü", "rank": "3/3", "x": 90, "y": 90, "connections": ["be_6"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

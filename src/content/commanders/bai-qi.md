@@ -27,7 +27,7 @@ En iyi eşleşmesi kesinlikle Sun Tzu (Prime) birincil, Bai Qi ikincil şeklinde
 
 ## Yetenek Ağacı Önceliği
 
-Yetenek ağacında ordunun başında duracağı durumlarda dayanıklılık ve hasar dengesini korumak adına Liderlik ve Beceri ağaçlarının sinerjisine odaklanılmalıdır.
+Yetenek ağacında ordunun başında duracağı durumlarda dayanıklılık ve hasar dengesini korumak adına Piyade ve Beceri ağaçlarının sinerjisine odaklanılmalıdır.
 
 ## Kullanım Senaryosu
 

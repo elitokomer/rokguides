@@ -4,7 +4,7 @@ kvk: kvk2
 tier: "B+"
 troopType: "Okçu"
 rarity: "Efsanevi"
-image: "/commanders/tomyris.jpg"
+image: "/commanders/tomyris.png"
 talentTree: "_placeholder"
 summary: "Edward'ın arkasını toplamak ve düşmana sinsi zehir yükleri bırakmak için tasarlanmış yardımcı bir efsanevi."
 bestPairings: ["Edward of Woodstock", "Yi Seong-Gye (YSG)"]

@@ -4,7 +4,7 @@ kvk: kvk1
 tier: "B+"
 troopType: "Piyade"
 rarity: "Epik"
-image: "/commanders/bjorn-ironside.jpg"
+image: "/commanders/bjorn-ironside.png"
 talentTree: "_placeholder"
 summary: "Sun Tzu'nun en sadık tamamlayıcısı olan Bjorn, erken aşamada piyade oyuncularına agresif bir oyun tarzı sunar."
 bestPairings: ["Sun Tzu (Epik)"]

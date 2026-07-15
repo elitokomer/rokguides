@@ -4,7 +4,7 @@ kvk: kvk2
 tier: "A-"
 troopType: "Piyade"
 rarity: "Efsanevi"
-image: "/commanders/constantine-i.jpg"
+image: "/commanders/constantine-i.png"
 talentTree: "_placeholder"
 summary: "Tamamen krallık savunması ve sancak koruma odaklı, bencil olmayan bir destek tankı."
 bestPairings: ["Charles Martel", "Joan of Arc"]

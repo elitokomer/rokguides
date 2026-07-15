@@ -4,7 +4,7 @@ kvk: kvk3
 tier: "S"
 troopType: "Piyade"
 rarity: "Efsanevi"
-image: "/commanders/guan-yu.jpg"
+image: "/commanders/guan-yu.png"
 talentTree: "_placeholder"
 summary: "Fetih sezonunun en eski ama eskimeyen açık alan liderlerinden biri."
 bestPairings: ["Alexander the Great", "Leonidas", "Liu Che"]

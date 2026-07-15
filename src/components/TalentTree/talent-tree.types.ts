@@ -15,7 +15,13 @@ export type TalentBranch = {
   nodes: TalentNode[];
 };
 
+export type TalentBuild = {
+  id: string;
+  name: string;
+  branches: TalentBranch[];
+};
+
 export type TalentTreeData = {
   commander: string;
-  branches: TalentBranch[];
+  builds: TalentBuild[];
 };

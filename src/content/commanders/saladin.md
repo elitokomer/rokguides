@@ -4,7 +4,7 @@ kvk: kvk2
 tier: "S"
 troopType: "Süvari"
 rarity: "Efsanevi"
-image: "/commanders/saladin.jpg"
+image: "/commanders/saladin.png"
 talentTree: "_placeholder"
 summary: "Süvarilerin kırılgan ve hassas yapısını kökten değiştiren, onlara hak ettikleri tanklığı sunan sarsılmaz bir lider."
 bestPairings: ["Yi Seong-Gye (YSG)", "Minamoto no Yoshitsune"]

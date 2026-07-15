@@ -4,7 +4,7 @@ kvk: kvk2
 tier: "A"
 troopType: "Okçu"
 rarity: "Efsanevi"
-image: "/commanders/edward-of-woodstock.jpg"
+image: "/commanders/edward-of-woodstock.png"
 talentTree: "_placeholder"
 summary: "KvK 2 döneminde yüksek ödeme yapan (P2W) okçu oyuncularının bir numaralı miting ve açık alan silahı."
 bestPairings: ["Yi Seong-Gye (YSG)"]
