@@ -8,7 +8,8 @@
   "sets": [
     { "id": "okcu-baslangic", "troopType": "Okçu", "level": "baslangic", "image": "/equipment/okcu-baslangic.png" },
     { "id": "okcu-orta", "troopType": "Okçu", "level": "orta", "image": "/equipment/okcu-orta.png" },
-    { "id": "okcu-son", "troopType": "Okçu", "level": "son", "image": "/equipment/okcu-son.png" },
+    { "id": "okcu-son-1", "troopType": "Okçu", "level": "son", "image": "/equipment/okcu-son-1.png", "variantLabel": "6'lı Set" },
+    { "id": "okcu-son-2", "troopType": "Okçu", "level": "son", "image": "/equipment/okcu-son-2.png", "variantLabel": "4'lü Set + 2'li Liderlik Bonusu" },
     { "id": "piyade-baslangic", "troopType": "Piyade", "level": "baslangic", "image": "/equipment/piyade-baslangic.png" },
     { "id": "piyade-orta", "troopType": "Piyade", "level": "orta", "image": "/equipment/piyade-orta.png" },
     { "id": "piyade-son", "troopType": "Piyade", "level": "son", "image": "/equipment/piyade-son.png" },
