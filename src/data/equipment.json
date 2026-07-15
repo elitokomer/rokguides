@@ -12,6 +12,7 @@
     { "id": "piyade-baslangic", "troopType": "Piyade", "level": "baslangic", "image": "/equipment/piyade-baslangic.png" },
     { "id": "piyade-orta", "troopType": "Piyade", "level": "orta", "image": "/equipment/piyade-orta.png" },
     { "id": "piyade-son", "troopType": "Piyade", "level": "son", "image": "/equipment/piyade-son.png" },
+    { "id": "suvari-baslangic", "troopType": "Süvari", "level": "baslangic", "image": "/equipment/suvari-baslangic.png" },
     { "id": "suvari-orta", "troopType": "Süvari", "level": "orta", "image": "/equipment/suvari-orta.png" },
     { "id": "suvari-son-1", "troopType": "Süvari", "level": "son", "image": "/equipment/suvari-son-1.png", "variantLabel": "6'lı Set" },
     { "id": "suvari-son-2", "troopType": "Süvari", "level": "son", "image": "/equipment/suvari-son-2.png", "variantLabel": "4'lü Set" }
