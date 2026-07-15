@@ -18,7 +18,7 @@ const {
   lang = 'tr',
   alternatePath,
 } = Astro.props;
-const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://rokguides.com';
+const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://rokguides.xyz';
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
 const fullTitle = title.includes('RoKGuides') ? title : `${title} | RoKGuides`;
 

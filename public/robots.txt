@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rokguides.com/sitemap.xml
+Sitemap: https://rokguides.xyz/sitemap.xml

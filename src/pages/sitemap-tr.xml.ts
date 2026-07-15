@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async ({ site }) => {
-  const base = site?.toString().replace(/\/$/, '') ?? 'https://rokguides.com';
+  const base = site?.toString().replace(/\/$/, '') ?? 'https://rokguides.xyz';
 
   const staticPaths = [
     '',

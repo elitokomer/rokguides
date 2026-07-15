@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async ({ site }) => {
-  const base = site?.toString().replace(/\/$/, '') ?? 'https://rokguides.com';
+  const base = site?.toString().replace(/\/$/, '') ?? 'https://rokguides.xyz';
 
   const sitemaps = ['sitemap-tr.xml', 'sitemap-en.xml'];
 
