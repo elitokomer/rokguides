@@ -1,26 +1,44 @@
 ---
+import type { Lang } from '../i18n/ui';
+
 interface Props {
   title: string;
   description: string;
   image?: string;
   canonicalPath?: string;
+  lang?: Lang;
+  alternatePath?: string;
 }
 
-const { title, description, image = '/assets/images/app_logo.png', canonicalPath = Astro.url.pathname } = Astro.props;
+const {
+  title,
+  description,
+  image = '/assets/images/app_logo.png',
+  canonicalPath = Astro.url.pathname,
+  lang = 'tr',
+  alternatePath,
+} = Astro.props;
 const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? 'https://rokguides.com';
 const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
 const fullTitle = title.includes('RoKGuides') ? title : `${title} | RoKGuides`;
+
+const trPath = lang === 'tr' ? canonicalPath : alternatePath;
+const enPath = lang === 'en' ? canonicalPath : alternatePath;
 ---
 
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalUrl} />
+{trPath && <link rel="alternate" hreflang="tr" href={new URL(trPath, siteUrl).toString()} />}
+{enPath && <link rel="alternate" hreflang="en" href={new URL(enPath, siteUrl).toString()} />}
+{trPath && <link rel="alternate" hreflang="x-default" href={new URL(trPath, siteUrl).toString()} />}
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, siteUrl).toString()} />
 <meta property="og:url" content={canonicalUrl} />
+<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'tr_TR'} />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />

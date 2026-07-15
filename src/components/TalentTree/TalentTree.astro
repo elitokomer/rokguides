@@ -1,13 +1,16 @@
 ---
 import type { TalentTreeData } from './talent-tree.types';
+import { t, type Lang } from '../../i18n/ui';
 
 interface Props {
   data: TalentTreeData;
   portraitSrc: string;
   portraitAlt: string;
+  lang?: Lang;
 }
 
-const { data, portraitSrc, portraitAlt } = Astro.props;
+const { data, portraitSrc, portraitAlt, lang = 'tr' } = Astro.props;
+const ariaSuffix = t(lang).common.talentTreeAriaSuffix;
 ---
 
 <div class="talent-tree-widget">
@@ -28,7 +31,7 @@ const { data, portraitSrc, portraitAlt } = Astro.props;
   {data.builds.map((build, i) => (
     <div class="build-panel" data-build-panel={build.id} style={i === 0 ? '' : 'display:none'}>
       <div class="relative mx-auto aspect-square w-full max-w-2xl">
-        <svg viewBox="0 0 100 100" class="h-full w-full" role="img" aria-label={`${data.commander} - ${build.name} yetenek ağacı`}>
+        <svg viewBox="0 0 100 100" class="h-full w-full" role="img" aria-label={`${data.commander} - ${build.name} ${ariaSuffix}`}>
           {build.branches.map((branch) => (
             <g>
               {branch.nodes.map((node) =>

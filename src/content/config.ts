@@ -16,4 +16,20 @@ const commanders = defineCollection({
   }),
 });
 
-export const collections = { commanders };
+const commandersEn = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(),
+    kvk: z.enum(['kvk1', 'kvk2', 'kvk3']),
+    tier: z.string(),
+    troopType: z.enum(['Infantry', 'Cavalry', 'Archers', 'Leadership', 'Siege']),
+    rarity: z.enum(['Legendary', 'Epic']).default('Legendary'),
+    image: z.string(),
+    talentTree: z.string().default('_placeholder'),
+    summary: z.string(),
+    bestPairings: z.array(z.string()).default([]),
+    order: z.number().default(0),
+  }),
+});
+
+export const collections = { commanders, commandersEn };

@@ -1,4 +1,12 @@
 ---
+import { t, localizePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'tr' } = Astro.props;
+const dict = t(lang);
 const year = new Date().getFullYear();
 ---
 
@@ -7,27 +15,27 @@ const year = new Date().getFullYear();
     <div class="grid gap-8 md:grid-cols-3">
       <div>
         <p class="font-display text-lg text-gradient">RoKGuides</p>
-        <p class="mt-2">Rise of Kingdoms için Türkçe rehber, komutan analizleri ve yetenek ağaçları.</p>
+        <p class="mt-2">{dict.footer.tagline}</p>
       </div>
       <div>
-        <p class="mb-2 font-medium text-foreground">Rehberler</p>
+        <p class="mb-2 font-medium text-foreground">{dict.footer.guides}</p>
         <ul class="space-y-1">
-          <li><a href="/baslangic-rehberi" class="hover:text-accent-cyan-light">Başlangıç Rehberi</a></li>
-          <li><a href="/komutanlar" class="hover:text-accent-cyan-light">Komutanlar</a></li>
-          <li><a href="/ekipmanlar" class="hover:text-accent-cyan-light">Ekipmanlar</a></li>
+          <li><a href={localizePath('/baslangic-rehberi', lang)} class="hover:text-accent-cyan-light">{dict.nav.gettingStarted}</a></li>
+          <li><a href={localizePath('/komutanlar', lang)} class="hover:text-accent-cyan-light">{dict.nav.commanders}</a></li>
+          <li><a href={localizePath('/ekipmanlar', lang)} class="hover:text-accent-cyan-light">{dict.nav.equipment}</a></li>
         </ul>
       </div>
       <div>
-        <p class="mb-2 font-medium text-foreground">Kurumsal</p>
+        <p class="mb-2 font-medium text-foreground">{dict.footer.corporate}</p>
         <ul class="space-y-1">
-          <li><a href="/hakkimizda" class="hover:text-accent-cyan-light">Hakkımızda</a></li>
-          <li><a href="/iletisim" class="hover:text-accent-cyan-light">İletişim</a></li>
-          <li><a href="/gizlilik-politikasi" class="hover:text-accent-cyan-light">Gizlilik Politikası</a></li>
+          <li><a href={localizePath('/hakkimizda', lang)} class="hover:text-accent-cyan-light">{dict.nav.about}</a></li>
+          <li><a href={localizePath('/iletisim', lang)} class="hover:text-accent-cyan-light">{dict.nav.contact}</a></li>
+          <li><a href={localizePath('/gizlilik-politikasi', lang)} class="hover:text-accent-cyan-light">{dict.footer.privacyPolicy}</a></li>
         </ul>
       </div>
     </div>
     <p class="mt-8 border-t border-border pt-6 text-xs">
-      © {year} RoKGuides. Rise of Kingdoms, Lilith Games'e aittir. Bu site resmi bir Lilith Games ürünü değildir.
+      {dict.footer.copyright(year)}
     </p>
   </div>
 </footer>

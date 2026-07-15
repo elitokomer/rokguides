@@ -1,5 +1,6 @@
 ---
 import { tierStyle } from '../lib/tierColor';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   slug: string;
@@ -8,14 +9,16 @@ interface Props {
   troopType: string;
   image: string;
   summary: string;
+  lang?: Lang;
 }
 
-const { slug, name, tier, troopType, image, summary } = Astro.props;
+const { slug, name, tier, troopType, image, summary, lang = 'tr' } = Astro.props;
 const tc = tierStyle(tier);
+const href = lang === 'en' ? `/en/commanders/${slug}` : `/komutanlar/${slug}`;
 ---
 
 <a
-  href={`/komutanlar/${slug}`}
+  href={href}
   data-troop={troopType}
   data-tier={tier}
   class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-all hover:border-accent-purple/60 hover:shadow-[0_0_24px_-6px_rgba(139,92,246,0.5)]"

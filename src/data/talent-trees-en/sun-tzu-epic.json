@@ -1,0 +1,109 @@
+{
+  "commander": "Sun Tzu (Classic Epic)",
+  "builds": [
+    {
+      "id": "infantry",
+      "name": "Infantry Build",
+      "branches": [
+        {
+          "id": "infantry",
+          "name": "Infantry",
+          "color": "#f43f5e",
+          "nodes": [
+            { "id": "pi_root", "label": "Infantry Power", "rank": "1/1", "x": 50, "y": 32, "connections": [] },
+            { "id": "pi_l1", "label": "Infantry Attack", "rank": "2/2", "x": 38, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_r1", "label": "Infantry Defense", "rank": "2/2", "x": 62, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_l2", "label": "Power Strike", "rank": "3/3", "x": 27, "y": 19, "connections": ["pi_l1"] },
+            { "id": "pi_l3", "label": "Armor Piercing", "rank": "3/3", "x": 41, "y": 18, "connections": ["pi_l1"] },
+            { "id": "pi_r2", "label": "Flame Wound", "rank": "3/3", "x": 59, "y": 18, "connections": ["pi_r1"] },
+            { "id": "pi_r3", "label": "Sharp Blade", "rank": "3/3", "x": 73, "y": 19, "connections": ["pi_r1"] },
+            { "id": "pi_l4", "label": "Armor Mastery", "rank": "2/2", "x": 33, "y": 10, "connections": ["pi_l3"] },
+            { "id": "pi_r4", "label": "Battle Resolve", "rank": "2/2", "x": 67, "y": 10, "connections": ["pi_r2"] },
+            { "id": "pi_l5", "label": "Iron Heart", "rank": "4/4", "x": 25, "y": 3, "connections": ["pi_l4"] },
+            { "id": "pi_r5", "label": "Last Breath", "rank": "4/4", "x": 75, "y": 3, "connections": ["pi_r4"] },
+            { "id": "pi_key", "label": "War Cry", "rank": "5/5", "x": 50, "y": 1, "connections": ["pi_l5", "pi_r5"] }
+          ]
+        },
+        {
+          "id": "garrison",
+          "name": "Garrison",
+          "color": "#f59e0b",
+          "nodes": []
+        },
+        {
+          "id": "skill",
+          "name": "Skill",
+          "color": "#22d3ee",
+          "nodes": [
+            { "id": "be_root", "label": "Skill Power", "rank": "1/1", "x": 68, "y": 58, "connections": [] },
+            { "id": "be_1", "label": "Resistance Break", "rank": "3/3", "x": 58, "y": 63, "connections": ["be_root"] },
+            { "id": "be_2", "label": "Maneuver", "rank": "1/1", "x": 78, "y": 62, "connections": ["be_root"] },
+            { "id": "be_3", "label": "Wheel of Fate", "rank": "3/3", "x": 62, "y": 72, "connections": ["be_1"] },
+            { "id": "be_4", "label": "Book of Strategy", "rank": "3/3", "x": 70, "y": 68, "connections": ["be_1"] },
+            { "id": "be_5", "label": "Quick March", "rank": "2/2", "x": 85, "y": 68, "connections": ["be_2"] },
+            { "id": "be_6", "label": "Sharpshooter", "rank": "2/2", "x": 92, "y": 76, "connections": ["be_5"] },
+            { "id": "be_7", "label": "Master of Fate", "rank": "3/3", "x": 57, "y": 82, "connections": ["be_3"] },
+            { "id": "be_8", "label": "Unknown Power", "rank": "1/1", "x": 63, "y": 90, "connections": ["be_7"] },
+            { "id": "be_9", "label": "Final Blow", "rank": "2/2", "x": 72, "y": 88, "connections": ["be_8"] },
+            { "id": "be_10", "label": "Eagle Eye", "rank": "3/3", "x": 90, "y": 90, "connections": ["be_6"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garrison",
+      "name": "Garrison Build",
+      "branches": [
+        {
+          "id": "infantry",
+          "name": "Infantry",
+          "color": "#f43f5e",
+          "nodes": [
+            { "id": "pi_root", "label": "Infantry Power", "rank": "1/1", "x": 50, "y": 32, "connections": [] },
+            { "id": "pi_l1", "label": "Infantry Attack", "rank": "2/2", "x": 38, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_r1", "label": "Infantry Defense", "rank": "2/2", "x": 62, "y": 25, "connections": ["pi_root"] },
+            { "id": "pi_l2", "label": "Power Strike", "rank": "3/3", "x": 27, "y": 19, "connections": ["pi_l1"] },
+            { "id": "pi_l3", "label": "Armor Piercing", "rank": "3/3", "x": 41, "y": 18, "connections": ["pi_l1"] },
+            { "id": "pi_r2", "label": "Flame Wound", "rank": "3/3", "x": 59, "y": 18, "connections": ["pi_r1"] },
+            { "id": "pi_r3", "label": "Sharp Blade", "rank": "3/3", "x": 73, "y": 19, "connections": ["pi_r1"] },
+            { "id": "pi_l4", "label": "Armor Mastery", "rank": "2/2", "x": 33, "y": 10, "connections": ["pi_l3"] },
+            { "id": "pi_r4", "label": "Battle Resolve", "rank": "2/2", "x": 67, "y": 10, "connections": ["pi_r2"] },
+            { "id": "pi_l5", "label": "Iron Heart", "rank": "4/4", "x": 25, "y": 3, "connections": ["pi_l4"] },
+            { "id": "pi_r5", "label": "Last Breath", "rank": "4/4", "x": 75, "y": 3, "connections": ["pi_r4"] },
+            { "id": "pi_key", "label": "War Cry", "rank": "5/5", "x": 50, "y": 1, "connections": ["pi_l5", "pi_r5"] }
+          ]
+        },
+        {
+          "id": "garrison",
+          "name": "Garrison",
+          "color": "#f59e0b",
+          "nodes": [
+            { "id": "g_root", "label": "Garrison Power", "rank": "1/1", "x": 32, "y": 58, "connections": [] },
+            { "id": "g_1", "label": "Wall Watch", "rank": "2/2", "x": 22, "y": 66, "connections": ["g_root"] },
+            { "id": "g_2a", "label": "Shield Wall", "rank": "3/3", "x": 12, "y": 72, "connections": ["g_1"] },
+            { "id": "g_2b", "label": "Garrison Resolve", "rank": "3/3", "x": 27, "y": 76, "connections": ["g_1"] },
+            { "id": "g_3", "label": "Last Stand Fortress", "rank": "3/3", "x": 15, "y": 88, "connections": ["g_2a"] }
+          ]
+        },
+        {
+          "id": "skill",
+          "name": "Skill",
+          "color": "#22d3ee",
+          "nodes": [
+            { "id": "be_root", "label": "Skill Power", "rank": "1/1", "x": 68, "y": 58, "connections": [] },
+            { "id": "be_1", "label": "Resistance Break", "rank": "3/3", "x": 58, "y": 63, "connections": ["be_root"] },
+            { "id": "be_2", "label": "Maneuver", "rank": "1/1", "x": 78, "y": 62, "connections": ["be_root"] },
+            { "id": "be_3", "label": "Wheel of Fate", "rank": "3/3", "x": 62, "y": 72, "connections": ["be_1"] },
+            { "id": "be_4", "label": "Book of Strategy", "rank": "3/3", "x": 70, "y": 68, "connections": ["be_1"] },
+            { "id": "be_5", "label": "Quick March", "rank": "2/2", "x": 85, "y": 68, "connections": ["be_2"] },
+            { "id": "be_6", "label": "Sharpshooter", "rank": "2/2", "x": 92, "y": 76, "connections": ["be_5"] },
+            { "id": "be_7", "label": "Master of Fate", "rank": "3/3", "x": 57, "y": 82, "connections": ["be_3"] },
+            { "id": "be_8", "label": "Unknown Power", "rank": "1/1", "x": 63, "y": 90, "connections": ["be_7"] },
+            { "id": "be_9", "label": "Final Blow", "rank": "2/2", "x": 72, "y": 88, "connections": ["be_8"] },
+            { "id": "be_10", "label": "Eagle Eye", "rank": "3/3", "x": 90, "y": 90, "connections": ["be_6"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

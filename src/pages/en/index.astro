@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollReveal from '../../components/ScrollReveal.astro';
+import CommanderCard from '../../components/CommanderCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getCollection } from 'astro:content';
+
+const featured = (await getCollection('commandersEn'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const tips = [
+  {
+    title: 'Choose the Chinese Civilization',
+    body: 'If you plan to play free to play (F2P), choosing the Chinese civilization when you start is recommended. China offers balanced economic and military bonuses, building a strong foundation in the early game.',
+  },
+  {
+    title: 'Prioritize the Town Hall',
+    body: 'The first and most important building to upgrade is the Town Hall. Every other building\'s level is capped by the Town Hall level, so it is the key to your overall progress.',
+  },
+  {
+    title: "Don't Attack Other Players' Cities",
+    body: 'Attacking other players\' cities early in the game creates unnecessary hostility and wastes your resources. Grow safely by targeting barbarians and barbarian forts instead.',
+  },
+  {
+    title: 'Join an Active Alliance',
+    body: 'Joining an active, cooperative alliance is critical for both protection and fast growth. Alliance help, tech contributions, and shared defense are the backbone of the early game.',
+  },
+];
+---
+
+<BaseLayout
+  title="RoKGuides — Rise of Kingdoms Strategy Hub"
+  description="A Rise of Kingdoms guide with a beginner's guide, commander analyses, and tier lists by KvK era."
+  lang="en"
+  alternatePath="/"
+>
+  <section class="relative overflow-hidden border-b border-border bg-surface">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-20 text-center">
+      <img
+        src="/assets/images/app_logo.png"
+        alt="RoKGuides logo"
+        width="120"
+        height="120"
+        class="scroll-reveal h-28 w-28"
+      />
+      <h1 class="font-display text-4xl font-bold text-foreground sm:text-5xl">
+        The <span class="text-gradient">Strategy Hub</span> for Rise of Kingdoms
+      </h1>
+      <p class="max-w-2xl text-lg text-muted">
+        From a beginner's guide to commander analyses across the KvK 1, KvK 2, and KvK 3 eras, talent trees, and best
+        pairings — everything you need to grow your kingdom is here.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/en/getting-started" class="rounded-lg bg-accent-purple px-6 py-3 font-semibold text-white hover:bg-accent-purple-light">
+          Getting Started Guide
+        </a>
+        <a href="/en/commanders" class="rounded-lg border border-accent-cyan px-6 py-3 font-semibold text-accent-cyan-light hover:bg-accent-cyan/10">
+          Browse Commanders
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16">
+    <h2 class="font-display text-2xl font-semibold text-foreground sm:text-3xl">For New Players</h2>
+    <div class="mt-6 grid gap-5 sm:grid-cols-2">
+      {tips.map((tip) => (
+        <ScrollReveal class="rounded-2xl border border-border bg-surface p-6">
+          <h3 class="font-display text-lg text-accent-purple-light">{tip.title}</h3>
+          <p class="mt-2 text-sm text-muted">{tip.body}</p>
+        </ScrollReveal>
+      ))}
+    </div>
+    <a href="/en/getting-started" class="mt-6 inline-block text-sm font-medium text-accent-cyan-light hover:underline">
+      Read the full getting started guide →
+    </a>
+  </section>
+
+  <section class="border-t border-border bg-surface">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <h2 class="font-display text-2xl font-semibold text-foreground sm:text-3xl">Featured Commanders</h2>
+      <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {featured.map((c) => (
+          <CommanderCard
+            slug={c.slug}
+            name={c.data.name}
+            tier={c.data.tier}
+            troopType={c.data.troopType}
+            image={c.data.image}
+            summary={c.data.summary}
+            lang="en"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <AdSlot label="Advertisement" />
+  </div>
+</BaseLayout>

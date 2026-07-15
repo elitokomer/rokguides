@@ -1,34 +1,38 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import AdSlot from '../../components/AdSlot.astro';
-import equipmentData from '../../data/equipment.json';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import equipmentData from '../../../data/equipment.json';
+import { t } from '../../../i18n/ui';
 
-const { levels, troopTypes, sets } = equipmentData;
+const { troopTypes, sets } = equipmentData;
+const dict = t('en').equipment;
+const levels = dict.levels;
 ---
 
 <BaseLayout
-  title="Ekipmanlar — Birlik Tipine Göre Ekipman Setleri"
-  description="Rise of Kingdoms'ta piyade, okçu ve süvari birlikleri için başlangıç, orta ve son seviye ekipman set önerileri."
-  alternatePath="/en/equipment"
+  title="Equipment — Gear Sets by Troop Type"
+  description="Beginner, intermediate, and endgame equipment set recommendations for infantry, archer, and cavalry troops in Rise of Kingdoms."
+  lang="en"
+  alternatePath="/ekipmanlar"
 >
   <div class="mx-auto max-w-6xl px-4 py-10">
-    <h1 class="font-display text-3xl font-bold text-foreground sm:text-4xl">Ekipmanlar</h1>
+    <h1 class="font-display text-3xl font-bold text-foreground sm:text-4xl">Equipment</h1>
     <p class="mt-2 max-w-2xl text-muted">
-      Birlik tipine ve oyun seviyenize göre önerilen ekipman setleri. Her set 8 parçadan oluşur; parça rengi
-      ekipmanın nadirliğini gösterir.
+      Recommended equipment sets by troop type and game stage. Each set consists of 8 pieces; piece color indicates
+      equipment rarity.
     </p>
 
     <div class="mt-6 flex flex-col gap-3">
       <div class="flex flex-wrap items-center gap-2">
-        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Birlik Tipi</span>
-        <button type="button" data-troop-filter="all" class="filter-btn is-active">Tümü</button>
+        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Troop Type</span>
+        <button type="button" data-troop-filter="all" class="filter-btn is-active">All</button>
         {troopTypes.map((t) => (
-          <button type="button" data-troop-filter={t} class="filter-btn">{t}</button>
+          <button type="button" data-troop-filter={t} class="filter-btn">{dict.troopTypeLabels[t] ?? t}</button>
         ))}
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Seviye</span>
-        <button type="button" data-level-filter="all" class="filter-btn is-active">Tümü</button>
+        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Level</span>
+        <button type="button" data-level-filter="all" class="filter-btn is-active">All</button>
         {levels.map((l) => (
           <button type="button" data-level-filter={l.id} class="filter-btn">{l.label}</button>
         ))}
@@ -46,7 +50,7 @@ const { levels, troopTypes, sets } = equipmentData;
               data-level={level.id}
             >
               <div class="mb-4 text-center">
-                <p class="text-xs font-medium uppercase tracking-wide text-accent-cyan-light">{troop}</p>
+                <p class="text-xs font-medium uppercase tracking-wide text-accent-cyan-light">{dict.troopTypeLabels[troop] ?? troop}</p>
                 <h2 class="font-display text-lg font-semibold text-foreground">{level.label}</h2>
               </div>
               {matches.length > 0 ? (
@@ -54,11 +58,11 @@ const { levels, troopTypes, sets } = equipmentData;
                   {matches.map((set) => (
                     <div>
                       {set.variantLabel && (
-                        <p class="mb-2 text-center text-xs font-semibold text-accent-purple-light">{set.variantLabel}</p>
+                        <p class="mb-2 text-center text-xs font-semibold text-accent-purple-light">{dict.variantLabels[set.variantLabel] ?? set.variantLabel}</p>
                       )}
                       <img
                         src={set.image}
-                        alt={`${troop} ${level.label} ekipman seti`}
+                        alt={`${dict.troopTypeLabels[troop] ?? troop} ${level.label} equipment set`}
                         width="320"
                         height="660"
                         class="mx-auto w-full max-w-[220px]"
@@ -67,7 +71,7 @@ const { levels, troopTypes, sets } = equipmentData;
                   ))}
                 </div>
               ) : (
-                <p class="py-10 text-center text-sm text-muted">Bu set için içerik yakında eklenecek.</p>
+                <p class="py-10 text-center text-sm text-muted">{dict.comingSoon}</p>
               )}
             </div>
           );
@@ -76,7 +80,7 @@ const { levels, troopTypes, sets } = equipmentData;
     </div>
 
     <div class="mt-12">
-      <AdSlot label="Reklam alanı" />
+      <AdSlot label="Advertisement" />
     </div>
   </div>
 </BaseLayout>

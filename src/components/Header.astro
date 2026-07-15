@@ -1,19 +1,28 @@
 ---
+import { t, localizePath, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'tr' } = Astro.props;
+const nav = t(lang).nav;
+
 const navItems = [
-  { href: '/', label: 'Anasayfa' },
-  { href: '/baslangic-rehberi', label: 'Başlangıç Rehberi' },
-  { href: '/komutanlar', label: 'Komutanlar' },
-  { href: '/ekipmanlar', label: 'Ekipmanlar' },
-  { href: '/hakkimizda', label: 'Hakkımızda' },
-  { href: '/iletisim', label: 'İletişim' },
+  { href: localizePath('/', lang), label: nav.home },
+  { href: localizePath('/baslangic-rehberi', lang), label: nav.gettingStarted },
+  { href: localizePath('/komutanlar', lang), label: nav.commanders },
+  { href: localizePath('/ekipmanlar', lang), label: nav.equipment },
+  { href: localizePath('/hakkimizda', lang), label: nav.about },
+  { href: localizePath('/iletisim', lang), label: nav.contact },
 ];
 const currentPath = Astro.url.pathname;
 ---
 
 <header class="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-    <a href="/" class="flex items-center gap-2 font-display text-xl font-bold text-gradient">
-      <img src="/assets/images/app_logo.png" alt="RoKGuides logosu" width="36" height="36" class="h-9 w-9" />
+    <a href={localizePath('/', lang)} class="flex items-center gap-2 font-display text-xl font-bold text-gradient">
+      <img src="/assets/images/app_logo.png" alt={nav.logoAlt} width="36" height="36" class="h-9 w-9" />
       RoKGuides
     </a>
     <ul class="hidden gap-6 text-sm font-medium md:flex">
@@ -29,7 +38,7 @@ const currentPath = Astro.url.pathname;
       ))}
     </ul>
     <details class="md:hidden">
-      <summary class="cursor-pointer list-none rounded border border-border px-3 py-1.5 text-sm">Menü</summary>
+      <summary class="cursor-pointer list-none rounded border border-border px-3 py-1.5 text-sm">{nav.menu}</summary>
       <ul class="absolute left-0 right-0 mt-2 space-y-1 border-b border-border bg-background px-4 py-4">
         {navItems.map((item) => (
           <li>

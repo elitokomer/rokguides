@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import CommanderCard from '../../components/CommanderCard.astro';
-import AdSlot from '../../components/AdSlot.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CommanderCard from '../../../components/CommanderCard.astro';
+import AdSlot from '../../../components/AdSlot.astro';
 import { getCollection } from 'astro:content';
 
-const commanders = (await getCollection('commanders')).sort((a, b) => a.data.order - b.data.order);
+const commanders = (await getCollection('commandersEn')).sort((a, b) => a.data.order - b.data.order);
 const eras: Array<{ id: 'kvk1' | 'kvk2' | 'kvk3'; label: string }> = [
-  { id: 'kvk1', label: 'KvK 1 Dönemi' },
-  { id: 'kvk2', label: 'KvK 2 Dönemi' },
-  { id: 'kvk3', label: 'KvK 3 Dönemi' },
+  { id: 'kvk1', label: 'KvK 1 Era' },
+  { id: 'kvk2', label: 'KvK 2 Era' },
+  { id: 'kvk3', label: 'KvK 3 Era' },
 ];
 
-const troopOrder = ['Piyade', 'Süvari', 'Okçu', 'Liderlik', 'Kuşatma'];
+const troopOrder = ['Infantry', 'Cavalry', 'Archers', 'Leadership', 'Siege'];
 const troopTypes = troopOrder.filter((t) => commanders.some((c) => c.data.troopType === t));
 
 const tierOrder = ['S+', 'S', 'A', 'A-', 'B+', 'B'];
@@ -19,28 +19,29 @@ const tiers = tierOrder.filter((t) => commanders.some((c) => c.data.tier === t))
 ---
 
 <BaseLayout
-  title="Komutanlar — KvK Dönemine Göre Tier Listesi"
-  description="Rise of Kingdoms komutanlarının KvK 1, KvK 2 ve KvK 3 dönemlerine göre tier analizleri, güçlü/zayıf yönleri ve yetenek ağaçları."
-  alternatePath="/en/commanders"
+  title="Commanders — Tier List by KvK Era"
+  description="Tier analyses, strengths/weaknesses, and talent trees for Rise of Kingdoms commanders across the KvK 1, KvK 2, and KvK 3 eras."
+  lang="en"
+  alternatePath="/komutanlar"
 >
   <div class="mx-auto max-w-6xl px-4 py-10">
-    <h1 class="font-display text-3xl font-bold text-foreground sm:text-4xl">Komutan Rehberi</h1>
+    <h1 class="font-display text-3xl font-bold text-foreground sm:text-4xl">Commander Guide</h1>
     <p class="mt-2 max-w-2xl text-muted">
-      Krallıklar Savaşı dönemine göre gruplanmış komutan analizleri. Her komutanın güçlü/zayıf yönlerini, en iyi
-      eşleşmelerini ve yetenek ağacı önceliklerini inceleyin.
+      Commander analyses grouped by Kingdoms vs. Kingdoms era. Explore each commander's strengths, weaknesses, best
+      pairings, and talent tree priorities.
     </p>
 
     <div class="mt-6 flex flex-col gap-3">
       <div class="flex flex-wrap items-center gap-2">
-        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Birlik Tipi</span>
-        <button type="button" data-troop-filter="all" class="filter-btn is-active">Tümü</button>
+        <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Troop Type</span>
+        <button type="button" data-troop-filter="all" class="filter-btn is-active">All</button>
         {troopTypes.map((t) => (
           <button type="button" data-troop-filter={t} class="filter-btn">{t}</button>
         ))}
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <span class="mr-1 text-xs font-medium uppercase tracking-wide text-muted">Tier</span>
-        <button type="button" data-tier-filter="all" class="filter-btn is-active">Tümü</button>
+        <button type="button" data-tier-filter="all" class="filter-btn is-active">All</button>
         {tiers.map((t) => (
           <button type="button" data-tier-filter={t} class="filter-btn">{t}</button>
         ))}
@@ -62,16 +63,17 @@ const tiers = tierOrder.filter((t) => commanders.some((c) => c.data.tier === t))
                 troopType={c.data.troopType}
                 image={c.data.image}
                 summary={c.data.summary}
+                lang="en"
               />
             ))}
           </div>
-          <p class="empty-message mt-5 hidden text-sm text-muted">Bu filtrelere uyan komutan yok.</p>
+          <p class="empty-message mt-5 hidden text-sm text-muted">No commanders match these filters.</p>
         </section>
       );
     })}
 
     <div class="mt-12">
-      <AdSlot label="Reklam alanı" />
+      <AdSlot label="Advertisement" />
     </div>
   </div>
 </BaseLayout>

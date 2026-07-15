@@ -3,26 +3,29 @@ import Seo from '../components/Seo.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import type { Lang } from '../i18n/ui';
 
 interface Props {
   title: string;
   description: string;
   image?: string;
+  lang?: Lang;
+  alternatePath?: string;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, lang = 'tr', alternatePath } = Astro.props;
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const adsenseId = import.meta.env.PUBLIC_ADSENSE_ID;
 ---
 
 <!doctype html>
-<html lang="tr">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="theme-color" content="#0a0e1a" />
-    <Seo title={title} description={description} image={image} />
+    <Seo title={title} description={description} image={image} lang={lang} alternatePath={alternatePath} />
     {gaId && gaId !== 'your-google-analytics-id-here' && (
       <>
         <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
@@ -44,10 +47,10 @@ const adsenseId = import.meta.env.PUBLIC_ADSENSE_ID;
     )}
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>
