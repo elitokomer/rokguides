@@ -26,12 +26,6 @@ export default {
           a: '#8b5cf6',
           b: '#22d3ee',
         },
-        rarity: {
-          yesil: '#4ade80',
-          mavi: '#60a5fa',
-          mor: '#a78bfa',
-          turuncu: '#fb923c',
-        },
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'sans-serif'],
