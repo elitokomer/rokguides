@@ -1,5 +1,5 @@
 ---
-name: "Sun Tzu (Classic Epic)"
+name: "Sun Tzu"
 kvk: kvk1
 tier: "A"
 troopType: "Infantry"
